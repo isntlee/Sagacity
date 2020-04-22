@@ -1,39 +1,28 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+Deployment
+-----------------------------------------
+Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
 
-Welcome Space-Rx,
+Heroku App Location is as follows [https://sagacity.herokuapp.com/]
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: *Make Public*,
-
-Another blue button should appear to click: *Open Browser*.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: *Make Public*,
-
-Another blue button should appear to click: *Open Browser*.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+Following steps were taken to deploy the website:
+1. Database and Tables were created in an Atlas MongoDB account
+2. Project workspace was created in GitPod. In this workspace: Flask was installed - `pip3 install flask`.
+3. Setup app.py file and imported flask and os - `from flask import Flask. import os`
+4. Created an instance of flask - `app = flask(__name__)`
+6. Inside the app run() function set the host, ip and debug=true
+7. Create a new Heroku App - unique name and EU Server
+8. In GitPod login to Heroku through CLI to confirm existance of app. `CLI: heroku login. CLI: heroku apps`.
+9. Create a git repository in GitPod. CLI: git init. `CLI: git add . CLI: git commit -m "Initial Commit"`
+10. Connect GitPod to Heroku. Use code found on Heroku. `CLI - $heroku git remote -a sagacity`
+11. Create requirements.txt file - `CLI: pip3 freeze --local > requirements.txt`
+12. Create Procfile - `echo web:python app.py>Procfile`
+13. Add and Commit to Git Repository
+14. Push to Heroku using code supplied by Heroku
+15. `CLI - heroku ps:scale web=1` Command to tell Heroku to run the app
+16. Login to Heroku to add config variables including IP, Port, Mongo_DB and Mongo_URI
+17. Get Flask to talk to MongoDB - `CLI: pip3 install flask-pymongo` `CLI: pip3 install dnspython`
+18. Add extra libraries to app.py - `from flask_pymongo import Pymongo` `from bson.objectid import ObjectID`
+19. Add DB connection code to app.py
+20. Test connection to DB again to confirm it's working
+21. Connect GitHub repository to Heroku using code provided by heroku and github.
+22. Set Debug to False
