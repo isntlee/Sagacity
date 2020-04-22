@@ -6,7 +6,6 @@ from os import path
 if path.exists("env.py"):
     import env
 
-app = Flask(__name__)
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Sagacity'
@@ -19,8 +18,7 @@ sagas = mongo.db.test
 @app.route('/')
 @app.route('/get_sagas')
 def get_sagas():
-    return render_template("base.html", sagas=sagas.find())
-    return render_template("sagas.html", sagas=sagas.find())
+    return render_template("testing.html", sagas=sagas.find())
 
 
 if __name__ == '__main__':
