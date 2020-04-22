@@ -9,18 +9,21 @@ if path.exists("env.py"):
 app = Flask(__name__)
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'task_manager'
+app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
+sagas = mongo.db.test
+
 @app.route('/')
-@app.route('/get_tasks')
-def get_tasks():
-    return render_template("tasks.html", tasks=mongo.db.tasks.find())
+@app.route('/get_sagas')
+def get_sagas():
+    return render_template("base.html", sagas=sagas.find())
+    return render_template("sagas.html", sagas=sagas.find())
 
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=False)
+            debug=True)

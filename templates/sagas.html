@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %}
+    {% for saga in sagas %}
+        {{saga.userName}}
+        {{saga.funbunch}}             
+    {% endfor %}
+{% endblock %}
