@@ -7,13 +7,18 @@ if path.exists("env.py"):
     import env
 
 
+
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
+
+
 saga = mongo.db.sagas
+
+
 
 @app.route('/')
 @app.route('/get_sagas')
@@ -22,7 +27,8 @@ def get_sagas():
     return render_template("saga.html", sagas=sagas)
 
 
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)
