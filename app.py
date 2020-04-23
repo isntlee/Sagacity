@@ -13,12 +13,13 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
-sagas = mongo.db.test
+saga = mongo.db.sagas
 
 @app.route('/')
 @app.route('/get_sagas')
 def get_sagas():
-    return render_template("testing.html", sagas=sagas.find())
+    sagas = list(saga.find())
+    return render_template("saga.html", sagas=sagas)
 
 
 if __name__ == '__main__':
