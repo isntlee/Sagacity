@@ -6,34 +6,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="main.css" type="text/css" />
+
+    <style>
+    #map {
+      height: 90vh;
+      width: 90vw;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+    </style>
 </head>
 
-<body style="background-color:#fafafa">
-    <header>
-        <nav class="navbar sticky-top navbar-expand-sm">
-            <a class="navbar-title" href="#aboutUs-box">sagacity</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i><span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav align-items-end">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#navLink1">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#navLink2">Sagas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#navLink3">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<body>
 
-<section>
   <div id="map"></div>
-</section>
 
   <script>
     function initMap(){
@@ -64,8 +54,8 @@
     });
     }
   </script>
+
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx0wQ9k0TVnaE1cIvqF0m6CTxBat-wdbk&callback=initMap">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </script>
 
 </body>
