@@ -1,3 +1,15 @@
+#background-image {
+    background: url(static/images/AerialDublinBay.jpg);
+    background-size: cover;
+    background-position: centre;
+    min-height: 100vh;
+}
+@media screen and (max-width: 670px){
+    #background-image{
+        min-height: 66vh;
+    } 
+}
+
 #map {
         height: 90vh;
         width: 90vw;
