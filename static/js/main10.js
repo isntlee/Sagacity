@@ -20,10 +20,11 @@
       });
 
       var infoWindow = new google.maps.InfoWindow({
-        content: "<h5>Where are we?</h5>",
+        content: "<h5>Here are we -7</h5>", 
       });
 
       marker.addListener("mouseover", function () {
         infoWindow.open(map, marker);
       });
     }
+    
