@@ -1,16 +1,17 @@
 #brand-logo{
-    color: red;
+    color:#fafafa
 }
 
 #search-btn{
-    color: yellow;
+    color:#fafafa
 }
 
 #background-image{
-    background: url(../images/grafton.png);
+    background: url(../images/AerialDublinLiffey.png);
     background-size: cover;
     background-position: center;
-    min-height: 1000px;
+    height: 500px;
+    width: 500px;
 }
 
 #map {
