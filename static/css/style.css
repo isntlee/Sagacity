@@ -1,3 +1,12 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0vw;
+  padding: 0vw;
+  overflow-x: hidden;
+  background-color: #fafafa   
+}
+
 #brand-logo{
     color:#fafafa
 }
@@ -7,15 +16,20 @@
 }
 
 header{
-    background: url(../images/AerialDublinLiffey.png);
+    background: url(../images/AerialDublinLiffey.jpg);
     background-size: cover;
     background-position: center top;
     height: 130vh;
-    width: 100vw;
+    width: 99vw;
+}
+
+#aboutUs{
+    height: 95vh;
+    width: 99vw;
 }
 
 #map {
-    height: 90vh;
+    height: 95vh;
     width: 99vw;
 }
 
