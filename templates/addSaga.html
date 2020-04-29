@@ -1,9 +1,9 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h3>Add Saga<h3>
+<h3>Add Saga</h3>
 
 <div class="row">
-    <form action="" method="POST" class="col s12">
+    <form action="{{ url_for('insert_saga') }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input id="sagaTitle" type="text" class="validate">
@@ -14,27 +14,30 @@
           <label for="tagline">Tagline</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="yourImage.com" id="sagaImage" type="text" class="validate"> 
-          <!--Might be someway to include a responsive tag here, or in the code where the image would work-->
-          <label for="image">Image</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="Intro" class="materialize-textarea" data-length="120"></textarea>
-          <label for="intro">Intro</label>
+        <div class="row">
+            <div class="input-field col s12">
+            <input placeholder="yourImage.com" id="sagaImage" type="text" class="validate"> 
+            <!--Might be someway to include a responsive tag here, or in the code where the image would work-->
+            <label for="image">Image</label>
+            </div>
         </div>
         <div class="row">
-        <div class="input-field col s12">
-          <textarea id="Body" class="materialize-textarea" data-length="120"></textarea>
-          <label for="intro">Body</label>
+            <div class="input-field col s12">
+            <textarea id="Intro" class="materialize-textarea" data-length="120"></textarea>
+            <label for="intro">Intro</label>
+            </div>
         </div>
         <div class="row">
-        <div class="input-field col s12">
-          <textarea id="Conclusion" class="materialize-textarea" data-length="120"></textarea>
-          <label for="intro">Conclusion</label>
+            <div class="input-field col s12">
+            <textarea id="Body" class="materialize-textarea" data-length="120"></textarea>
+            <label for="intro">Body</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+            <textarea id="Conclusion" class="materialize-textarea" data-length="120"></textarea>
+            <label for="intro">Conclusion</label>
+            </div>
         </div>
         <div class="input-field col s12">
             <select>
@@ -54,6 +57,10 @@
             </select>
             <label>Era</label>
         </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Saga
+                <i class="material-icons right">Add Saga</i>
+             </button>
     </form>
 </div>
 {% endblock %}

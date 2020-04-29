@@ -28,10 +28,17 @@ def get_sagas():
 
 @app.route('/add_saga')
 def add_saga():
-    return render_template('addSaga.html')
+    return render_template('addSaga.html', )
+
+
+@app.route('/insert_saga', methods=['POST'])
+def insert_saga():
+    sagas = list(saga.find())
+    sagas.insert_one(request.form.to_dict())
+    return redirect(url_for('get_sagas'))
 
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=False)
+            debug=True)
