@@ -26,6 +26,9 @@ def get_sagas():
     sagas = list(saga.find())
     return render_template("saga.html", sagas=sagas)
 
+@app.route('/add_saga')
+def add_saga():
+    return render_template('addSaga.html')
 
 
 if __name__ == '__main__':

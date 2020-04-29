@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h3>Add Saga<h3>
+
+<div class="row">
+    <form action="" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="sagaTitle" type="text" class="validate">
+          <label for="title">Title</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="sagaTagline" type="text" class="validate">
+          <label for="tagline">Tagline</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="yourImage.com" id="sagaImage" type="text" class="validate"> 
+          <!--Might be someway to include a responsive tag here, or in the code where the image would work-->
+          <label for="image">Image</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="Intro" class="materialize-textarea" data-length="120"></textarea>
+          <label for="intro">Intro</label>
+        </div>
+        <div class="row">
+        <div class="input-field col s12">
+          <textarea id="Body" class="materialize-textarea" data-length="120"></textarea>
+          <label for="intro">Body</label>
+        </div>
+        <div class="row">
+        <div class="input-field col s12">
+          <textarea id="Conclusion" class="materialize-textarea" data-length="120"></textarea>
+          <label for="intro">Conclusion</label>
+        </div>
+        <div class="input-field col s12">
+            <select>
+                <option value="" disabled selected id="eraName">Say where</option>
+                <option value="1">Northside</option>
+                <option value="2">Southside</option>
+                <option value="3">Culchies</option>
+            </select>
+            <label>Location</label>
+        </div>
+        <div class="input-field col s12">
+            <select>
+                <option value="" disabled selected id="locationName">Choose what era</option>
+                <option value="1">Pre-Viking</option>
+                <option value="2">The Brits 2</option>
+                <option value="3">Free at Last</option>
+            </select>
+            <label>Era</label>
+        </div>
+    </form>
+</div>
+{% endblock %}
