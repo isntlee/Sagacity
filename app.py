@@ -18,10 +18,21 @@ saga = mongo.db.sagas
 
 
 @app.route('/')
+@app.route('/home')
+def home():
+    sagas = list(saga.find())
+    return render_template('home.html', sagas=sagas)
+
 @app.route('/get_sagas')
 def get_sagas():
     sagas = list(saga.find())
-    return render_template('addSaga.html', sagas=sagas)
+    return render_template('saga.html', sagas=sagas)
+
+
+@app.route('/add_sagas')
+def add_sagas():
+    sagas = list(saga.find())
+    return render_template('addSaga.html', sagas=)
 
 
 if __name__ == '__main__':

@@ -15,7 +15,7 @@ body {
     color:#fafafa
 }
 
-header{
+#background-image{
     background: url(../images/AerialDublinLiffey.jpg);
     background-size: cover;
     background-position: center top;
@@ -33,6 +33,9 @@ header{
     width: 99vw;
 }
 
+#addSaga {
+    height: 90vh;
+}
 
  @media screen and (max-width: 670px){
 #background-image{
