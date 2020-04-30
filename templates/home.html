@@ -1,10 +1,9 @@
+{% extends 'base.html' %} 
 {% block content %}
 
 {% for saga in sagas %}
 
-<header>
-    <div id="background-image"></div>
-</header>
+    <div class="container" id="background-image"></div>
  
 
  <section class="container section scrollspy" id="aboutUs">
@@ -37,9 +36,8 @@
     </div>
   </section>
 
-<footer>
-    <div id="map"></div>
-</footer>
+
+    <div class="container" id="map"></div>
 
 {% endfor %}
 {% endblock %}

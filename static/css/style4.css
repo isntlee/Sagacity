@@ -20,17 +20,17 @@ body {
     background-size: cover;
     background-position: center top;
     height: 130vh;
-    width: 99vw;
+    width: 100%;
 }
 
 #aboutUs{
     height: 95vh;
-    width: 99vw;
+    width: 100%;
 }
 
 #map {
     height: 95vh;
-    width: 99vw;
+    width: 100%;
 }
 
 #addSaga {

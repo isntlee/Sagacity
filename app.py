@@ -32,7 +32,7 @@ def get_sagas():
 @app.route('/add_sagas')
 def add_sagas():
     sagas = list(saga.find())
-    return render_template('addSaga.html', sagas=)
+    return render_template('addSaga.html', sagas=sagas)
 
 
 if __name__ == '__main__':
