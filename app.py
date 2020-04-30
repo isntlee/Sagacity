@@ -14,28 +14,14 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
-
-
 saga = mongo.db.sagas
-
 
 
 @app.route('/')
 @app.route('/get_sagas')
 def get_sagas():
     sagas = list(saga.find())
-    return render_template("saga.html", sagas=sagas)
-
-@app.route('/add_saga')
-def add_saga():
-    return render_template('addSaga.html', )
-
-
-@app.route('/insert_saga', methods=['POST'])
-def insert_saga():
-    sagas = list(saga.find())
-    sagas.insert_one(request.form.to_dict())
-    return redirect(url_for('get_sagas'))
+    return render_template('addSaga.html', sagas=sagas)
 
 
 if __name__ == '__main__':
