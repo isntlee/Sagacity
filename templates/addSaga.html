@@ -5,7 +5,7 @@
 <h3>Add Saga</h3>
 
 <div class="row" id="addSaga">
-    <form action="" method="POST" class="col s12">
+    <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input id="sagaTitle" type="text" class="validate">
@@ -16,10 +16,20 @@
           <label for="tagline">Tagline</label>
         </div>
       </div>
+      <div class="input-field col s12">
+            <select>
+                <option value="" disabled selected id="locationName">Choose what era</option>
+                <option value="1">Pre-Viking</option>
+                <option value="2">The Brits 2</option>
+                <option value="3">Free at Last</option>
+            </select>
+            <label>Era</label>
+        </div>
         <div class="row">
             <div class="input-field col s12">
             <input placeholder="yourImage.com" id="sagaImage" type="text" class="validate"> 
-            <!--Might be someway to include a responsive tag here, or in the code where the image would work-->
+            <!--Might be someway to include a responsive tag here,
+             or in the code where the image would work-->
             <label for="image">Image</label>
             </div>
         </div>
@@ -49,15 +59,6 @@
                 <option value="3">Culchies</option>
             </select>
             <label>Location</label>
-        </div>
-        <div class="input-field col s12">
-            <select>
-                <option value="" disabled selected id="locationName">Choose what era</option>
-                <option value="1">Pre-Viking</option>
-                <option value="2">The Brits 2</option>
-                <option value="3">Free at Last</option>
-            </select>
-            <label>Era</label>
         </div>
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="action">Add Saga

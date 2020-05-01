@@ -23,16 +23,22 @@ def home():
     sagas = list(saga.find())
     return render_template('home.html', sagas=sagas)
 
-@app.route('/get_sagas')
-def get_sagas():
-    sagas = list(saga.find())
-    return render_template('saga.html', sagas=sagas)
+
+@app.route('/showSaga')
+def showSaga():
+    return render_template('showSaga.html', sagas=saga.find())
 
 
-@app.route('/add_sagas')
-def add_sagas():
-    sagas = list(saga.find())
-    return render_template('addSaga.html', sagas=sagas)
+@app.route('/addSaga')
+def addSaga():
+    return render_template('addSaga.html', sagas=saga.find())
+
+
+@app.route('/insertSaga', methods=['POST'])
+def insertSaga():
+    saga = mongo.db.sagas
+    saga.insert_one(request.form.to_dict())
+    return redirect(url_for('showSaga'))
 
 
 if __name__ == '__main__':

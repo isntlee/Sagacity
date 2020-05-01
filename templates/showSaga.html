@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    {% for saga in sagas %}
+        <div class="row">
+            <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                <img src="images/sample-1.jpg">
+                <span class="card-title"></span>
+                <a class="btn-floating halfway-fab waves-effect waves-light blue dark">
+                <i class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                <h3>{{saga.sagaTitle}}</h3><br>
+                <p>{{saga.sagaTagline}}</p><br>
+                <p>{{saga.userName}}</p><br>
+                <p>{{saga.Intro}}</p><br>
+                <p>{{saga.Body}}</p><br>
+                <p>{{saga.Conclusion}}</p><br>
+                <p>{{saga.sagaRating}}</p><br>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    {% endfor %}    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+<!--  ALL THIS MIGHT BE USEFUL
+    
+    #@app.route('/add_saga')
+#def add_saga():
+    #return render_template('addSaga.html', )
+
+
+# @app.route('/insert_saga', methods=['POST'])
+#def insert_saga():
+   # sagas = list(saga.find())
+    #sagas.insert_one(request.form.to_dict())
+    #return redirect(url_for('get_sagas')) -->
