@@ -1,9 +1,9 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-{% for saga in sagas %}
 <h3>Add Saga</h3>
 
+<div class="container">
 <div class="row" id="addSaga">
     <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
       <div class="row">
@@ -16,15 +16,6 @@
           <label for="tagline">Tagline</label>
         </div>
       </div>
-      <div class="input-field col s12">
-            <select>
-                <option value="" disabled selected id="locationName">Choose what era</option>
-                <option value="1">Pre-Viking</option>
-                <option value="2">The Brits 2</option>
-                <option value="3">Free at Last</option>
-            </select>
-            <label>Era</label>
-        </div>
         <div class="row">
             <div class="input-field col s12">
             <input placeholder="yourImage.com" id="sagaImage" type="text" class="validate"> 
@@ -51,7 +42,17 @@
             <label for="intro">Conclusion</label>
             </div>
         </div>
-        <div class="input-field col s12">
+        <!--
+            <div class="input-field col s12">
+            <select>
+                <option value="" disabled selected id="locationName">Choose what era</option>
+                <option value="1">Pre-Viking</option>
+                <option value="2">The Brits 2</option>
+                <option value="3">Free at Last</option>
+            </select>
+            <label>Era</label>
+        </div>
+         <div class="input-field col s12">
             <select>
                 <option value="" disabled selected id="eraName">Say where</option>
                 <option value="1">Northside</option>
@@ -59,13 +60,13 @@
                 <option value="3">Culchies</option>
             </select>
             <label>Location</label>
-        </div>
+        </div> -->
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="action">Add Saga
-                <i class="material-icons right"></i>
+                <i class="material-icons right">send</i>
              </button>
+        </div>
     </form>
 </div>
 
-{% endfor %}
 {% endblock %}
