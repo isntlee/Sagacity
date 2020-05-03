@@ -3,8 +3,8 @@
 
 <h3>Edit Saga</h3>
 
-<div class="row" id="addSaga">
-    <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
+<div class="row">
+    <form action="{{ url_for('updateSaga', saga_id=saga._id) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" required>
