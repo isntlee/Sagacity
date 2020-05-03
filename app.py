@@ -14,6 +14,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
+saga = mongo.db.sagas
 
 @app.route('/')
 @app.route('/home')
@@ -36,6 +37,12 @@ def insertSaga():
     sagas = mongo.db.sagas
     sagas.insert_one(request.form.to_dict())
     return redirect(url_for('showSaga'))
+
+
+@app.route('/editSaga/<saga_id>')
+def editSaga(saga_id):
+    theSaga = mongo.db.sagas.find_one({"_id": ObjectId(saga_id)})
+    return render_template('editSaga.html', sagas=theSaga)
 
 
 if __name__ == '__main__':

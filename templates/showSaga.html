@@ -18,7 +18,8 @@
                     <p>{{saga.Intro}}</p><br>
                     <p>{{saga.Body}}</p><br>
                     <p>{{saga.Conclusion}}</p><br>
-                    <p>{{saga.sagaRating}}</p><br>
+                    <a class="waves-effect waves-light btn btn_small">Done</a>
+                    <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
                     </div>
                 </div>
             </div>
