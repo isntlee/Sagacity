@@ -7,14 +7,12 @@ if path.exists("env.py"):
     import env
 
 
-
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
-saga = mongo.db.sagas
 
 @app.route('/')
 @app.route('/home')
@@ -42,7 +40,7 @@ def insertSaga():
 @app.route('/editSaga/<saga_id>')
 def editSaga(saga_id):
     theSaga = mongo.db.sagas.find_one({"_id": ObjectId(saga_id)})
-    return render_template('editSaga.html', sagas=theSaga)
+    return render_template('editSaga.html', saga=theSaga)
 
 
 if __name__ == '__main__':
