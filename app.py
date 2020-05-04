@@ -43,9 +43,9 @@ def editSaga(saga_id):
     return render_template('editSaga.html', saga=theSaga)
 
 
-@app.route('/updateSaga/<saga_id>')
+@app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
-    sagas = mongo.db.tasks
+    sagas = mongo.db.sagas
     sagas.update({'_id': ObjectId(saga_id)},
     {
         'sagaTitle': request.form.get('sagaTitle'),
@@ -63,4 +63,4 @@ def updateSaga(saga_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)
