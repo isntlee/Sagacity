@@ -26,3 +26,8 @@ Following steps were taken to deploy the website:
 20. Test connection to DB again to confirm it's working
 21. Connect GitHub repository to Heroku using code provided by heroku and github.
 22. Set Debug to False
+
+Sources: 
+
+Materialize: https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff
+Flask: https://www.youtube.com/watch?v=bLA6eBGN-_0&feature=emb_title

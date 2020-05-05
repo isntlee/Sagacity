@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for,  session, abort
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
@@ -8,6 +8,8 @@ if path.exists("env.py"):
 
 
 app = Flask(__name__)
+
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
@@ -18,7 +20,6 @@ mongo = PyMongo(app)
 @app.route('/home')
 def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
-
 
 @app.route('/showSaga')
 def showSaga():
