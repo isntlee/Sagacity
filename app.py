@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for,  session, abort
+from flask import Flask, render_template, redirect, request, url_for, session, abort
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -10,7 +10,6 @@ if path.exists("env.py"):
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
@@ -18,10 +17,47 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/home')
+def index():
+    if 'username' in session:
+        return 'You are logged in as ' + session['username']
+
+    return render_template('index.html')
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    user = mongo.db.user
+    login_user = user.find_one({'name': request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+
+    return 'Invalid username/password combination'
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == ['POST']:
+        user = mongo.db.user
+        existing_user = user.find_one({'name': request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            user.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('register.html')
+
+
+"""@app.route('/home')
 def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
-    
+
 
 @app.route('/showSaga')
 def showSaga():
@@ -67,7 +103,7 @@ def updateSaga(saga_id):
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
     mongo.db.sagas.remove({'_id': ObjectId(saga_id)}),
-    return redirect(url_for('showSaga'))
+    return redirect(url_for('showSaga'))"""
 
 
 if __name__ == '__main__':
