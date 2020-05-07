@@ -9,7 +9,7 @@ if path.exists("env.py"):
 
 
 app = Flask(__name__)
-
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
@@ -21,16 +21,16 @@ def index():
     if 'username' in session:
         return 'You are logged in as ' + session['username']
 
-    return render_template('index.html')
+    return render_template('index.html', users=mongo.db.users.find())
 
 
 @app.route('/login', methods=['POST'])
 def login():
-    user = mongo.db.user
-    login_user = user.find_one({'name': request.form['username']})
+    users = mongo.db.users
+    login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -39,19 +39,26 @@ def login():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    if request.method == ['POST']:
-        user = mongo.db.user
-        existing_user = user.find_one({'name': request.form['username']})
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            user.insert({'name' : request.form['username'], 'password' : hashpass})
+            users.insert_one({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         
         return 'That username already exists!'
 
-    return render_template('register.html')
+    return render_template('register.html', users=mongo.db.users.find())
+
+
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
+
 
 
 """@app.route('/home')
@@ -104,9 +111,3 @@ def updateSaga(saga_id):
 def deleteSaga(saga_id):
     mongo.db.sagas.remove({'_id': ObjectId(saga_id)}),
     return redirect(url_for('showSaga'))"""
-
-
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
