@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session, abort
+from flask import Flask, render_template, redirect, request, url_for, session, abort, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -17,51 +17,7 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def index():
-    if 'username' in session:
-        return 'You are logged in as ' + session['username']
-
-    return render_template('index.html', users=mongo.db.users.find())
-
-
-@app.route('/login', methods=['POST'])
-def login():
-    users = mongo.db.users
-    login_user = users.find_one({'name': request.form['username']})
-
-    if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-
-    return 'Invalid username/password combination'
-
-
-@app.route('/register', methods=['POST', 'GET'])
-def register():
-    if request.method == 'POST':
-        users = mongo.db.users
-        existing_user = users.find_one({'name': request.form['username']})
-
-        if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'name' : request.form['username'], 'password' : hashpass})
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-        
-        return 'That username already exists!'
-
-    return render_template('register.html', users=mongo.db.users.find())
-
-
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
-
-
-
-"""@app.route('/home')
+@app.route('/home')
 def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
 
@@ -110,4 +66,50 @@ def updateSaga(saga_id):
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
     mongo.db.sagas.remove({'_id': ObjectId(saga_id)}),
-    return redirect(url_for('showSaga'))"""
+    return redirect(url_for('showSaga'))
+
+
+def index():
+    if 'username' in session:
+        return 'You are logged in as ' + session['username']
+
+    return render_template('login.html', users=mongo.db.users.find())
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'name': request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+
+    return 'Invalid username/password combination'
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name': request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('register.html', users=mongo.db.users.find())
+
+
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
+
+
+
