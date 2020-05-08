@@ -31,3 +31,4 @@ Sources:
 
 1. Materialize: https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff
 2. Flask: https://www.youtube.com/watch?v=bLA6eBGN-_0&feature=emb_title
+3. Flash messages in Flask: https://www.youtube.com/watch?v=lcVdZtVvnnk&t=7s
