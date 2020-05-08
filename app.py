@@ -69,22 +69,23 @@ def deleteSaga(saga_id):
     return redirect(url_for('showSaga'))
 
 
-def index():
+@app.route('/login')
+def login():
     if 'username' in session:
-        return 'You are logged in as ' + session['username']
+        print('You are logged in as ' + session['username']), render_template('home.html', users=mongo.db.users.find())
 
     return render_template('login.html', users=mongo.db.users.find())
 
 
-@app.route('/login', methods=['POST'])
-def login():
+@app.route('/logging', methods=['POST'])
+def logging():
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
 
     return 'Invalid username/password combination'
 
@@ -99,7 +100,8 @@ def register():
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert_one({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            print("Done, and done; you're now on file")
+            return redirect(url_for('home'))
         
         return 'That username already exists!'
 
@@ -110,6 +112,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
-
-
-
