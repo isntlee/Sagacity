@@ -72,12 +72,13 @@ def deleteSaga(saga_id):
 @app.route('/login')
 def login():
     if 'username' in session:
-        print('You are logged in as ' + session['username']), render_template('home.html', users=mongo.db.users.find())
+        print('You are logged in as ' + session['username']), 
+        return render_template('home.html', users=mongo.db.users.find())
 
     return render_template('login.html', users=mongo.db.users.find())
 
 
-@app.route('/logging', methods=['POST'])
+@app.route('/logging', methods=['POST', 'GET'])
 def logging():
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
