@@ -14,11 +14,18 @@
  <body>
   <header>
     <div class="navbar-fixed">
-      <nav class="nav-wrapper transparent">
+      <nav class="nav-wrapper blue">
         <div class="container">
           <a href="#" id="brand-logo" class="brand-logo left">sagacity</a>
           <a href="#" class="sidenav-trigger right" data-target="mobile-links"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+            <li>{% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h5>{{ message }}</h5>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}</li>
             <li><a href="">Sagas</a></li>
             <li><a href="{{url_for('login')}}"><i class="material-icons left">account_circle</i>Login</a></li>
             <li><i id="search-btn" class="material-icons">search</i></li>

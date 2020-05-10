@@ -72,7 +72,7 @@ def deleteSaga(saga_id):
 @app.route('/login')
 def login():
     if 'username' in session:
-        print('You are logged in as ' + session['username']), 
+        flash('You are logged in as ' + session['username'])
         return render_template('home.html', users=mongo.db.users.find())
 
     return render_template('login.html', users=mongo.db.users.find())
@@ -88,7 +88,7 @@ def logging():
             session['username'] = request.form['username']
             return redirect(url_for('home'))
 
-    return 'Invalid username/password combination'
+    flash('Invalid username/password combination')
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -101,10 +101,10 @@ def register():
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert_one({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
-            print("Done, and done; you're now on file")
+            flash("Done, and done; you're now on file")
             return redirect(url_for('home'))
         
-        return 'That username already exists!'
+        flash('That username already exists!')
 
     return render_template('register.html', users=mongo.db.users.find())
 
