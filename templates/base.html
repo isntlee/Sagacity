@@ -28,7 +28,15 @@
             {% endwith %}</li>
             <li><a href="">Sagas</a></li>
             <li><a href="{{url_for('login')}}"><i class="material-icons left">account_circle</i>Login</a></li>
-            <li><i id="search-btn" class="material-icons">search</i></li>
+            <!--Not sure about this <form action> tag at all, so goin to test everything again now-->
+            <li><form action="" class="" method="POST">
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </li>
           </ul>
         </div>
       </nav>

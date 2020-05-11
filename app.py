@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for, session, a
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+import pymongo
 from os import path
 if path.exists("env.py"):
     import env
@@ -109,7 +110,7 @@ def register():
     return render_template('register.html', users=mongo.db.users.find())
 
 
-@app.route('/searchSaga', methods=["POST"])
+"""@app.route('/searchSaga', methods=["POST"])
 def searchSaga():
     if request.method == 'POST':
         search = request.form.to_dict().get('sagas')
@@ -137,7 +138,7 @@ def searchSaga():
 
     return render_template(
         'searchSaga.html',
-        sagas=result)
+        sagas=result)"""
 
 
 if __name__ == '__main__':
