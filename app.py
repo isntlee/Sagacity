@@ -109,6 +109,37 @@ def register():
     return render_template('register.html', users=mongo.db.users.find())
 
 
+@app.route('/searchSaga', methods=["POST"])
+def searchSaga():
+    if request.method == 'POST':
+        search = request.form.to_dict().get('sagas')
+        result = []
+
+        mongo.db.sagas.create_index([
+                            ('sagaTitle', pymongo.TEXT),
+                            ('sagaTagline', pymongo.TEXT),
+                            ('userName', pymongo.TEXT),
+                            ('userName', pymongo.TEXT),
+                            ('sagaRating', pymongo.TEXT),
+                            ('Intro', pymongo.TEXT),
+                            ('Body', pymongo.TEXT),
+                            ('Conclusion', pymongo.TEXT)
+                        ])
+    
+    searchedSaga = mongo.db.sagas.find(
+                                  {'$text': {'$search': search}},
+                                  {'score': {'$meta': 'textScore'}}
+                                ).sort([('score', {'$meta': 'textScore'})])
+    
+    for doc in searchedSaga:
+        if doc['status'] == 1:
+            result.append(doc)
+
+    return render_template(
+        'searchSaga.html',
+        sagas=result)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
