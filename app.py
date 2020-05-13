@@ -1,9 +1,8 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, session, abort, flash
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
-import pymongo
 from os import path
 if path.exists("env.py"):
     import env
@@ -73,9 +72,9 @@ def deleteSaga(saga_id):
 @app.route('/login')
 def login():
     if 'username' in session:
-        flash('You are logged in as ' + session['username'])
+        flash('You are logged in as ' + session['username']),
         return render_template('home.html', users=mongo.db.users.find())
-
+    
     return render_template('login.html', users=mongo.db.users.find())
 
 
@@ -110,35 +109,86 @@ def register():
     return render_template('register.html', users=mongo.db.users.find())
 
 
-"""@app.route('/searchSaga', methods=["POST"])
-def searchSaga():
+@app.route('/testSearch', methods=["POST"])
+def testSearch():
     if request.method == 'POST':
-        search = request.form.to_dict().get('sagas')
+        search = request.form.to_dict().get('testSearch-name')
         result = []
+        print(search)
 
-        mongo.db.sagas.create_index([
-                            ('sagaTitle', pymongo.TEXT),
-                            ('sagaTagline', pymongo.TEXT),
-                            ('userName', pymongo.TEXT),
-                            ('userName', pymongo.TEXT),
-                            ('sagaRating', pymongo.TEXT),
-                            ('Intro', pymongo.TEXT),
-                            ('Body', pymongo.TEXT),
-                            ('Conclusion', pymongo.TEXT)
+        collection = mongo.db.stores
+        collection.create_index([('name', 'text')])
+        answer = collection.find({'$text': {'$search': search}}, {'$score': {'$meta': "textScore"}})
+
+        for i in answer:
+            result.append(i)
+        print(result)
+
+        return redirect(url_for('home'))
+    
+    print("Error all day, and all night")
+    return redirect(url_for('home'))
+
+
+""" THIS IS THE ORIGINAL, AND IT WORKS:
+@app.route('/testSearch', methods=["POST"])
+def testSearch():
+    if request.method == 'POST':
+        search = request.form.to_dict().get('testSearch-name')
+        result = []
+        print(search)
+
+        collection = mongo.db.stores
+        collection.create_index([('name', 'text')])
+        answer = collection.find({'$text': {'$search': "Java Hut"}}, {'$score': {'$meta': "textScore"}})
+
+        for i in answer:
+            result.append(i)
+        print(result)
+
+        return redirect(url_for('home'))
+    
+    print("Error all day, and all night")
+    return redirect(url_for('home'))"""
+
+
+
+
+"""@app.route('/testSearch', methods=["POST"])
+def testSearch():
+    if request.method == 'POST':
+        search = request.form.to_dict().get('testSearch-name')
+        print(search)
+        mongo.db.stores.create_index([("$**", "text")])
+        query = ({"$text": {"$search": "search"}})
+        results = mongo.db.stores.find(query)
+        print(results)
+
+    print("Error all day, and all night")
+    return redirect(url_for('home'))"""
+
+
+'''@app.route('/testSearch', methods=["POST"])
+def testSearch():
+    if request.method == 'POST':
+        search = request.form.to_dict().get('testSearch-name')
+        print('testSearch-name')
+        resultStores = []
+
+        mongo.db.stores.create_index([
+                            ('name', pymongo.TEXT),
+                            ('description', pymongo.TEXT)
                         ])
     
-    searchedSaga = mongo.db.sagas.find(
+    searchedStores = mongo.db.sagas.find(
                                   {'$text': {'$search': search}},
                                   {'score': {'$meta': 'textScore'}}
                                 ).sort([('score', {'$meta': 'textScore'})])
     
-    for doc in searchedSaga:
-        if doc['status'] == 1:
-            result.append(doc)
+    for i in searchedStores:
+        resultStores.append(i)
 
-    return render_template(
-        'searchSaga.html',
-        sagas=result)"""
+    return(resultStores)'''
 
 
 if __name__ == '__main__':
