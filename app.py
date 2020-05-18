@@ -129,68 +129,6 @@ def testSearch():
     print("Error all day, and all night")
     return redirect(url_for('home'))
 
-
-""" THIS IS THE ORIGINAL, AND IT WORKS:
-@app.route('/testSearch', methods=["POST"])
-def testSearch():
-    if request.method == 'POST':
-        search = request.form.to_dict().get('testSearch-name')
-        result = []
-        print(search)
-
-        collection = mongo.db.stores
-        collection.create_index([('name', 'text')])
-        answer = collection.find({'$text': {'$search': "Java Hut"}}, {'$score': {'$meta': "textScore"}})
-
-        for i in answer:
-            result.append(i)
-        print(result)
-
-        return redirect(url_for('home'))
-    
-    print("Error all day, and all night")
-    return redirect(url_for('home'))"""
-
-
-
-
-"""@app.route('/testSearch', methods=["POST"])
-def testSearch():
-    if request.method == 'POST':
-        search = request.form.to_dict().get('testSearch-name')
-        print(search)
-        mongo.db.stores.create_index([("$**", "text")])
-        query = ({"$text": {"$search": "search"}})
-        results = mongo.db.stores.find(query)
-        print(results)
-
-    print("Error all day, and all night")
-    return redirect(url_for('home'))"""
-
-
-'''@app.route('/testSearch', methods=["POST"])
-def testSearch():
-    if request.method == 'POST':
-        search = request.form.to_dict().get('testSearch-name')
-        print('testSearch-name')
-        resultStores = []
-
-        mongo.db.stores.create_index([
-                            ('name', pymongo.TEXT),
-                            ('description', pymongo.TEXT)
-                        ])
-    
-    searchedStores = mongo.db.sagas.find(
-                                  {'$text': {'$search': search}},
-                                  {'score': {'$meta': 'textScore'}}
-                                ).sort([('score', {'$meta': 'textScore'})])
-    
-    for i in searchedStores:
-        resultStores.append(i)
-
-    return(resultStores)'''
-
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
