@@ -21,6 +21,7 @@ mongo = PyMongo(app)
 def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
 
+
 @app.route('/showSaga')
 def showSaga():
     return render_template('showSaga.html', sagas=mongo.db.sagas.find())
