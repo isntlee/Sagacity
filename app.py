@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify
+from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify,json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -22,10 +22,14 @@ def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
 
 
-@app.route('/fetch')
-def fetch():
-    sagas = mongo.db.sagas.find()
-    return jsonify(sagas)
+@app.route('/fetch', methods=["GET", "POST"])
+def add_review():
+    if request.method == "GET":
+        sagas = list(mongo.db.sagas.find())
+        return redirect(url_for('home', sagas=sagas))
+
+    elif request.method == "POST":
+        mongo.db.sagas.insert(request.form.to_dict())
 
 
 @app.route('/showSaga')
@@ -139,6 +143,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
-
-
-

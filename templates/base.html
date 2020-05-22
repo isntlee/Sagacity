@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- {% block javascript %} PUT FETCH CALL HERE AND PUSH IT TO HOME.HTML {% endblock %} -->   
+    <!-- {% block javascript %} PUT FETCH CALL HERE AND PUSH IT TO HOME.HTML {% endblock %} --> 
+
+<script>
+
+    fetch("/fetch")
+    .then(response => response.json())
+    .then(data => {console.log(data)
+    });  
+
+</script>
+
 
 <title>Sagacity</title>
   </head>
@@ -63,7 +73,7 @@
 
 
     <script type="text/javascript" src="static/js/jquery.js"></script>
-    <script type="text/javascript" src="static/js/fetch.js"></script>
+     <!-- <script type="text/javascript" src="static/js/fetch.js"></script> -->
      <!-- <script type="text/javascript" src="static/js/main.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.jss"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
