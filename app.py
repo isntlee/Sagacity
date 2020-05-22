@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session, abort, flash
+from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -20,6 +20,12 @@ mongo = PyMongo(app)
 @app.route('/home')
 def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
+
+
+@app.route('/fetch')
+def fetch():
+    sagas = mongo.db.sagas.find()
+    return jsonify(sagas)
 
 
 @app.route('/showSaga')
@@ -133,3 +139,6 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
+
+
+
