@@ -1,5 +1,5 @@
 
-   /* function initMap() {
+   function initMap() {
       var options = {
         center: { lat: 53.27249, lng: -6.24206 },
         zoom: 10,
@@ -26,5 +26,5 @@
       marker.addListener("mouseover", function () {
         infoWindow.open(map, marker);
       });
-    } */
+    }
     
