@@ -8,16 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
-    <!-- {% block javascript %} PUT FETCH CALL HERE AND PUSH IT TO HOME.HTML {% endblock %} --> 
-
-<script>
-
-    fetch("/fetch")
-    .then(response => response.json())
-    .then(data => {console.log(data)
-    });  
-
-</script>
+    {% block javascript %} {% endblock %} 
 
 
 <title>Sagacity</title>
@@ -81,12 +72,3 @@
 
  </body>
 </html>
-
-<!--  "Okay so, what would you suggest? I've been looking through the links you sent, and the jsonify function does get mentioned quite a bit.
-
-Is that what you would do?
-
-Or would you follow "As of Flask 1.1.0, you can now directly return a python dict, and it will be automatically jsonify'd by Flask.""   
-
-
--->

@@ -30,7 +30,7 @@ def fetch():
             sagaList.append(saga)
         return jsonify(sagaList)
 
-
+        
 @app.route('/showSaga')
 def showSaga():
     return render_template('showSaga.html', sagas=mongo.db.sagas.find())

@@ -1,9 +1,15 @@
 {% extends 'base.html' %} 
 
-<!-- {% block javascript %} {% endblock %} Lets see if this works -->
+{% block javascript %}
+<script>
+    fetch("/fetch")
+    .then(response => response.json())
+    .then(data => {console.log(data)
+    });  
+</script> 
+{% endblock %} 
 
-{% block content %}
- 
+{% block content %} 
 <header class="container" id="background-image"></header>
 <!--Try asking around for the full page image later,
  this is frustrating though-->
@@ -38,17 +44,6 @@
     </div>
   </section>
 
-    <!-- ADD IN THE HTML BUTTON RIGHT HERE -->
-
     <div class="container" id="map"></div>
-
-
-  <!-- {%for saga in sagas %}
-    
-    {{saga.Intro}}
-    
-    {% endfor %}
-
-    <h6>Test1</h6> -->
 
 {% endblock %}
