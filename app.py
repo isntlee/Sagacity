@@ -22,14 +22,13 @@ def home():
     return render_template('home.html', sagas=mongo.db.sagas.find())
 
 
-@app.route('/fetch', methods=["GET", "POST"])
-def add_review():
+@app.route('/fetch')
+def fetch():
     if request.method == "GET":
-        sagas = list(mongo.db.sagas.find())
-        return redirect(url_for('home', sagas=sagas))
-
-    elif request.method == "POST":
-        mongo.db.sagas.insert(request.form.to_dict())
+        sagaList = []
+        for saga in (mongo.db.sagas.find({}, {"_id": 0})):
+            sagaList.append(saga)
+        return jsonify(sagaList)
 
 
 @app.route('/showSaga')
