@@ -26,7 +26,8 @@ def home():
 def fetch():
     if request.method == "GET":
         sagaList = []
-        for saga in (mongo.db.sagas.find({}, {"_id": 0})):
+        for saga in (mongo.db.sagas.find()):
+            saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
 
