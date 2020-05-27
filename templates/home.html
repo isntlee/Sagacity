@@ -3,9 +3,6 @@
 {% block javascript %}
 <script>
 
-    
-    //  console.log(data[1].Body - for example)
-
     function initMap() {
       var options = { 
         center: { lat: 53.27249, lng: -6.24206 },
@@ -19,24 +16,30 @@
         }
       };
 
-      fetch("/fetch")
-      .then(response => response.json ())
-      .then(data => {console.log(data)
-     });
+        var obj;
+        fetch('/fetch')
+            .then(response => response.json())
+            .then(data => obj = data)
+            .then(() => console.log(obj))
+            ;
+        
 
-    
+
       var map = new google.maps.Map(document.getElementById("map"), options);
 
       var marker = new google.maps.Marker({
         position: { lat: 53.3235431, lng: -6.265295},
         map: map,
+        title: "Cheesy Dick"
       });
+
+        console.log(obj)
 
       var infoWindow = new google.maps.InfoWindow({
         content: "<h5>Here are we -7</h5>", 
       });
 
-      marker.addListener("mouseover", function () {
+      marker.addListener("click", function () {
         infoWindow.open(map, marker);
       });
     }
