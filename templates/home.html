@@ -8,8 +8,8 @@
 
     function initMap() {
       var options = { 
-        center: { lat: 53.27249, lng: -6.24206 },
-        zoom: 10,
+        center: { lat: 53.323543, lng: -6.265295},
+        zoom: 14,
         mapTypeControl: true,
         mapTypeControlOptions: {
           mapTypeIds: [
@@ -22,22 +22,25 @@
     fetch('/fetch')
         .then(response => response.json())
         .then(data => {
-            myFunction(data);
+            fetchFunction(data);
         })
         .catch(err => console.log(err));
 
 
-    function myFunction(data) {
+    function fetchFunction(data) {
         console.log(data)
 
+    /* Congratulations on today, inching nearer to getting this done. Tomorrow let's get the markers locked in
+    and see layout.html for the initial code */
+
     var marker = new google.maps.Marker({
-        position: { lat: 53.3235431, lng: -6.265295},
+        position: { lat: 53.323543, lng: -6.265295},
         map: map,
         title: data[0].sagaTitle
       });
 
       var infoWindow = new google.maps.InfoWindow({
-        content: "<h5>Here are we -7</h5>", 
+        content: data[0].sagaTagline 
       });
 
       marker.addListener("click", function () {

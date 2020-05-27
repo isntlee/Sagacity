@@ -21,3 +21,28 @@
 </body>
 
 </html>
+<script>
+
+let markers = data;
+//  console.log(markers);
+  for(var x = 0; x < markers.length; x++){
+    let sagaTitle = markers[x].[0];
+    let latitude = markers[x].lat[4];
+    let longitude = markers[x].lng[5];
+    //console.log(stationName + ": " + latitude + " " + longitude);
+    dropMarker(latitude, longitude, sagaTitle);
+  }
+}
+
+function dropMarker(lat,lng, sagaTitle){
+  var location = {lat: lat, lng: lng};
+  var contentString = "<h4>" + sagaTitle + "</h4>";
+  var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+  var marker = new google.maps.Marker({position: location, map: map, title: sagaTitle});
+  marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+</script>
