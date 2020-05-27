@@ -3,6 +3,9 @@
 {% block javascript %}
 <script>
 
+    var testing = "testing1"
+    var data = "testing2"
+
     function initMap() {
       var options = { 
         center: { lat: 53.27249, lng: -6.24206 },
@@ -15,25 +18,23 @@
           ],
         }
       };
-
-        var obj;
-        fetch('/fetch')
-            .then(response => response.json())
-            .then(data => obj = data)
-            .then(() => console.log(obj))
-            ;
         
+    fetch('/fetch')
+        .then(response => response.json())
+        .then(data => {
+            myFunction(data);
+        })
+        .catch(err => console.log(err));
 
 
-      var map = new google.maps.Map(document.getElementById("map"), options);
+    function myFunction(data) {
+        console.log(data)
 
-      var marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         position: { lat: 53.3235431, lng: -6.265295},
         map: map,
-        title: "Cheesy Dick"
+        title: data[0].sagaTitle
       });
-
-        console.log(obj)
 
       var infoWindow = new google.maps.InfoWindow({
         content: "<h5>Here are we -7</h5>", 
@@ -42,7 +43,15 @@
       marker.addListener("click", function () {
         infoWindow.open(map, marker);
       });
+
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), options);
+
     }
+
+    console.log(testing)
+    console.log(data)
 
 </script>
 {% endblock %} 
