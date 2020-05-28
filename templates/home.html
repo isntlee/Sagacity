@@ -3,8 +3,8 @@
 {% block javascript %}
 <script>
 
-    var testing = "testing1"
-    var data = "testing2"
+    var testing = "testing00"
+    var data = "testing00"
 
     function initMap() {
       
@@ -19,7 +19,8 @@
           ],
         }
       };
-        
+
+
     fetch('/fetch')
         .then(response => response.json())
         .then(data => { 
@@ -27,41 +28,33 @@
         })
         .catch(err => console.log(err));
 
+
     function fetchFunction(data) {
         console.log(data)
 
-    /* Congratulations on today, inching nearer to getting this done. Tomorrow let's get the markers locked in
-    and see layout.html for the initial code */
-
-    let markers = data;
-    for(var x = 0; x < markers.length; x++){
-        let markerName = markers[x].sagaTitle;
-        let latitude = markers[x].lat;
-        let longitude = markers[x].lng;
-        console.log(markerName);
+    
+    for(var i = 0; i < data.length; i++){
+        let markerName = data[i].sagaTitle;
+        console.log(markerName + "  "+ "testing0000" );
     }
-
-    var location = {lat: 53.323543, lng: -6.265295};
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: data[0].sagaTitle
-      });
-
+        var markerPlace = {lat: (data[i].lat), lng: (data[i].lng)};
+        var marker = new google.maps.Marker({
+          position: markerPlace,
+          map: map,
+        });
+        
       var infoWindow = new google.maps.InfoWindow({
         content: data[0].sagaTagline 
       });
 
       marker.addListener("click", function () {
         infoWindow.open(map, marker);
-      });
-        
+      });     
     };
 
    var map = new google.maps.Map(document.getElementById("map"), options);
-
     }
-
+    
     console.log(testing)
     console.log(data)
     
