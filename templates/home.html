@@ -7,6 +7,7 @@
     var data = "testing2"
 
     function initMap() {
+      
       var options = { 
         center: { lat: 53.323543, lng: -6.265295},
         zoom: 14,
@@ -21,11 +22,10 @@
         
     fetch('/fetch')
         .then(response => response.json())
-        .then(data => {
+        .then(data => { 
             fetchFunction(data);
         })
         .catch(err => console.log(err));
-
 
     function fetchFunction(data) {
         console.log(data)
@@ -33,8 +33,17 @@
     /* Congratulations on today, inching nearer to getting this done. Tomorrow let's get the markers locked in
     and see layout.html for the initial code */
 
+    let markers = data;
+    for(var x = 0; x < markers.length; x++){
+        let markerName = markers[x].sagaTitle;
+        let latitude = markers[x].lat;
+        let longitude = markers[x].lng;
+        console.log(markerName);
+    }
+
+    var location = {lat: 53.323543, lng: -6.265295};
     var marker = new google.maps.Marker({
-        position: { lat: 53.323543, lng: -6.265295},
+        position: location,
         map: map,
         title: data[0].sagaTitle
       });
@@ -46,15 +55,16 @@
       marker.addListener("click", function () {
         infoWindow.open(map, marker);
       });
-
+        
     };
 
-    var map = new google.maps.Map(document.getElementById("map"), options);
+   var map = new google.maps.Map(document.getElementById("map"), options);
 
     }
 
     console.log(testing)
     console.log(data)
+    
 
 </script>
 {% endblock %} 
