@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-{% block javascript %}
+!-- {% block javascript %} 
 <script>
 
     var testing = "testing00"
@@ -36,12 +36,14 @@
     for(var i = 0; i < data.length; i++){
         let markerName = data[i].sagaTitle;
         console.log(markerName + "  "+ "testing0000" );
-    }
-        var markerPlace = {lat: (data[i].lat), lng: (data[i].lng)};
+        console.log(data[i]) 
+    
+        var markerPlace = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
         var marker = new google.maps.Marker({
           position: markerPlace,
           map: map,
         });
+    }
         
       var infoWindow = new google.maps.InfoWindow({
         content: data[0].sagaTagline 
@@ -49,18 +51,18 @@
 
       marker.addListener("click", function () {
         infoWindow.open(map, marker);
-      });     
+      }); 
+         
     };
 
    var map = new google.maps.Map(document.getElementById("map"), options);
     }
-    
+
     console.log(testing)
-    console.log(data)
     
 
 </script>
-{% endblock %} 
+{% endblock %} -->
 
 {% block content %} 
 <header class="container" id="background-image"></header>
