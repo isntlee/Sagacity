@@ -3,8 +3,8 @@
 !-- {% block javascript %} 
 <script>
 
-    var testing = "testing00"
-    var data = "testing00"
+    var testing = "testing001"
+    var data = "testing002"
 
     function initMap() {
       
@@ -34,25 +34,30 @@
 
     
     for(var i = 0; i < data.length; i++){
-        let markerName = data[i].sagaTitle;
-        console.log(markerName + "  "+ "testing0000" );
+        var markerName = data[i].sagaTitle;
+        var infoContent = '<h6>'+ data[i].Body +'</h6>';
+        console.log(markerName + "  "+ "testing003" );
+        console.log(infoContent + "  "+ "testing004" );
         console.log(data[i]) 
     
         var markerPlace = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
         var marker = new google.maps.Marker({
           position: markerPlace,
           map: map,
+          title: markerName, 
+          info : infoContent
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+        content: infoContent
+        });
+
+        google.maps.event.addListener(marker, "click", function () {
+        infoWindow.setContent( this.info );
+        infoWindow.open( map, this );
         });
     }
-        
-      var infoWindow = new google.maps.InfoWindow({
-        content: data[0].sagaTagline 
-      });
-
-      marker.addListener("click", function () {
-        infoWindow.open(map, marker);
-      }); 
-         
+     
     };
 
    var map = new google.maps.Map(document.getElementById("map"), options);
