@@ -45,13 +45,13 @@ body {
 
 /* This is the CSS for Miquel Marnoto's infoWindow (http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html) */
 
-#map-canvas {
+#map {
 	margin: 0;
 	padding: 0;
 	height: 400px;
 	max-width: none;
 }
-#map-canvas img {
+#map img {
 	max-width: none !important;
 }
 .gm-style-iw {
