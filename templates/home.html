@@ -3,13 +3,9 @@
 !-- {% block javascript %} 
 <script>
 
-    var testing = "testing001"
-    var data = "testing002"
-
     function initMap() {
       
-      var options = { 
-        center: { lat: 53.323543, lng: -6.265295},
+      var options = { center: { lat: 53.323543, lng: -6.265295},
         zoom: 14,
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -32,29 +28,37 @@
     function fetchFunction(data) {
         console.log(data)
 
-    
     for(var i = 0; i < data.length; i++){
-        var markerName = data[i].sagaTitle;
-        var infoContent = '<h6>'+ data[i].Body +'</h6>';
-        console.log(markerName + "  "+ "testing003" );
-        console.log(infoContent + "  "+ "testing004" );
-        console.log(data[i]) 
+        var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
+        var markerName = data[i].sagaTitle; 
+        var infoContent = 
+        
+                '<div id="iw-container">' +
+                    '<div class="iw-title">'+data[i].Body+'</div>' +
+                    '<div class="iw-content">' +
+                        '<div class="iw-subTitle">Subtitle</div>' +
+                        '<img src='+data[i].sagaImage+'/>' +
+                        '<p>'+data[i].Intro+'</p>' +
+                        '<div class="iw-subTitle">Subtitle</div>' +
+                        '<p><br>'+
+                        '<br></p>'+
+                    '</div>' +
+                    '<div class="iw-bottom-gradient"></div>' +
+                '</div>';
     
 
-        var markerPlace = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
-        // This "markerIcon was taken from Snazzy infoWindow - complex styles"
         var markerIcon = {
         path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-        fillColor: '#e25a00',
+        fillColor: '#f44546',
         fillOpacity: 0.75,
         scale: 1.7,
         strokeColor: '#fff',
         strokeWeight: 2.2,
         anchor: new google.maps.Point(12, 24)
-    };
+        };
 
         var marker = new google.maps.Marker({
-        position: markerPlace,
+        position: markerPosition,
         map: map,
         icon: markerIcon,
         title: markerName, 
