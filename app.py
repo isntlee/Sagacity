@@ -32,9 +32,9 @@ def fetch():
         return jsonify(sagaList)
 
         
-@app.route('/showSaga')
-def showSaga():
-    return render_template('showSaga.html', sagas=mongo.db.sagas.find())
+@app.route('/showSagas')
+def showSagas():
+    return render_template('showSagas.html', sagas=mongo.db.sagas.find())
 
 
 @app.route('/addSaga')
@@ -46,7 +46,7 @@ def addSaga():
 def insertSaga():
     sagas = mongo.db.sagas
     sagas.insert_one(request.form.to_dict())
-    return redirect(url_for('showSaga'))
+    return redirect(url_for('showSagas'))
 
 
 @app.route('/editSaga/<saga_id>')
@@ -70,13 +70,13 @@ def updateSaga(saga_id):
         'eraName': request.form.get('eraName'),
         'locationName': request.form.get('locationName')
     })
-    return redirect(url_for('showSaga'))
+    return redirect(url_for('showSagas'))
 
 
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
     mongo.db.sagas.remove({'_id': ObjectId(saga_id)}),
-    return redirect(url_for('showSaga'))
+    return redirect(url_for('showSagas'))
 
 
 @app.route('/login')
