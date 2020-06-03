@@ -28,11 +28,6 @@ body {
     width: 100%;
 }
 
-#map {
-    height: 95vh;
-    width: 100%;
-}
-
 #addSaga {
     height: 90vh;
 }
@@ -48,9 +43,11 @@ body {
 #map {
 	margin: 0;
 	padding: 0;
-	height: 400px;
+	height: 95vh;
+    width: 100%;
 	max-width: none;
 }
+
 #map img {
 	max-width: none !important;
 }
