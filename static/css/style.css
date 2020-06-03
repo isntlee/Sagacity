@@ -28,11 +28,10 @@ body {
     width: 100%;
 }
 
-/* #map {
+#map {
     height: 95vh;
     width: 100%;
-}*/
-
+}
 
 #addSaga {
     height: 90vh;
@@ -47,11 +46,10 @@ body {
 /* This is the CSS for Miquel Marnoto's infoWindow (http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html) */
 
 #map {
-    height: 95vh;
-    width: 100%;
-    max-width: none;
 	margin: 0;
 	padding: 0;
+	height: 400px;
+	max-width: none;
 }
 #map img {
 	max-width: none !important;
