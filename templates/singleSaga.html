@@ -3,29 +3,38 @@
 <!-- {% block content %} -->
     <!-- {% for saga in sagas %} -->
         <div class="row">
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                    <img src="images/sample-1.jpg">
-                    <span class="card-title"></span>
+            <div class="col s12 m8">
+                <h6>{{saga.sagaCategories}}</h6><br>
+                <h6>{{saga.sagaDate}}</h6><br>
+                <h3>{{saga.sagaTitle}}</h3><br>
+            </div>
+            <div class="row">
+                <div class="col s12 m8">
+                    <img src="{{saga.sagaImage}}" alt="There really should be something here" style="width:100%;">
+                    <p><h4>{{saga.sagaTagline}}</h4></p><br>
                     <a class="btn-floating halfway-fab waves-effect waves-light blue dark">
                     <i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                    <img src="{{saga.userName}}">
-                    <h3>{{saga.sagaTitle}}</h3><br>
-                    <p>{{saga.sagaTagline}}</p><br>
-                    <p>{{saga.userName}}</p><br>
-                    <p>{{saga.Intro}}</p><br>
-                    <p>{{saga.Body}}</p><br>
-                    <p>{{saga.Conclusion}}</p><br>
-                    <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
-                    <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
-                    </div>
                 </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <h6><p>{{saga.userName}}</p></h6><br>
+                            <br>
+                        <h5><p>{{saga.Intro}}</p></h5><br>
+                            <br>
+                        <h5><p>{{saga.Body}}</p></h5><br>
+                            <br>
+                        <h5><p>{{saga.Conclusion}}</p></h5><br>
+                            <br>
+                    </div> 
+                </div>
+                <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
+                <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
             </div>
         </div>
 
+        <!-- Consider two additions; first, two randomly selected display cards at the very bottom of the page.
+            Also figure out how to And the sharing buttons (obvs)  -->
+   
     {% endfor %}
         
 {% endblock %}
