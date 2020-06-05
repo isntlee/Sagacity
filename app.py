@@ -37,6 +37,11 @@ def showSagas():
     return render_template('showSagas.html', sagas=mongo.db.sagas.find())
 
 
+@app.route('/singleSaga')
+def singleSaga():
+    return render_template('singleSaga.html', sagas=mongo.db.sagas.find())
+
+
 @app.route('/addSaga')
 def addSaga():
     return render_template('addSaga.html', sagas=mongo.db.sagas.find())
