@@ -37,9 +37,10 @@ def showSagas():
     return render_template('showSagas.html', sagas=mongo.db.sagas.find())
 
 
-@app.route('/singleSaga')
-def singleSaga():
-    return render_template('singleSaga.html', sagas=mongo.db.sagas.find())
+@app.route('/singleSaga/<saga_id>')
+def singleSaga(saga_id):
+    theSaga = mongo.db.sagas.find_one({"_id": ObjectId(saga_id)})
+    return render_template('singleSaga.html', saga=theSaga)
 
 
 @app.route('/addSaga')
