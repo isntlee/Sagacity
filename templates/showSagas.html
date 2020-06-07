@@ -7,20 +7,20 @@
                 <div class="card">
                 <!-- Find/apply either horizontal display of images or whatever is like it -->
                     <div class="card-image">
-                    <img src="images/sample-1.jpg">
-                    <span class="card-title"></span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light blue dark">
-                    <i class="material-icons">add</i></a>
+                         <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}"></a>
+                        <span class="card-title"></span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light blue dark">
+                        <i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                    <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><h5>{{saga.sagaTitle}}</h5></a><br>
-                    <p>{{saga.sagaTagline}}</p><br>
-                    <p>{{saga.userName}}</p><br>
-                    <p>{{saga.Intro}}</p><br>
-                    <p>{{saga.Body}}</p><br>
-                    <p>{{saga.Conclusion}}</p><br>
-                    <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
-                    <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
+                        <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><h5>{{saga.sagaTitle}}</h5></a><br>
+                        <p>{{saga.sagaTagline}}</p><br>
+                        <p>{{saga.userName}}</p><br>
+                        <p>{{saga.Intro}}</p><br>
+                        <p>{{saga.Body}}</p><br>
+                        <p>{{saga.Conclusion}}</p><br>
+                        <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
+                        <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
                     </div>
                 </div>
             </div>
