@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-!-- {% block javascript %} 
+{% block javascript %} 
 <script>
 
     function initMap() {
@@ -31,13 +31,14 @@
     for(var i = 0; i < data.length; i++){
         var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
         var markerName = data[i].sagaTitle; 
+        var mapImage = '"'+data[i].sagaImage+'"'
         var infoContent = 
         
                 '<div id="iw-container">' +
                     '<div class="iw-title">'+data[i].Body+'</div>' +
                     '<div class="iw-content">' +
                         '<div class="iw-subTitle">Subtitle</div>' +
-                        '<img src='+data[i].sagaMapImage+'/>' +
+                        '<img src='+mapImage+'/>' +
                         '<p>'+data[i].Intro+'</p>' +
                         '<div class="iw-subTitle">Subtitle</div>' +
                         '<p><br>'+
@@ -45,7 +46,7 @@
                     '</div>' +
                     '<div class="iw-bottom-gradient"></div>' +
                 '</div>';
-    
+        // There's goin to have to be an accomodation made for MapImages, as in store in DB differently
 
         var markerIcon = {
         path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
@@ -79,10 +80,8 @@
         var map = new google.maps.Map(document.getElementById("map"), options);
     }
 
-    
-
 </script>
-{% endblock %} -->
+{% endblock %}
 
 {% block content %} 
 <header class="container" id="background-image"></header>
