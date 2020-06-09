@@ -3,30 +3,43 @@
 {% block content %}
 
         <div class="row">
-            <div class="col s12 m8">
+            <div class="col s12 m12">
                 <h6>{{saga.sagaCategories}}</h6><br>
                 <h6>{{saga.sagaDate}}</h6><br>
                 <h3>{{saga.sagaTitle}}</h3><br>
             </div>
             <div class="row">
-                <div class="col s12 m8">
-                <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
-                </div>
-                <div>
-                    <!-- There should be the failure condition built in here -->
-                    <p><h4>{{saga.sagaTagline}}</h4></p><br>
-                    <a class="btn-floating halfway-fab waves-effect waves-light blue dark">
-                    <i class="material-icons">add</i></a>
+                    <div class="col s12 m12">
+                        <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
+                        <!-- There should be the failure condition built in here -->
+                        <p><h6>{{saga.sagaTagline}}</h6></p><br>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m12">
                         <h6><p>{{saga.userName}}</p></h6><br>
                             <br>
                         <h5><p>{{saga.Intro}}</p></h5><br>
                             <br>
+                    </div> 
+                </div>
+                
                     <!-- There's going to be an option to add another photograph here -->
+                <div class="row">
+                    <div class="col s12 m12">
                         <h5><p>{{saga.Body}}</p></h5><br>
                             <br>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
+                        <img src="{{saga.sagaImage2nd}}" alt="" style="width:100%;">
+                        <!-- There should be the failure condition built in here -->
+                        <p><h6>{{saga.sagaImage2ndTagline}}</h6></p><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12">
                         <h5><p>{{saga.Conclusion}}</p></h5><br>
                             <br>
                     </div> 

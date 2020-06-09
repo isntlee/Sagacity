@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify, json
 from flask_pymongo import PyMongo, pymongo
+from flask_paginate import Pagination
 from bson.objectid import ObjectId
 import bcrypt
 from os import path
@@ -16,54 +17,57 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 
+sagas = mongo.db.sagas
+
+
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', sagas=mongo.db.sagas.find())
+    return render_template('home.html', sagas=sagas.find())
 
 
 @app.route('/fetch')
 def fetch():
     if request.method == "GET":
         sagaList = []
-        for saga in (mongo.db.sagas.find()):
+        for saga in (sagas.find()):
             saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
 
-        
+
 @app.route('/showSagas')
 def showSagas():
-    return render_template('showSagas.html', sagas=mongo.db.sagas.find())
+    return render_template('showSagas.html', sagas=sagas.find())
 
-
+    
 @app.route('/singleSaga/<saga_id>')
 def singleSaga(saga_id):
-    theSaga = mongo.db.sagas.find_one({"_id": ObjectId(saga_id)})
+    theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
     return render_template('singleSaga.html', saga=theSaga)
 
 
 @app.route('/addSaga')
 def addSaga():
-    return render_template('addSaga.html', sagas=mongo.db.sagas.find())
+    return render_template('addSaga.html', sagas=sagas.find())
 
 
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
-    sagas = mongo.db.sagas
+    sagas = sagas
     sagas.insert_one(request.form.to_dict())
     return redirect(url_for('showSagas'))
 
 
 @app.route('/editSaga/<saga_id>')
 def editSaga(saga_id):
-    theSaga = mongo.db.sagas.find_one({"_id": ObjectId(saga_id)})
+    theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
     return render_template('editSaga.html', saga=theSaga)
 
 
 @app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
-    sagas = mongo.db.sagas
+    sagas = sagas
     sagas.update({'_id': ObjectId(saga_id)},
     {
         'sagaTitle': request.form.get('sagaTitle'),
@@ -81,7 +85,7 @@ def updateSaga(saga_id):
 
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
-    mongo.db.sagas.remove({'_id': ObjectId(saga_id)}),
+    sagas.remove({'_id': ObjectId(saga_id)}),
     return redirect(url_for('showSagas'))
 
 
