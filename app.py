@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify, json
 from flask_pymongo import PyMongo, pymongo
-from flask_paginate import Pagination
 from bson.objectid import ObjectId
 import bcrypt
 from os import path
@@ -34,17 +33,17 @@ def fetch():
             saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
+        
+
+@app.route('/singleSaga/<saga_id>')
+def singleSaga(saga_id):
+    theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
+    return render_template('singleSaga.html', saga=theSaga)
 
 
 @app.route('/showSagas')
 def showSagas():
     return render_template('showSagas.html', sagas=sagas.find())
-
-    
-@app.route('/singleSaga/<saga_id>')
-def singleSaga(saga_id):
-    theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
-    return render_template('singleSaga.html', saga=theSaga)
 
 
 @app.route('/addSaga')
@@ -54,7 +53,6 @@ def addSaga():
 
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
-    sagas = sagas
     sagas.insert_one(request.form.to_dict())
     return redirect(url_for('showSagas'))
 
@@ -67,7 +65,6 @@ def editSaga(saga_id):
 
 @app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
-    sagas = sagas
     sagas.update({'_id': ObjectId(saga_id)},
     {
         'sagaTitle': request.form.get('sagaTitle'),
