@@ -42,23 +42,19 @@ def singleSaga(saga_id):
     return render_template('singleSaga.html', saga=theSaga)
 
 
-@app.route('/showSagas')
-def showSagas():
-    return render_template('showSagas.html', sagas=sagas.find())
-
-
-@app.route('/tester/<page>')
-def tester(page):
+@app.route('/showSagas/<page>')
+def showSagas(page):
     all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
+    # count() to count_documents(), see below
     count_sagas = all_sagas.count()
-    
     offset = (int(page) - 1) * 2
-    limit = 3
+    limit = 8
     
     sagas_pages = sagas.find().sort([('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+    # count() to count_documents(), this will replace .find().sort() but it's a mess
     total_pages = int(math.ceil(count_sagas/limit))
 
-    return render_template("tester.html", sagas_pages=sagas_pages, count_sagas=count_sagas,
+    return render_template("showSagas.html", sagas_pages=sagas_pages, count_sagas=count_sagas,
                 total_pages=total_pages, page=page,)
 
 
