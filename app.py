@@ -1,7 +1,8 @@
-import os
+import os,math
 from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify, json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+from flask_paginate import Pagination
 import bcrypt
 from os import path
 if path.exists("env.py"):
@@ -44,6 +45,21 @@ def singleSaga(saga_id):
 @app.route('/showSagas')
 def showSagas():
     return render_template('showSagas.html', sagas=sagas.find())
+
+
+@app.route('/tester/<page>')
+def tester(page):
+    all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
+    count_sagas = all_sagas.count()
+    
+    offset = (int(page) - 1) * 2
+    limit = 3
+    
+    sagas_pages = sagas.find().sort([('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+    total_pages = int(math.ceil(count_sagas/limit))
+
+    return render_template("tester.html", sagas_pages=sagas_pages, count_sagas=count_sagas,
+                total_pages=total_pages, page=page,)
 
 
 @app.route('/addSaga')

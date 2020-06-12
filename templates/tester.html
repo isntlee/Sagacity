@@ -2,10 +2,11 @@
 
 {% block content %}
 
-Displaying {{count_sagas}} Sagas(s). No of Pages: {{no_of_pages}}
-<p>Total Sagas = {{total_sagas}}</p>
+Total {{count_sagas}} Sagas(s). 
+<p>No of Pages: {{total_pages}}</p>
+<p>Testing = {{sagas_pages}}</p>
 
-{% for saga in sagas %}
+{% for saga in sagas_pages %}
             <div class="row">
                 <div class="col s12 m6">
                     <div class="card">
