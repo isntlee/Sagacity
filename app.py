@@ -18,6 +18,8 @@ mongo = PyMongo(app)
 
 
 sagas = mongo.db.sagas
+sagaEra = mongo.db.sagaEra
+sagaSite = mongo.db.sagaSite
 
 
 @app.route('/')
@@ -47,8 +49,9 @@ def showSagas(page):
     all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
     # count() to count_documents(), see below
     count_sagas = all_sagas.count()
+    # goin to have to figure out what offset does actually
     offset = (int(page) - 1) * 2
-    limit = 8
+    limit = 4
     
     sagas_pages = sagas.find().sort([('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
     # count() to count_documents(), this will replace .find().sort() but it's a mess
@@ -60,7 +63,7 @@ def showSagas(page):
 
 @app.route('/addSaga')
 def addSaga():
-    return render_template('addSaga.html', sagas=sagas.find())
+    return render_template('addSaga.html', sagaEra=sagaEra.find(), sagaSite=sagaSite.find(), sagas=sagas.find())
 
 
 @app.route('/insertSaga', methods=['POST'])
@@ -87,7 +90,7 @@ def updateSaga(saga_id):
         'Body': request.form.get('Body'),
         'Conclusion': request.form.get('Conclusion'),
         'eraName': request.form.get('eraName'),
-        'locationName': request.form.get('locationName')
+        'siteName': request.form.get('siteName')
     })
     return redirect(url_for('showSagas'))
 
