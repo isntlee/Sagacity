@@ -158,7 +158,6 @@ def testSearch():
 
         return redirect(url_for('home'))
     
-    print("Error all day, and all night")
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
