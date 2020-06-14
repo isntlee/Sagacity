@@ -44,28 +44,6 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <select id="siteName" name="siteName">
-                    <option value="" disabled selected >Say where</option>
-                    {% for site in sagaSite %}
-                    <option value="{{site.siteName}}">{{site.siteName}}</option>
-                    {% endfor %}
-                </select>
-                <label>Location</label>
-            </div>
-        </div>
-        <div class="row"> 
-            <div class="input-field col s12">
-                <select id="eraName" name="eraName">
-                    <option value="" disabled selected >Say when</option>
-                    {% for era in sagaEra %}
-                    <option value="{{era.eraName}}">{{era.eraName}}</option>
-                    {% endfor %}
-                </select>
-                <label>Era</label>
-           </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
             <textarea id="Body" name="Body"  class="materialize-textarea" data-length="120"></textarea>
             <label for="intro">Body</label>
             </div>
@@ -76,6 +54,26 @@
             <label for="intro">Conclusion</label>
             </div>
         </div> 
+        <div class="row">
+            <div class="input-field col s12">
+                <select  id="siteName" name="siteName">
+                    <option value="" disabled selected>Location</option>
+                    {% for site in sagaSite %}
+                    <option value="{{site.siteName}}">{{site.siteName}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="eraName" name="eraName">
+                    <option value="" disabled selected >Era</option>
+                    {% for era in sagaEra %}
+                    <option value="{{era.eraName}}">{{era.eraName}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit">Add Saga
                 <i class="material-icons right">send</i>

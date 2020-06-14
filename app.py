@@ -63,13 +63,13 @@ def showSagas(page):
 
 @app.route('/addSaga')
 def addSaga():
-    return render_template('addSaga.html', sagaEra=sagaEra.find(), sagaSite=sagaSite.find(), sagas=sagas.find())
+    return render_template('addSaga.html', page=1, sagaEra=sagaEra.find(), sagaSite=sagaSite.find(), sagas=sagas.find())
 
 
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
     sagas.insert_one(request.form.to_dict())
-    return redirect(url_for('showSagas'))
+    return redirect(url_for('showSagas', page=1))
 
 
 @app.route('/editSaga/<saga_id>')
@@ -98,7 +98,7 @@ def updateSaga(saga_id):
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
     sagas.remove({'_id': ObjectId(saga_id)}),
-    return redirect(url_for('showSagas'))
+    return redirect(url_for('showSagas', page=1))
 
 
 @app.route('/login')
