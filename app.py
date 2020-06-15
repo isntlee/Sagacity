@@ -16,7 +16,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
-
+users = mongo.db.users
 sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
