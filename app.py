@@ -53,17 +53,20 @@ def showSagas(page):
     offset = (int(page) - 1) * 2
     limit = 10
     
-    sagas_pages = sagas.find().sort([('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+    sagas_pages = sagas.find().sort(
+        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
     # count() to count_documents(), this will replace .find().sort() but it's a mess
     total_pages = int(math.ceil(count_sagas/limit))
 
-    return render_template("showSagas.html", sagas_pages=sagas_pages, count_sagas=count_sagas,
-                total_pages=total_pages, page=page,)
+    return render_template("showSagas.html",
+            sagas_pages=sagas_pages, count_sagas=count_sagas,
+            total_pages=total_pages, page=page,)
 
 
 @app.route('/addSaga')
 def addSaga():
-    return render_template('addSaga.html', page=1, sagaEra=sagaEra.find(), sagaSite=sagaSite.find(), sagas=sagas.find())
+    return render_template('addSaga.html', page=1, sagaEra=sagaEra.find(),
+     sagaSite=sagaSite.find(), sagas=sagas.find())
 
 
 @app.route('/insertSaga', methods=['POST'])
@@ -112,8 +115,8 @@ def login():
 
 @app.route('/logout')
 def logout():
-    session.pop('user')
-    flash("Successfully logged out ...")
+    session.pop('username')
+    flash("And you're out...")
     return_url = request.referrer
     return redirect(return_url)
 
@@ -143,7 +146,7 @@ def register():
                 {'name': request.form['username'],
                  'password': hashpass,
                  'authorName': "",
-                 'mySaga': [], 
+                 'mySaga': [],
                  'likes': []})
             session['username'] = request.form['username']
             flash("Done, and done")
@@ -163,7 +166,8 @@ def testSearch():
 
         collection = mongo.db.stores
         collection.create_index([('name', 'text')])
-        answer = collection.find({'$text': {'$search': search}}, {'$score': {'$meta': "textScore"}})
+        answer = collection.find({'$text': {'$search': search}},
+        {'$score': {'$meta': "textScore"}})
 
         for i in answer:
             result.append(i)
