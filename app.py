@@ -51,7 +51,7 @@ def showSagas(page):
     count_sagas = all_sagas.count()
     # goin to have to figure out what offset does actually
     offset = (int(page) - 1) * 2
-    limit = 4
+    limit = 10
     
     sagas_pages = sagas.find().sort([('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
     # count() to count_documents(), this will replace .find().sort() but it's a mess
@@ -110,6 +110,14 @@ def login():
     return render_template('login.html', users=mongo.db.users.find())
 
 
+@app.route('/logout')
+def logout():
+    session.pop('user')
+    flash("Successfully logged out ...")
+    return_url = request.referrer
+    return redirect(return_url)
+
+
 @app.route('/logging', methods=['POST', 'GET'])
 def logging():
     users = mongo.db.users
@@ -131,9 +139,14 @@ def register():
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'name' : request.form['username'], 'password' : hashpass})
+            users.insert_one(
+                {'name': request.form['username'],
+                 'password': hashpass,
+                 'authorName': "",
+                 'mySaga': [], 
+                 'likes': []})
             session['username'] = request.form['username']
-            flash("Done, and done; you're now on file")
+            flash("Done, and done")
             return redirect(url_for('home'))
         
         flash('That username already exists!')

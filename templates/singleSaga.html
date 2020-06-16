@@ -11,15 +11,9 @@
             <div class="row">
                     <div class="col s12 m12">
                         <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
-
-
-                        <div class="row justify-content-around"> 
-                            <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
-                            <i>{{saga.totalLikes}}</i>
-                            <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
-                        </div>
-
-
+                        <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                            {{saga.totalLikes}}
+                        <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                         <!-- There should be the failure condition built in here -->
                         <p><h6>{{saga.sagaTagline}}</h6></p><br>
                     </div>
