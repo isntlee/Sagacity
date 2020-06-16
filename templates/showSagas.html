@@ -21,6 +21,12 @@ Displaying {{count_sagas}} Sagas(s).
                             <p>{{saga.userName}}</p><br>
                             <p>{{saga.Intro}}</p><br>
                             <p>Click <a href="{{url_for('singleSaga', saga_id = saga._id)}}">here</a> to view the rest</p>
+                            <div class="row justify-content-around"> 
+                                <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                                <i>{{saga.totalLikes}}</i>
+                                <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

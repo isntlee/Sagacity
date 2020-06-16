@@ -107,3 +107,13 @@ body {
 .card-image {
   max-height: 40% !important;
 }
+
+#up-arrow {
+color:;
+font-size:5vh;
+}
+
+#down-arrow {
+color: ;
+font-size:5vh;
+}

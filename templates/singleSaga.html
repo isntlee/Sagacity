@@ -11,10 +11,19 @@
             <div class="row">
                     <div class="col s12 m12">
                         <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
+
+
+                        <div class="row justify-content-around"> 
+                            <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                            <i>{{saga.totalLikes}}</i>
+                            <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                        </div>
+
+
                         <!-- There should be the failure condition built in here -->
                         <p><h6>{{saga.sagaTagline}}</h6></p><br>
                     </div>
-                </div>
+            </div>
                 <div class="row">
                     <div class="col s12 m12">
                         <h6><p>{{saga.userName}}</p></h6><br>
@@ -46,7 +55,6 @@
                 </div>
                 <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
                 <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
-            </div>
         </div>
 
         <!-- Consider four additions; first, two randomly selected display cards at the very bottom of the page.

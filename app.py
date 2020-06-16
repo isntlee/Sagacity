@@ -160,6 +160,29 @@ def testSearch():
     
     return redirect(url_for('home'))
 
+
+@app.route('/liked/<saga_id>', methods=['GET'])
+def liked(saga_id):
+    
+    likes = sagas.find_one({"_id": ObjectId(saga_id)})
+    likes = likes["totalLikes"] + 1
+    sagas.update({'_id': ObjectId(saga_id)}, {
+                                "$set": {"totalLikes": likes}})
+    # flash("Some message")
+    return redirect(request.referrer)
+
+
+@app.route('/disliked/<saga_id>', methods=['GET'])
+def disliked(saga_id):
+    
+    likes = sagas.find_one({"_id": ObjectId(saga_id)})
+    likes = likes["totalLikes"] - 1
+    sagas.update({'_id': ObjectId(saga_id)}, {
+                                "$set": {"totalLikes": likes}})
+    # flash("Some message")
+    return redirect(request.referrer)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
