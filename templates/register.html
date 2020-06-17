@@ -2,17 +2,16 @@
 {% block content %} 
 <div class="container">
     <div class="row">
-            <form method="POST" action="{{ url_for('register') }}">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username">
-                </div>
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
-                </div>
-                <button type="submit" class="btn">Register</button>
-            </form>
-            <br>
-        </div>
+        <form method="POST" action="{{ url_for('register') }}">
+                <label for="exampleInputUser">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username">
+                <label for="exampleInputFullName">Author Name</label>
+                <input type="text" class="form-control" name="authorName" placeholder="Author Name">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="pass" placeholder="Password">
+            
+            <button type="submit" class="btn">Register</button>
+        </form>
     </div>
 </div>
 {% endblock %}

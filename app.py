@@ -36,7 +36,7 @@ def fetch():
             saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
-        
+
 
 @app.route('/singleSaga/<saga_id>')
 def singleSaga(saga_id):
@@ -60,8 +60,27 @@ def showSagas(page):
 
     return render_template("showSagas.html",
             sagas_pages=sagas_pages, count_sagas=count_sagas,
-            total_pages=total_pages, page=page,)
+            total_pages=total_pages, page=page)
 
+
+@app.route('/mySagas/<page>')
+def mySagas(page):
+    username=session.get('username')
+    user = users.find_one({'username': username})
+
+    my_sagas = sagas.find({'authorName': username}).sort([('_id', pymongo.DESCENDING)])
+    count_my_sagas = my_sagas.count()
+    offset = (int(page) - 1) * 2
+    limit = 10
+    #All the changes to be made for showSagas, must be made here 
+    my_total_pages = int(math.ceil(count_my_sagas/limit)) 
+    my_sagas_pages = sagas.find({'authorName': username}).sort(
+        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+    
+
+    return render_template("mySagas.html",
+            my_sagas_pages=my_sagas_pages, count_my_sagas=count_my_sagas, username = username,
+            my_total_pages=my_total_pages, page=page)
 
 @app.route('/addSaga')
 def addSaga():
@@ -75,7 +94,6 @@ def insertSaga():
 
         'sagaTitle': request.form.get('sagaTitle'),
         'sagaTagline': request.form.get('sagaTagline'),
-        'userName': request.form.get('userName'),
         'sagaImage': request.form.get('sagaImage'),
         'lat': request.form.get('lat'),
         'lng': request.form.get('lng'),
@@ -85,6 +103,8 @@ def insertSaga():
         'eraName': request.form.get('eraName'),
         'siteName': request.form.get('siteName'),
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
+        'authorName': session['username'],
+         # 'authorName': session["username"]
         'totalLikes': 0
         }
 
@@ -161,10 +181,11 @@ def register():
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert_one(
                 {'name': request.form['username'],
+                 'authorName': request.form['authorName'],
                  'password': hashpass,
-                 'authorName': "",
                  'mySaga': [],
-                 'likes': []})
+                 'likes': []
+                 })
             session['username'] = request.form['username']
             flash("Done, and done")
             return redirect(url_for('home'))
@@ -200,7 +221,7 @@ def liked(saga_id):
     
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
-    sagas.update({'_id': ObjectId(saga_id)}, {
+    sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": likes}})
     # flash("Some message")
     return redirect(request.referrer)
@@ -211,7 +232,7 @@ def disliked(saga_id):
     
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] - 1
-    sagas.update({'_id': ObjectId(saga_id)}, {
+    sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": likes}})
     # flash("Some message")
     return redirect(request.referrer)

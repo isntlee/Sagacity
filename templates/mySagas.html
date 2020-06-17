@@ -2,10 +2,10 @@
 
 {% block content %}
 
-Displaying {{count_sagas}} Sagas(s). 
-<p>Total pages = {{total_pages}}</p>
+Displaying {{count_my_sagas}} Sagas(s). 
+<p>Total pages = {{my_total_pages}}</p>
 
-{% for saga in sagas_pages %}
+{% for saga in my_sagas_pages %}
             <div class="row">
                 <div class="col s12 m6">
                     <div class="card">
@@ -18,7 +18,7 @@ Displaying {{count_sagas}} Sagas(s).
                         <div class="card-content">
                             <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><h5>{{saga.sagaTitle}}</h5></a><br>
                             <p>{{saga.sagaTagline}}</p><br>
-                            <p>{{saga.authorName}}</p><br>
+                            <p>{{saga.userName}}</p><br>
                             <p>{{saga.Intro}}</p><br>
                             <p>Click <a href="{{url_for('singleSaga', saga_id = saga._id)}}">here</a> to view the rest</p>
                             <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
