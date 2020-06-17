@@ -200,7 +200,7 @@ def liked(saga_id):
     
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
-    sagas.update_one({'_id': ObjectId(saga_id)}, {
+    sagas.update({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": likes}})
     # flash("Some message")
     return redirect(request.referrer)
