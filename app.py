@@ -14,7 +14,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = 'Sagacity'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
+
 mongo = PyMongo(app)
+
 
 users = mongo.db.users
 sagas = mongo.db.sagas
@@ -38,6 +40,9 @@ def fetch():
         return jsonify(sagaList)
 
 
+# -------------------------- Handling Entries ------------------------------- #
+
+
 @app.route('/singleSaga/<saga_id>')
 def singleSaga(saga_id):
     theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
@@ -52,40 +57,50 @@ def showSagas(page):
     # goin to have to figure out what offset does actually
     offset = (int(page) - 1) * 2
     limit = 10
-    
     sagas_pages = sagas.find().sort(
         [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
-    # count() to count_documents(), this will replace .find().sort() but it's a mess
     total_pages = int(math.ceil(count_sagas/limit))
 
-    return render_template("showSagas.html",
-            sagas_pages=sagas_pages, count_sagas=count_sagas,
-            total_pages=total_pages, page=page)
+    return render_template(
+                "showSagas.html",
+                sagas_pages=sagas_pages, count_sagas=count_sagas,
+                total_pages=total_pages, page=page
+                    )
 
 
 @app.route('/mySagas/<page>')
 def mySagas(page):
-    username=session.get('username')
-    user = users.find_one({'username': username})
+    username = session.get('username')
 
-    my_sagas = sagas.find({'authorName': username}).sort([('_id', pymongo.DESCENDING)])
+    my_sagas = sagas.find(
+        {'authorName': username}).sort(
+            [('_id', pymongo.DESCENDING)]
+        )
     count_my_sagas = my_sagas.count()
     offset = (int(page) - 1) * 2
     limit = 10
-    #All the changes to be made for showSagas, must be made here 
-    my_total_pages = int(math.ceil(count_my_sagas/limit)) 
+    # All the changes to be made for showSagas, must be made here
+    my_total_pages = int(math.ceil(count_my_sagas/limit))
     my_sagas_pages = sagas.find({'authorName': username}).sort(
         [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
-    
 
-    return render_template("mySagas.html",
-            my_sagas_pages=my_sagas_pages, count_my_sagas=count_my_sagas, username = username,
-            my_total_pages=my_total_pages, page=page)
+    return render_template(
+                "mySagas.html",
+                my_sagas_pages=my_sagas_pages, count_my_sagas=count_my_sagas,
+                username=username, my_total_pages=my_total_pages, page=page
+                )
+
+
+# ----------------------------------- Add ------------------------------------#
+
 
 @app.route('/addSaga')
 def addSaga():
-    return render_template('addSaga.html', page=1, sagaEra=sagaEra.find(),
-     sagaSite=sagaSite.find(), sagas=sagas.find())
+    return render_template(
+                'addSaga.html',
+                sagaEra=sagaEra.find(), sagaSite=sagaSite.find(),
+                sagas=sagas.find(), page=1
+                )
 
 
 @app.route('/insertSaga', methods=['POST'])
@@ -104,12 +119,14 @@ def insertSaga():
         'siteName': request.form.get('siteName'),
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'authorName': session['username'],
-         # 'authorName': session["username"]
         'totalLikes': 0
         }
 
     sagas.insert_one(completeSaga)
     return redirect(url_for('showSagas', page=1))
+
+
+# ------------------------------- Edit/Delete --------------------------------#
 
 
 @app.route('/editSaga/<saga_id>')
@@ -141,12 +158,15 @@ def deleteSaga(saga_id):
     return redirect(url_for('showSagas', page=1))
 
 
+# --------------------------- Registration/Login -----------------------------#
+
+
 @app.route('/login')
 def login():
     if 'username' in session:
         flash('You are logged in as ' + session['username']),
         return render_template('home.html', users=mongo.db.users.find())
-    
+
     return render_template('login.html', users=mongo.db.users.find())
 
 
@@ -155,6 +175,7 @@ def logout():
     session.pop('username')
     flash("And you're out...")
     return_url = request.referrer
+
     return redirect(return_url)
 
 
@@ -164,7 +185,10 @@ def logging():
     login_user = users.find_one({'name': request.form['username']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+        if bcrypt.hashpw(
+                request.form['pass'].encode('utf-8'),
+                login_user['password']
+                ) == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('home'))
 
@@ -178,21 +202,24 @@ def register():
         existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = bcrypt.hashpw(
+                        request.form['pass'].encode('utf-8'),
+                        bcrypt.gensalt()
+                       )
             users.insert_one(
                 {'name': request.form['username'],
-                 'authorName': request.form['authorName'],
                  'password': hashpass,
-                 'mySaga': [],
                  'likes': []
                  })
             session['username'] = request.form['username']
             flash("Done, and done")
             return redirect(url_for('home'))
-        
         flash('That username already exists!')
 
     return render_template('register.html', users=mongo.db.users.find())
+
+
+# ------------------------------ Search -----------------------------------#
 
 
 @app.route('/testSearch', methods=["POST"])
@@ -205,20 +232,22 @@ def testSearch():
         collection = mongo.db.stores
         collection.create_index([('name', 'text')])
         answer = collection.find({'$text': {'$search': search}},
-        {'$score': {'$meta': "textScore"}})
+                                 {'$score': {'$meta': "textScore"}}
+                                 )
 
         for i in answer:
             result.append(i)
         print(result)
-
         return redirect(url_for('home'))
-    
+
     return redirect(url_for('home'))
+
+
+# ------------------------------ Likes/Ratings -------------------------------#
 
 
 @app.route('/liked/<saga_id>', methods=['GET'])
 def liked(saga_id):
-    
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {
@@ -229,7 +258,6 @@ def liked(saga_id):
 
 @app.route('/disliked/<saga_id>', methods=['GET'])
 def disliked(saga_id):
-    
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] - 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {

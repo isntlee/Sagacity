@@ -18,7 +18,6 @@ Displaying {{count_sagas}} Sagas(s).
                         <div class="card-content">
                             <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><h5>{{saga.sagaTitle}}</h5></a><br>
                             <p>{{saga.sagaTagline}}</p><br>
-                            <p>{{saga.authorName}}</p><br>
                             <p>{{saga.Intro}}</p><br>
                             <p>Click <a href="{{url_for('singleSaga', saga_id = saga._id)}}">here</a> to view the rest</p>
                             <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
