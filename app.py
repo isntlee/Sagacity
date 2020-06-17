@@ -2,7 +2,7 @@ import os,math
 from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify, json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
-from flask_paginate import Pagination
+from datetime import datetime
 import bcrypt
 from os import path
 if path.exists("env.py"):
@@ -71,7 +71,24 @@ def addSaga():
 
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
-    sagas.insert_one(request.form.to_dict())
+    completeSaga = {
+
+        'sagaTitle': request.form.get('sagaTitle'),
+        'sagaTagline': request.form.get('sagaTagline'),
+        'userName': request.form.get('userName'),
+        'sagaImage': request.form.get('sagaImage'),
+        'Latitude': request.form.get('Latitude'),
+        'Longitude': request.form.get('Longitude'),
+        'Intro': request.form.get('Intro'),
+        'Body': request.form.get('Body'),
+        'Conclusion': request.form.get('Conclusion'),
+        'eraName': request.form.get('eraName'),
+        'siteName': request.form.get('siteName'),
+        'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
+        'totalLikes': 0
+        }
+
+    sagas.insert_one(completeSaga)
     return redirect(url_for('showSagas', page=1))
 
 
@@ -183,7 +200,7 @@ def liked(saga_id):
     
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
-    sagas.update({'_id': ObjectId(saga_id)}, {
+    sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": likes}})
     # flash("Some message")
     return redirect(request.referrer)
