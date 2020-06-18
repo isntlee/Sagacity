@@ -258,11 +258,17 @@ def liked(saga_id):
 
 @app.route('/disliked/<saga_id>', methods=['GET'])
 def disliked(saga_id):
-    likes = sagas.find_one({"_id": ObjectId(saga_id)})
-    likes = likes["totalLikes"] - 1
+    dislikes = sagas.find_one({"_id": ObjectId(saga_id)})
+    dislikes = dislikes["totalLikes"] - 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {
-                                "$set": {"totalLikes": likes}})
-    # flash("Some message")
+                                "$set": {"totalLikes": dislikes}})
+    #flash("Some message")
+    return redirect(request.referrer)
+
+
+@app.route('/flashed/<saga_id>', methods=['GET'])
+def flashed(saga_id):
+    flash("Some message")
     return redirect(request.referrer)
 
 
