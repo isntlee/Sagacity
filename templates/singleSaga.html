@@ -18,9 +18,9 @@
                             <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                             <!-- There should be the failure condition built in here -->
                         {% else %}
-                            <a href=""><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                            <a href="#"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
                             {{saga.totalLikes}}
-                            <a href=""><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            <a href="#" onclick="sweetAlert()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                         {% endif %}
 
                         <p><h6>{{saga.sagaTagline}}</h6></p><br>
