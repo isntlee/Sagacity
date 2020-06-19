@@ -56,7 +56,7 @@ def showSagas(page):
     count_sagas = all_sagas.count()
     # goin to have to figure out what offset does actually
     offset = (int(page) - 1) * 2
-    limit = 10
+    limit = 15
     sagas_pages = sagas.find().sort(
         [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
     total_pages = int(math.ceil(count_sagas/limit))
@@ -71,18 +71,16 @@ def showSagas(page):
 @app.route('/mySagas/<page>')
 def mySagas(page):
     username = session.get('username')
-
     my_sagas = sagas.find(
         {'authorName': username}).sort(
             [('_id', pymongo.DESCENDING)]
         )
     count_my_sagas = my_sagas.count()
     offset = (int(page) - 1) * 2
-    limit = 10
+    limit = 15
     # All the changes to be made for showSagas, must be made here
     my_total_pages = int(math.ceil(count_my_sagas/limit))
-    my_sagas_pages = sagas.find({'authorName': username}).sort(
-        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+    my_sagas_pages = my_sagas.skip(offset).limit(limit)
 
     return render_template(
                 "mySagas.html",
@@ -209,7 +207,6 @@ def register():
             users.insert_one(
                 {'name': request.form['username'],
                  'password': hashpass,
-                 'likes': []
                  })
             session['username'] = request.form['username']
             flash("Done, and done")
@@ -222,23 +219,25 @@ def register():
 # ------------------------------ Search -----------------------------------#
 
 
-@app.route('/testSearch', methods=["POST"])
-def testSearch():
+@app.route('/sagaSearch', methods=["POST"])
+def sagaSearch():
     if request.method == 'POST':
-        search = request.form.to_dict().get('testSearch-name')
+        search = request.form.to_dict().get('sagaSearch-sagaTitle')
         result = []
         print(search)
 
-        collection = mongo.db.stores
-        collection.create_index([('name', 'text')])
+        collection = mongo.db.sagas
+        collection.create_index([('sagaTitle', 'text')])
+        # the index searched is just the titles
         answer = collection.find({'$text': {'$search': search}},
                                  {'$score': {'$meta': "textScore"}}
                                  )
 
         for i in answer:
             result.append(i)
+        # There has to be some way to increase the accuracy of results
         print(result)
-        return redirect(url_for('home'))
+        return render_template('sagaSearch.html', searchedSagas=result)
 
     return redirect(url_for('home'))
 
@@ -262,7 +261,7 @@ def disliked(saga_id):
     dislikes = dislikes["totalLikes"] - 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": dislikes}})
-    #flash("Some message")
+    # flash("Some message")
     return redirect(request.referrer)
 
 
