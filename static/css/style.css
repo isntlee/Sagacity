@@ -109,7 +109,7 @@ body {
 }
 
 .la-arrow-circle-up{
-color:grey;
+color:#B2BEB5;
 font-size:4vh;
 }
 
@@ -121,13 +121,13 @@ transition: 0.5s;
 }
 
 .la-arrow-circle-down {
-color:grey;
+color:#B2BEB5;
 font-size:4vh;
 }
 
 .la-arrow-circle-down:hover {
-color:#6CB4EE;
+color:#76ABDF;
 font-size:4vh;
-opacity: 0.8;
+opacity: 0.9;
 transition: 0.5s;
 }
