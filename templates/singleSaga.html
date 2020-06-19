@@ -13,14 +13,14 @@
                         <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
 
                         {% if session.username %}
-                            <a href="/liked/{{saga._id}}"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
-                                {{saga.totalLikes}}
-                            <a href="/disliked/{{saga._id}}"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            <a href="/liked/{{saga._id}}" onclick="changeColor_liked()"><i class="las la-arrow-circle-up" id="up-arrow-liked-inSession" ></i></a> 
+                            {{saga.totalLikes}}
+                            <a href="/disliked/{{saga._id}}" onclick="changeColor_disliked()"><i class="las la-arrow-circle-down" id="down-arrow-disliked-inSession" ></i></a>
                             <!-- There should be the failure condition built in here -->
                         {% else %}
-                            <a href="#"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                            <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
                             {{saga.totalLikes}}
-                            <a href="#" onclick="sweetAlert()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                         {% endif %}
 
                         <p><h6>{{saga.sagaTagline}}</h6></p><br>

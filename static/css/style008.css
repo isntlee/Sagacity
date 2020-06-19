@@ -108,12 +108,26 @@ body {
   max-height: 40% !important;
 }
 
-#up-arrow {
-color:;
+.la-arrow-circle-up{
+color:grey;
 font-size:4vh;
 }
 
-#down-arrow {
-color: ;
+.la-arrow-circle-up:hover {
+color:#EE204D;
 font-size:4vh;
+opacity: 0.8;
+transition: 0.5s;
+}
+
+.la-arrow-circle-down {
+color:grey;
+font-size:4vh;
+}
+
+.la-arrow-circle-down:hover {
+color:#6CB4EE;
+font-size:4vh;
+opacity: 0.8;
+transition: 0.5s;
 }
