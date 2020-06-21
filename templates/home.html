@@ -31,7 +31,11 @@
     for(var i = 0; i < data.length; i++){
         var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
         var markerName = data[i].sagaTitle; 
-        var mapImage = '"'+data[i].sagaImage+'"'
+        var mapImage = '"'+data[i].sagaImage+'"';
+        var id = (data[i]._id);
+        var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
+        var singleSagaLink = fullSaga.concat(id)
+        console.log(id)
         var infoContent = 
         
                 '<div id="iw-container">' +
@@ -41,6 +45,7 @@
                         '<img src='+mapImage+'/>' +
                         '<p>'+data[i].Intro+'</p>' +
                         '<div class="iw-subTitle">Subtitle</div>' +
+                        '<a href="'+singleSagaLink+'">Link</a>'+
                         '<p><br>'+
                         '<br></p>'+
                     '</div>' +
@@ -69,6 +74,7 @@
         var infoWindow = new google.maps.InfoWindow({
         content: infoContent
         });
+
 
         google.maps.event.addListener(marker, "click", function () {
         infoWindow.setContent( this.info );

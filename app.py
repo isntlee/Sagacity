@@ -135,8 +135,8 @@ def editSaga(saga_id):
 
 @app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
-    sagas.update({'_id': ObjectId(saga_id)},
-    {
+    sagas.update({'_id': ObjectId(saga_id)}, {
+
         'sagaTitle': request.form.get('sagaTitle'),
         'sagaTagline': request.form.get('sagaTagline'),
         'userName': request.form.get('userName'),
@@ -146,6 +146,7 @@ def updateSaga(saga_id):
         'Conclusion': request.form.get('Conclusion'),
         'eraName': request.form.get('eraName'),
         'siteName': request.form.get('siteName')
+
     })
     return redirect(url_for('showSagas'))
 
