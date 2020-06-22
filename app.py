@@ -22,12 +22,31 @@ users = mongo.db.users
 sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
+sagaMap = mongo.db.searchMap
 
 
 @app.route('/')
 @app.route('/home')
 def home():
+
     return render_template('home.html', sagas=sagas.find())
+
+
+# @app.route('/searchMap/<saga_id>', methods=['POST', 'GET'])
+# def searchMap(saga_id):
+#     searchMapSaga = sagas.find_one({"_id": ObjectId(saga_id)})
+#     searchMapCoOrds = {
+#         'lat': searchMapSaga['lat'],
+#         'lng': searchMapSaga['lng'],
+#         }
+
+#     print(searchMapCoOrds)
+#     sagaMap.insert_one(searchMapCoOrds)
+#     return render_template(
+#                             'home.html',
+#                             sagas=sagas.find(),
+#                             searchMapCoOrds=searchMapCoOrds
+#                             )
 
 
 @app.route('/fetch')
@@ -38,6 +57,16 @@ def fetch():
             saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
+
+
+# @app.route('/fetchMap')
+# def fetchMap():
+#     if request.method == "GET":
+#         searchMapList = []
+#         for coOrds in (sagaMap.find()):
+#             coOrds['_id'] = str(coOrds['_id'])
+#             searchMapList.append(coOrds)
+#         return jsonify(searchMapList)
 
 
 # -------------------------- Handling Entries ------------------------------- #

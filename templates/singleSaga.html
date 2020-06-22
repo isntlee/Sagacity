@@ -59,6 +59,7 @@
                 <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Delete</a>
                 <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Edit</a>
                 {% endif %}
+                <a href="{{url_for('searchMap', _anchor='map', saga_id=saga._id)}}" class="waves-effect waves-light btn btn_small">Find on map</a>
              </div>
 
         <!-- Consider four additions; first, two randomly selected display cards at the very bottom of the page.

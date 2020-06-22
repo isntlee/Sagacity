@@ -5,7 +5,8 @@
 
     function initMap() {
       
-      var options = { center: { lat: 53.323543, lng: -6.265295},
+      var options = { 
+        center: { lat: 53.323543, lng: -6.265295},
         zoom: 14,
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -23,6 +24,14 @@
             fetchFunction(data);
         })
         .catch(err => console.log(err));
+    
+
+    // fetch('/fetchMap')
+    //     .then(response => response.json())
+    //     .then(data => { 
+    //         fetchFunction(dataMap);
+    //     })
+    //     .catch(err => console.log(err));
 
 
     function fetchFunction(data) {
@@ -35,7 +44,6 @@
         var id = (data[i]._id);
         var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
         var singleSagaLink = fullSaga.concat(id)
-        console.log(id)
         var infoContent = 
         
                 '<div id="iw-container">' +
