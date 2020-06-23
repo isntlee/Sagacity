@@ -6,11 +6,37 @@ body {
 }
 
 #background-image{
-    background: url(../images/DublinSunset.jpg);
+    background: url(../images/NewYorkSunset.jpg);
     background-size: cover;
     background-position: center;
     min-height: 100vh;
     width: 100%;
+}
+
+.typewriter {
+  position: left;
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 10s 10s 5 backwards steps(50, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
 }
 
 #brand-logo{
