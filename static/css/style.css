@@ -1,14 +1,12 @@
 body {
-  width: 100%;
-  height: 100%;
   margin: 0vw;
   padding: 0vw;
-  overflow-x: hidden;
+  overflow-x: ;
   background-color: #fafafa   
 }
 
-header{
-    background: url(../images/AerialDublinLiffey.jpg);
+#background-image{
+    background: url(../images/DublinSunset.jpg);
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -23,8 +21,13 @@ header{
     color:#fafafa
 }
 
+section{
+    padding-top:4vh;
+    padding-bottom:4vh;
+}
+
 #aboutUs{
-    height: 95vh;
+    height: 50vh;
     width: 100%;
 }
 
@@ -35,15 +38,14 @@ header{
  /* @media screen and (max-width: 300px){
 #background-image{
     min-height: 75vh;
-    }  */
-}  
+    }  */  
 
 /* This is the CSS for Miquel Marnoto's infoWindow (http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html) */
 
 #map {
 	margin: 0;
 	padding: 0;
-	height: 95vh;
+	height: 85vh;
     width: 100%;
 	max-width: none;
 }
