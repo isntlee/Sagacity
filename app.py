@@ -22,7 +22,7 @@ users = mongo.db.users
 sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
-sagaMap = mongo.db.searchMap
+# sagaMap = mongo.db.searchMap
 
 
 @app.route('/')

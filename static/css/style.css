@@ -7,20 +7,20 @@ body {
   background-color: #fafafa   
 }
 
+header{
+    background: url(../images/AerialDublinLiffey.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
 #brand-logo{
     color:#fafafa
 }
 
 #search-btn{
     color:#fafafa
-}
-
-#background-image{
-    background: url(../images/AerialDublinLiffey.jpg);
-    background-size: cover;
-    background-position: center top;
-    height: 130vh;
-    width: 100%;
 }
 
 #aboutUs{
@@ -32,10 +32,10 @@ body {
     height: 90vh;
 }
 
- @media screen and (max-width: 670px){
+ /* @media screen and (max-width: 300px){
 #background-image{
     min-height: 75vh;
-    } 
+    }  */
 }  
 
 /* This is the CSS for Miquel Marnoto's infoWindow (http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html) */
@@ -114,7 +114,7 @@ font-size:4vh;
 }
 
 .la-arrow-circle-up:hover {
-color:#EE204D;
+color:#cd5c5c;
 font-size:4vh;
 opacity: 0.8;
 transition: 0.5s;
