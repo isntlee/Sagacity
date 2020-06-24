@@ -1,7 +1,7 @@
 body {
   margin: 0vw;
   padding: 0vw;
-  overflow-x: ;
+  overflow-x: hidden;
   background-color: #fafafa   
 }
 
@@ -14,10 +14,7 @@ body {
 }
 
 .typewriter { 
-  position: relative;
-  top: 50vh;
-  left: ;
-  font-size: 3.33vw;
+  font-size: 6vw;
   text-align: center;
   color: #fff;
   font-family: monospace;
@@ -28,28 +25,53 @@ body {
   letter-spacing: .1vw; /* Adjust as needed */
 }
   
-.anim-typewriter{
+.anim-typewriter_1{
+  position: absolute;
+  left: 10vw;
+  top: 50vh;
   animation: 
-    typing 20s steps(40) 5s 50 backwards,
+    typing_1 10s steps(20) 3s 50 backwards,
+    blink-caret .5s step-end infinite normal;
+}
+
+.anim-typewriter_2{
+  position: absolute;
+  left: 10vw;
+  top: 50vh;
+  animation: 
+    typing_2 10s steps(20) 3s 50 backwards,
     blink-caret .5s step-end infinite normal;
 }
 
 /* The typing effect */
-@keyframes typing{ 
+@keyframes typing_1{ 
    0% { width: 0vw;
         opacity: 1;}
-  10% { width: 30vw;
+  10% { width: 51vw;
         opacity: 1;}
-  35% { width: 30vw;
+  30% { width: 51vw;
         opacity: 1;}     
-  60% { width: 85vw;
+  45% { width: 51vw;
         opacity: 1;}
-  70% { width: 85vw;
+  50% { width: 51vw;
+        opacity: 0}
+  100%{ width: 51vw;
+        opacity: 0}
+}
+
+@keyframes typing_2{
+   0% { width: 0vw;
+        opacity: 0;}
+  50% { width: 0vw;
+        opacity: 0;}
+  60% { width: 75vw;
         opacity: 1;}
-  75% { width: 85vw;
-        opacity: 0;}
-  100% { width: 85vw;
-        opacity: 0;}
+  85% { width: 75vw;
+        opacity: 1;}
+  95% { width: 75vw;
+        opacity: 0;}     
+  100%{ width: 75vw;
+        opacity: 0}
 }
 
 /* The typewriter cursor effect */
