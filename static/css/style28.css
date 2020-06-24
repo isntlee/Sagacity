@@ -13,24 +13,43 @@ body {
     width: 100%;
 }
 
-.typewriter {
-  position: left;
+.typewriter { 
+  position: relative;
+  top: 50vh;
+  left: ;
+  font-size: 3.33vw;
+  text-align: center;
   color: #fff;
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
+  border-right: .35vw solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
+  letter-spacing: .1vw; /* Adjust as needed */
+}
+  
+.anim-typewriter{
   animation: 
-    typing 10s 10s 5 backwards steps(50, end),
-    blink-caret .5s step-end infinite;
+    typing 20s steps(40) 5s 50 backwards,
+    blink-caret .5s step-end infinite normal;
 }
 
 /* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+@keyframes typing{ 
+   0% { width: 0vw;
+        opacity: 1;}
+  10% { width: 30vw;
+        opacity: 1;}
+  35% { width: 30vw;
+        opacity: 1;}     
+  60% { width: 85vw;
+        opacity: 1;}
+  70% { width: 85vw;
+        opacity: 1;}
+  75% { width: 85vw;
+        opacity: 0;}
+  100% { width: 85vw;
+        opacity: 0;}
 }
 
 /* The typewriter cursor effect */
