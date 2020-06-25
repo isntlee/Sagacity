@@ -1,3 +1,4 @@
+
 body {
   margin: 0vw;
   padding: 0vw;
@@ -16,6 +17,8 @@ body {
 }
 
 .typewriter { 
+  /* font-family: Roboto;
+  font-weight:400; */
   font-size: 6vw;
   text-align: center;
   color: #fff;
@@ -32,7 +35,7 @@ body {
   left: 10vw;
   top: 50vh;
   animation: 
-    typing_1 10s steps(20) 3s 99 backwards,
+    typing_1 15s steps(15) 7s 99 backwards,
     blink-caret .5s step-end infinite normal;
 }
 
@@ -41,7 +44,7 @@ body {
   left: 10vw;
   top: 50vh;
   animation: 
-    typing_2 10s steps(20) 3s 99 backwards,
+    typing_2 15s steps(30) 7s 99 backwards,
     blink-caret .5s step-end infinite normal;
 }
 
@@ -53,7 +56,7 @@ body {
         opacity: 1;}
   30% { width: 51vw;
         opacity: 1;}     
-  45% { width: 51vw;
+  47% { width: 51vw;
         opacity: 1;}
   50% { width: 51vw;
         opacity: 0}
@@ -66,11 +69,13 @@ body {
         opacity: 0;}
   50% { width: 0vw;
         opacity: 0;}
-  60% { width: 75vw;
+  51% { width: 0vw;
+        opacity: 1;}
+  70% { width: 75vw;
         opacity: 1;}
   85% { width: 75vw;
         opacity: 1;}
-  95% { width: 75vw;
+  98% { width: 75vw;
         opacity: 0;}     
   100%{ width: 75vw;
         opacity: 0}
@@ -90,14 +95,40 @@ body {
     color:#fafafa
 }
 
-section{
+/* section{
     padding-top:4vh;
     padding-bottom:4vh;
-}
+} */
 
 #aboutUs{
-    height: 50vh;
+    /* background: url(../images/);
+    background-repeat: ; */
+    margin-top: 85px;
+    margin-bottom: 75px;
+    /* height: 50vh; */
     width: 100%;
+}
+.aboutUs-both {
+    margin-top: -30px; 
+}
+
+.aboutUs-intro {
+    font-family:"Roboto";
+    /* font-size: 5vw; */
+    font-weight: 500;
+    color: #FF9F00;
+}
+
+.aboutUs-letters {
+    font-family:"Roboto";
+    /* font-size: 5vw; */
+    font-weight: 400;
+    color: #202020;
+}
+
+section > div > div > div > p::first-letter {
+  font-size: 110%;
+  color: #FF9F00;
 }
 
 #addSaga {
