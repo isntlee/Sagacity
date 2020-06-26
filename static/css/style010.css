@@ -6,6 +6,10 @@ body {
   background-color: #fafafa   
 }
 
+#nav-wrapped {
+    color: pink
+}
+
 #background-image{
     background: url(../images/NewYorkSunset.jpg);
     background-size: cover;
