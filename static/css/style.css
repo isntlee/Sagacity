@@ -6,10 +6,6 @@ body {
   background-color: #fafafa   
 }
 
-#nav-wrapped {
-    color: pink
-}
-
 #background-image{
     background: url(../images/NewYorkSunset.jpg);
     background-size: cover;
@@ -91,10 +87,6 @@ body {
   50% { border-color: orange }
 }
 
-#brand-logo{
-    color:#fafafa
-}
-
 #search-btn{
     color:#fafafa
 }
@@ -131,8 +123,8 @@ body {
 }
 
 section > div > div > div > p::first-letter {
-  font-size: 110%;
-  color: #FF9F00;
+    font-size: 110%;
+    color: #FF9F00;
 }
 
 #addSaga {
