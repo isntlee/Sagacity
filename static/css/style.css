@@ -127,6 +127,21 @@ section > div > div > div > p::first-letter {
     color: #FF9F00;
 }
 
+.navbar-icons {
+    color:#fafafa;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .35s linear, color .5s; 
+}
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .50s, opacity .50s linear, color .5s;
+}
+
 #addSaga {
     height: 90vh;
 }
