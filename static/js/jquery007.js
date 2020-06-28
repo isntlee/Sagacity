@@ -3,26 +3,23 @@ $(document).ready(function () {
       $('select').formSelect();
       $('.materialboxed').materialbox();
       $('textarea#Intro').characterCounter();
-      });
+});
  
       
 $(document).ready(function () {
 var selectorvar = $('#selectordiv').html();
+var scroll_pos = 0;
+
 if (selectorvar != 'true'){
         $(".navbar-icons").css("color","#FF9F00");
         $(".nav-wrapper").removeClass("transparent").addClass("white");
-    }
-});
+}
 
-// Lets adapt this over now
-$(document).ready(function () {
-    var scroll_pos = 0;
-
+if (selectorvar == 'true'){
+    
     $(document).scroll(function () {
         scroll_pos = $(this).scrollTop();
         var width = $(window).width();
-
-
 
         if (width >= 310) {
             
@@ -47,4 +44,5 @@ $(document).ready(function () {
         }
     
     });
+  }
 });
