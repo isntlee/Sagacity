@@ -2,6 +2,7 @@
 $(document).ready(function () {
       $('select').formSelect();
       $('.materialboxed').materialbox();
+      $('textarea#Intro').characterCounter();
       });
  
       
