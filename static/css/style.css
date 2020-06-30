@@ -161,28 +161,34 @@ section > div > div > div > p::first-letter {
 
 
 .card {
-  text-align: center;
-  justify-items: center;   
+  /* background: #101010; */
+  color: #fafafa;
+  text-align: center;  
 }
 
- .card .card-image .card-title{
+ .card-title{
+  /* color:yellow; This is the card-title  */
   padding: 0;
   width: 100%;
-  background-image:linear-gradient(to bottom, rgba(0,0,0,0), 55%, rgba(0,0,0,1)); 
+  background-image:linear-gradient(to bottom, rgba(0,0,0,0), 45%, rgba(0,0,0,1)) ;
   /* This is a great idea but it needs to be fixed later */
 }
+
 .card-tagline {
-   height: 5vh; 
-   width: 100%;
+  height: 3vh; 
+  width: 100%;
+}
+
+.card-content {
+  background-image:linear-gradient(to top, rgba(255,159,0,0.5, 30%, rgba(0,0,0,1));
+  height: 8vh;
+
 }
 
 .card-image img {
   object-fit: cover;
   height: 55vh;
 }
-
-
-
 
 #addSaga {
     height: 90vh;
@@ -265,7 +271,7 @@ section > div > div > div > p::first-letter {
 
 .la-arrow-circle-up{
 color:#B2BEB5;
-font-size:4vh;
+font-size:3vw;
 }
 
 .la-arrow-circle-up:hover {
@@ -277,7 +283,7 @@ transition: 0.5s;
 
 .la-arrow-circle-down {
 color:#B2BEB5;
-font-size:4vh;
+font-size:3vw;
 }
 
 .la-arrow-circle-down:hover {
