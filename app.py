@@ -145,7 +145,7 @@ def insertSaga():
         'eraName': request.form.get('eraName'),
         'siteName': request.form.get('siteName'),
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
-        # 'cardIntro': 'Intro'()[:50],
+        'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
         'totalLikes': 0
         }

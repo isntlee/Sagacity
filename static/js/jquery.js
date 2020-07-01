@@ -3,6 +3,7 @@ $(document).ready(function () {
       $('select').formSelect();
       $('.materialboxed').materialbox();
       $('textarea#Intro').characterCounter();
+      $('.parallax').parallax();
 });
  
       
@@ -45,4 +46,14 @@ if (selectorvar == 'true'){
     
     });
   }
+});
+
+$(document).ready(function() {
+    $(".card").hover(
+        function() {
+            $(this).find("> .card-image > img.activator").click();
+        }, function() {
+            $(this).find("> .card-reveal > .card-title").click();
+        }
+    );
 });

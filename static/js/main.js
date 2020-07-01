@@ -7,13 +7,13 @@
   });
 
 
-    function changeColor_liked() { 
-        document.getElementById("up-arrow-liked-inSession").style.color = "red";
-    }
+    // function changeColor_liked() { 
+    //     document.getElementById("up-arrow-liked-inSession").style.color = "red";
+    // }
 
-    function changeColor_disliked() { 
-        document.getElementById("down-arrow-disliked-inSession").style.color = "blue"; 
-    }
+    // function changeColor_disliked() { 
+    //     document.getElementById("down-arrow-disliked-inSession").style.color = "blue"; 
+    // }
 
 
   function sweetAlert_notLogged () {

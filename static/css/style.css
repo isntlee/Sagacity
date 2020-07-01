@@ -161,33 +161,42 @@ section > div > div > div > p::first-letter {
 
 
 .card {
-  /* background: #101010; */
-  color: #fafafa;
+  color: #fafafa; 
+  /* This is the colour of the numbers in (arrows) */ 
   text-align: center;  
 }
 
- .card-title{
+ .card-sagaTitle{
   /* color:yellow; This is the card-title  */
   padding: 0;
   width: 100%;
-  background-image:linear-gradient(to bottom, rgba(0,0,0,0), 45%, rgba(0,0,0,1)) ;
-  /* This is a great idea but it needs to be fixed later */
-}
-
-.card-tagline {
-  height: 3vh; 
-  width: 100%;
-}
-
-.card-content {
-  background-image:linear-gradient(to top, rgba(255,159,0,0.5, 30%, rgba(0,0,0,1));
-  height: 8vh;
-
+  background-image:linear-gradient(to bottom, rgba(0,0,0,0), 45%, rgba(0,0,0,1));
 }
 
 .card-image img {
   object-fit: cover;
-  height: 55vh;
+  height: 50vh;
+}
+
+.card-content {
+  background: #000000;
+  height: 4vh;
+}
+
+.card-likes {
+  margin-top: -2vh;
+  float: right;
+}
+
+.card-totalLikes {
+  color: #fafafa;
+  margin-top: -1vh;
+}
+
+.card-date {
+  color: #fafafa;
+  margin-top: -1vh;
+  float: left;
 }
 
 #addSaga {
@@ -271,24 +280,24 @@ section > div > div > div > p::first-letter {
 
 .la-arrow-circle-up{
 color:#B2BEB5;
-font-size:3vw;
+font-size:3.5vh;
 }
 
 .la-arrow-circle-up:hover {
 color:#cd5c5c;
-font-size:4vh;
+font-size:3.5vh;
 opacity: 0.8;
 transition: 0.5s;
 }
 
 .la-arrow-circle-down {
 color:#B2BEB5;
-font-size:3vw;
+font-size:3.5vh;
 }
 
 .la-arrow-circle-down:hover {
 color:#76ABDF;
-font-size:4vh;
+font-size:3.5vh;
 opacity: 0.9;
 transition: 0.5s;
 }
