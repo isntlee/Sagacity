@@ -48,6 +48,8 @@ if (selectorvar == 'true'){
   }
 });
 
+// https://stackoverflow.com/questions/36290110/open-card-reveal-content-by-hover-the-activator-in-materializecss
+
 $(document).ready(function() {
     $(".card").hover(
         function() {

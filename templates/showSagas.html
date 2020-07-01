@@ -9,13 +9,10 @@ Displaying {{count_sagas}} Sagas(s).
         <div class="row">
             {% for saga in sagas_pages %}
                 <div class="col s12 m6 l4">
-                    <div class="card">
-                                             <!-- Find/apply either horizontal display of images or whatever is like it -->
+                    <div class="card hoverable">
                         <div class="card-image">
-                           <img class="activator" src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}">
-                            <a href="{{url_for('singleSaga', saga_id = saga._id)}}"></a>
-                            <!-- <a class="btn-floating halfway-fab waves-effect waves-light blue dark"><i class="material-icons">add</i></a> -->
-                            <a href="{{url_for('singleSaga', saga_id = saga._id)}}" class="card-sagaTitle"><h5>{{saga.sagaTitle}}</h5></a>
+                            <img class="activator" src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}">
+                            <a class="card-title"><h5>{{saga.sagaTitle}}</h5></a>
                         </div> 
                         <div class="card-content">
                             <a class="card-date">{{saga.dateCard}}</a>
@@ -24,11 +21,13 @@ Displaying {{count_sagas}} Sagas(s).
                                 <a class="card-totalLikes">{{saga.totalLikes}}</a>
                                 <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                             </div>
-                        </div> 
-                        <div class="card-reveal">
-                            <span class="card-title">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
                         </div>
+                        
+                        <div class="card-reveal">
+                            <span class="card-title"><i class="material-icons right">close</i></span>
+                            <p class="card-attempt">Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div> 
+                        
                     </div>
                 </div>
             {% endfor %}
