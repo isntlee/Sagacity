@@ -5,28 +5,44 @@
 Displaying {{count_my_sagas}} Sagas(s). 
 <p>Total pages = {{my_total_pages}}</p>
 
-{% for saga in searchedSagas %}
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card">
-                    <!-- Find/apply either horizontal display of images or whatever is like it -->
+<div class="showSagasContainer">
+        <div class="row">
+            {% for saga in searchedSagas %}
+                <div class="col s12 m6 l4">
+                    <div class="card hoverable">
                         <div class="card-image">
-                            <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}"></a>
-                            <span class="card-title"></span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light blue dark"><i class="material-icons">add</i></a>
-                        </div>
+                            <img class="activator" src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}">
+                            <a class="card-title"><h5>{{saga.sagaTitle}}</h5></a>
+                        </div> 
                         <div class="card-content">
-                            <a href="{{url_for('singleSaga', saga_id = saga._id)}}"><h5>{{saga.sagaTitle}}</h5></a><br>
-                            <p>{{saga.sagaTagline}}</p><br>
-                            <p>{{saga.userName}}</p><br>
-                            <p>{{saga.Intro}}</p><br>
-                            <p>Click <a href="{{url_for('singleSaga', saga_id = saga._id)}}">here</a> to view the rest</p>
-                            <a href="#" onclick="sweetAlert_notHere()"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
-                            {{saga.totalLikes}}
-                            <a href="#" onclick="sweetAlert_notHere()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            <a class="card-date">{{saga.dateCard}}</a>
+                            <div class="card-likes">
+                                <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                                <a class="card-totalLikes">{{saga.totalLikes}}</a>
+                                <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                            </div>
                         </div>
-                    </div>
+                        
+                        <div class="card-reveal">
+                        <!-- Hover could be a real problem for mobile -->
+                            <span class="card-title"><i class="material-icons right">close</i></span>
+                           <div class="card-reveal-details">
+                                <div class="card-reveal-title">{{saga.sagaTitle}}</div>
+                                <br>
+                                <div class="card-reveal-where">{{saga.siteName}}</div>
+                                <br>
+                                <div class="card-reveal-when">{{saga.eraName}}</div>
+                                <br>
+                                <div class="card-reveal-intro">{{saga.Intro}}</div>
+                                <br>
+                                <div class="card-reveal-read">
+                                    <a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a>
+                                </div>
+                           </div> 
+                        </div>
+                    </div> 
                 </div>
-            </div>
-        {% endfor %}    
-{% endblock %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
