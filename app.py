@@ -147,9 +147,9 @@ def insertSaga():
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
-        'totalLikes': 0
+        'totalLikes': 0,
         }
-
+    
     sagas.insert_one(completeSaga)
     return redirect(url_for('showSagas', page=1))
 
