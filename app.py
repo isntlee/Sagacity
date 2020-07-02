@@ -132,6 +132,14 @@ def addSaga():
 
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
+
+    Intro = request.form.get('Intro')
+    Body = request.form.get('Body')
+    Conclusion = request.form.get('Conclusion')
+    words = (Intro + Body + Conclusion).split(" ")
+    wordCount = len(words)
+    readingTime = math.ceil(wordCount/200)
+
     completeSaga = {
 
         'sagaTitle': request.form.get('sagaTitle'),
@@ -147,9 +155,12 @@ def insertSaga():
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
+        'wordCount': wordCount,
+        'readingTime': readingTime,
         'totalLikes': 0,
+
         }
-    
+
     sagas.insert_one(completeSaga)
     return redirect(url_for('showSagas', page=1))
 

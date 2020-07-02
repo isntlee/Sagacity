@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/> 
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style002.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="icon" href="static/images/favicon.png" sizes="32x32" type="image/png">
     <!-- The favicon disappears on "showSagas", see how/why -->
@@ -41,6 +41,7 @@
                         <li><a href="{{url_for('addSaga')}}" class="navbar-icons">Add Sagas</a></li>
                         <li><a href="{{url_for('mySagas', page=1)}}" class="navbar-icons">My Sagas</a></li>
                         {% else %}
+                        <li><a href="{{url_for('home', _anchor='map')}}" id="" class="navbar-icons">Map</a></li>
                         <li><a href="{{url_for('login')}}" id="" class="navbar-icons"><i class="material-icons left">account_circle</i>Login</a></li>
                         {% endif %}
                         {% if session.username %}
