@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/> 
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style001.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="icon" href="static/images/favicon.png" sizes="32x32" type="image/png">
     <!-- The favicon disappears on "showSagas", see how/why -->
@@ -36,21 +36,21 @@
                         {% endwith %}
                         </li>
 
-                        <li><a href="{{url_for('showSagas', page=1)}}" id="" class="navbar-icons">Sagas</a></li>
+                        <li><a href="{{url_for('showSagas', page=1)}}" id="" class="navbar-icons search-hide">Sagas</a></li>
                         {% if session.username %}
-                        <li><a href="{{url_for('addSaga')}}" class="navbar-icons">Add Sagas</a></li>
-                        <li><a href="{{url_for('mySagas', page=1)}}" class="navbar-icons">My Sagas</a></li>
+                        <li><a href="{{url_for('addSaga')}}" class="navbar-icons search-hide">Add Sagas</a></li>
+                        <li><a href="{{url_for('mySagas', page=1)}}" class="navbar-icons search-hide">My Sagas</a></li>
                         {% else %}
-                        <li><a href="{{url_for('home', _anchor='map')}}" id="" class="navbar-icons">Map</a></li>
-                        <li><a href="{{url_for('login')}}" id="" class="navbar-icons"><i class="material-icons left">account_circle</i>Login</a></li>
+                        <li><a href="{{url_for('home', _anchor='map')}}" id="" class="navbar-icons search-hide">Map</a></li>
+                        <li><a href="{{url_for('login')}}" id="" class="navbar-icons search-hide"><i class="material-icons left">account_circle</i>Login</a></li>
                         {% endif %}
                         {% if session.username %}
-                        <li><a href="{{url_for('logout')}}" id="" class="navbar-icons">Logout</a></li>
+                        <li><a href="{{url_for('logout')}}" id="" class="navbar-icons search-hide">Logout</a></li>
                         {% endif %}
                         <!--Not sure about this <form action> tag at all, so goin to test everything again now-->
                         <li><form action="{{url_for('sagaSearch')}}" class="" method="POST">
                                 <div class="input-field">
-                                    <input id="search" name="sagaSearch-sagaTitle" type="text" required>
+                                    <input no-lines id="search" name="sagaSearch-sagaTitle" class="search-field" type="text" autocomplete="off" required>
                                         <label class="label-icon" for="search"><i id="" class="material-icons navbar-icons">search</i></label>
                                     <!-- Find in Materialize, how to apply autocomplete based on set options -->
                                     <!-- <i class="material-icons">close</i> -->
@@ -87,7 +87,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Not being able to save Javascript files is a fucking joke -->
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    <script src="{{url_for('static', filename='js/jquery001.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx0wQ9k0TVnaE1cIvqF0m6CTxBat-wdbk&callback=initMap"></script>
 
  </body>

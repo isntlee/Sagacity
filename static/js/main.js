@@ -6,6 +6,22 @@
     // I'm probably not going to leave this as is, this is a mess
   });
 
+/* hide when expanded*/
+    document.querySelector(".search-field").addEventListener("focus", function() {
+    let hidden = document.querySelectorAll(".search-hide");
+    for (let i = 0; i < hidden.length; ++i) {
+        hidden[i].style.display = "none";
+  }
+});
+
+
+/* show when expanded*/
+    document.querySelector(".search-field").addEventListener("focusout", function() {
+    let hidden = document.querySelectorAll(".search-hide");
+    for (let i = 0; i < hidden.length; ++i) {
+        hidden[i].style.display = "block";
+    }
+  });
 
     // function changeColor_liked() { 
     //     document.getElementById("up-arrow-liked-inSession").style.color = "red";

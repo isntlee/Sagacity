@@ -6,6 +6,29 @@ body {
   background-color: #fafafa;  
 }
 
+#search {
+    color: #fafafa;
+    width: 60px;
+    text-indent: 70px;
+    border-bottom: none!important 
+}
+
+/* This (width - between search & search-focus) could be a happy compromise,
+ text-indent on search-focus could be a problem */
+
+#search:focus {
+    width: 320px;
+    text-indent: 40px;
+    box-shadow: none;
+}
+
+.input-field input[type="search"]:not([readonly]),
+.input-field input[type="search"]:focus:not([readonly]) {
+    border-bottom: none;
+    }
+
+
+
 #background-image{
     background: url(../images/NewYorkSunset.jpg);
     background-size: cover;
@@ -87,9 +110,6 @@ body {
   50% { border-color: orange }
 }
 
-#search-btn{
-    color:#fafafa
-}
 
 /* section{
     padding-top:4vh;
