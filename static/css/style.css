@@ -180,7 +180,7 @@ section > div > div > div > p::first-letter {
 } */
 
 .fullPage-title {
-padding-left: 0px;
+padding-left: 5px;
 color: #FF9F00;
 font-weight: 500; 
 }
@@ -189,8 +189,44 @@ font-weight: 500;
 color: green;
 } This is a tricky one!! */
 
+
+
+.input-field label {
+     color: #5a5a5a;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #5a5a5a;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #5a5a5a;
+     box-shadow: 0 1px 0 0 #5a5a5a;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #5a5a5a;
+     box-shadow: 0 1px 0 0 #5a5a5a;
+   }
+   
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #5a5a5a;
+   }
+
+
+/* 
+.input-field input[type=text]:focus + label {
+    color: #000;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+} */
+
+
 .btn {
-font-weight: 400;
+font-weight: 600;
 background: #FF9F00;
 color: #fafafa;
 }
