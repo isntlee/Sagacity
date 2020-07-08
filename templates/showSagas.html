@@ -5,8 +5,11 @@
 Displaying {{count_sagas}} Sagas(s). 
 <p>Total pages = {{total_pages}}</p>
 
-    <div class="showSagasContainer">
+    <div class = "container">
+
+        <h3 class="fullPage-title">Sagas</h3>
         <div class="row">
+
             {% for saga in sagas_pages %}
                 <div class="col s12 m6 l4">
                     <div class="card hoverable">
@@ -45,5 +48,6 @@ Displaying {{count_sagas}} Sagas(s).
             {% endfor %}
         </div>
     </div>
+
         
 {% endblock %}

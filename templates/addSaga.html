@@ -1,63 +1,70 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h3>Add Saga</h3>
+
 <div class = "container">
+    <h3 class ="fullPage-title">Add Saga</h3>
     <div class="row" id="addSaga">
         <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-            <input id="sagaTitle" name="sagaTitle" type="text" class="validate" required>
-            <label for="title">Title</label>
+            <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" required>
+            <label  for="title">Title</label>
             </div>
             <div class="input-field col s12">
-            <input id="sagaTagline" name="sagaTagline" type="text" class="validate">
-            <label for="tagline">Tagline</label>
+            <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" required>
+            <label  for="tagline">Tagline</label>
             </div>
         </div>
             <div class="row">
-                <div class="input-field col s12">
-                <input placeholder="paste a URL here" id="sagaImage" name="sagaImage" type="text" class="validate"> 
-                <!--Might be someway to include a responsive tag here,
-                or in the code where the image would work-->
-                <label for="image">Image</label>
-                <!-- And I'm goin to have to adapt this input field, and maybe change image to base64  -->
+                <div class="input-field col s12 ">
+                    <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" autocomplete="off" required> 
+                    <!--Might be someway to include a responsive tag here,
+                    or in the code where the image would work-->
+                    <label  for="image">Main Image - paste link</label>
+                    <!-- And I'm goin to have to adapt this input field, and maybe change image to base64  -->
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="lat" name="lat" type="text" class="validate">
-                    <label for="lat">Latitude</label>
+                    <input placeholder="https://yourURL..." id="contextImage" name="contextImage" type="text" class="validate" autocomplete="off"> 
+                    <label  for="contextImage">Context/secondary Image</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="lng" name="lng" type="text" class="validate">
-                    <label for="lng">Longitude</label>
+                    <input placeholder="Search in GoogleMaps, latitude after '@' in result URL " id="lat" name="lat" type="text" class="validate" autocomplete="off" >
+                    <label  for="lat">Latitude</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <textarea id="Intro" name="Intro"  class="materialize-textarea" data-length="350"></textarea>
-                <label for="Intro">Intro</label>
+                    <input placeholder="Number after latitude, e.g. ',-6.23535,'" id="lng" name="lng" type="text" class="validate" autocomplete="off" >
+                    <label  for="lng">Longitude</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <textarea id="Body" name="Body"  class="materialize-textarea" data-length="120"></textarea>
-                <label for="Body">Body</label>
+                <textarea id="Intro" name="Intro" class="materialize-textarea" data-length="350" required></textarea>
+                <label  for="Intro">Intro</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
-                <textarea id="Conclusion" name="Conclusion" class="materialize-textarea" data-length="120"></textarea>
-                <label for="Conclusion">Conclusion</label>
+                <div class="input-field col s12 ">
+                <textarea id="Body" name="Body" class="materialize-textarea"></textarea>
+                <label  for="Body">Body</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 ">
+                <textarea id="Conclusion" name="Conclusion" class="materialize-textarea" required></textarea>
+                <label  for="Conclusion">Conclusion</label>
                 </div>
             </div> 
             <div class="row">
-                <div class="input-field col s12">
-                    <select  id="siteName" name="siteName">
-                        <option value="" disabled selected>Location</option>
+                <div class="input-field col s12 ">
+                    <select id="siteName" name="siteName" required>
+                        <option  value="" disabled selected>Location</option>
                         {% for site in sagaSite %}
                         <option value="{{site.siteName}}">{{site.siteName}}</option>
                         {% endfor %}
@@ -65,9 +72,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
-                    <select id="eraName" name="eraName">
-                        <option value="" disabled selected >Era</option>
+                <div class="input-field col s12 ">
+                    <select id="eraName" name="eraName" required>
+                        <option  value="" disabled selected>Era</option>
                         {% for era in sagaEra %}
                         <option value="{{era.eraName}}">{{era.eraName}}</option>
                         {% endfor %}
@@ -76,8 +83,7 @@
             </div>
 
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit">Add Saga
-                    <i class="material-icons right">send</i>
+                <button class="btn waves-effect waves-orange" type="submit">Create   
                 </button>
             </div> 
         </form>

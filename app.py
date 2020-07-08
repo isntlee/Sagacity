@@ -145,6 +145,7 @@ def insertSaga():
         'sagaTitle': request.form.get('sagaTitle'),
         'sagaTagline': request.form.get('sagaTagline'),
         'sagaImage': request.form.get('sagaImage'),
+        'contextImage': request.form.get('contextImage'),
         'lat': request.form.get('lat'),
         'lng': request.form.get('lng'),
         'Intro': request.form.get('Intro'),
@@ -155,6 +156,7 @@ def insertSaga():
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
+        # This'll be a future problem, 'username' and 'authorname' confusion
         'wordCount': wordCount,
         'readingTime': readingTime,
         'totalLikes': 0,

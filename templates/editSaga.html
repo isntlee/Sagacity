@@ -1,73 +1,74 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h3>Edit Saga</h3>
-
-<div class="row">
-    <form action="{{ url_for('updateSaga', saga_id=saga._id) }}" method="POST" class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" required>
-          <label for="title">Title</label>
-        </div>
-        <div class="input-field col s12">
-          <input id="sagaTagline" name="sagaTagline" type="text" class="validate" value="{{saga.sagaTagline}}">
-          <label for="tagline">Tagline</label>
-        </div>
-      </div>
-        <div class="row">
-            <div class="input-field col s12">
-            <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" value="{{saga.sagaImage}}"> 
-            <!--Might be someway to include a responsive tag here,
-             or in the code where the image would work-->
-            <label for="image">Image</label>
+    <div class = "container">
+        <h3 class="fullPage-title">Edit Saga</h3>
+            <div class="row">
+                <form action="{{ url_for('updateSaga', saga_id=saga._id) }}" method="POST" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                    <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" autocomplete="off"  required>
+                    <label for="title">Title</label>
+                    </div>
+                    <div class="input-field col s12">
+                    <input id="sagaTagline" name="sagaTagline" type="text" class="validate" value="{{saga.sagaTagline}}" autocomplete="off" >
+                    <label for="tagline">Tagline</label>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" value="{{saga.sagaImage}}" autocomplete="off" > 
+                        <!--Might be someway to include a responsive tag here,
+                        or in the code where the image would work-->
+                        <label for="image">Image</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <textarea id="Intro" name="Intro" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Intro}}"></textarea>
+                        <label for="intro">Intro</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <textarea id="Body" name="Body" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Body}}"></textarea>
+                        <label for="intro">Body</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <textarea id="Conclusion" name="Conclusion" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Conclusion}}"></textarea>
+                        <label for="intro">Conclusion</label>
+                        </div>
+                    </div> 
+                    <!-- Seems the jquery just isn't coming through on this one-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select  id="siteName" name="siteName">
+                                <option value="" disabled selected>Location</option>
+                                {% for site in sagaSite %}
+                                <option value="{{site.siteName}}">{{site.siteName}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="eraName" name="eraName">
+                                <option value="" disabled selected >Era</option>
+                                {% for era in sagaEra %}
+                                <option value="{{era.eraName}}">{{era.eraName}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-orange waves-light" type="submit" name="action">Edit Saga
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-            <textarea id="Intro" name="Intro" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Intro}}"></textarea>
-            <label for="intro">Intro</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-            <textarea id="Body" name="Body" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Body}}"></textarea>
-            <label for="intro">Body</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-            <textarea id="Conclusion" name="Conclusion" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Conclusion}}"></textarea>
-            <label for="intro">Conclusion</label>
-            </div>
-        </div> 
-        <!-- Seems the jquery just isn't coming through on this one-->
-        <div class="row">
-            <div class="input-field col s12">
-                <select  id="siteName" name="siteName">
-                    <option value="" disabled selected>Location</option>
-                    {% for site in sagaSite %}
-                    <option value="{{site.siteName}}">{{site.siteName}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <select id="eraName" name="eraName">
-                    <option value="" disabled selected >Era</option>
-                    {% for era in sagaEra %}
-                    <option value="{{era.eraName}}">{{era.eraName}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Saga
-                <i class="material-icons right">send</i>
-             </button>
-        </div>
-    </form>
-</div>
+    </div>  
 
 {% endblock %}
