@@ -78,14 +78,54 @@ def singleSaga(saga_id):
     return render_template('singleSaga.html', saga=theSaga)
 
 
+# --------------------------------------------------------------------------- #
+# -------------------------- Tester Function  ------------------------------- #
+# --------------------------------------------------------------------------- #
+
+
+@app.route('/tester/<page>')
+def tester(page):
+
+    limit = 9
+    offset = (int(page) - 1) * limit
+    all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
+    current_saga = (int(page) * limit) - (limit - 1)
+    count_sagas = all_sagas.count()
+    total_pages = int(math.ceil(count_sagas/limit))
+
+    if int(page) > 1:
+        prev_page = int(page) - 1
+    else:
+        prev_page = page
+
+    if int(page) < total_pages:
+        next_page = int(page) + 1
+    else:
+        next_page = page
+
+    sagas_pages = sagas.find().sort(
+        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+
+    return render_template(
+                "tester.html",
+                sagas_pages=sagas_pages, current_saga=current_saga,
+                count_sagas=count_sagas, total_pages=total_pages,
+                page=page, next_page=next_page, prev_page=prev_page)
+
+
+# --------------------------------------------------------------------------- #
+# --------------------------   Tester End ... ------------------------------- #
+# --------------------------------------------------------------------------- #
+
+
 @app.route('/showSagas/<page>')
 def showSagas(page):
     all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
     # count() to count_documents(), see below
     count_sagas = all_sagas.count()
     # goin to have to figure out what offset does actually
-    offset = (int(page) - 1) * 2
-    limit = 15
+    limit = 12
+    offset = (int(page) - 1) * limit
     sagas_pages = sagas.find().sort(
         [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
     total_pages = int(math.ceil(count_sagas/limit))
@@ -93,8 +133,7 @@ def showSagas(page):
     return render_template(
                 "showSagas.html",
                 sagas_pages=sagas_pages, count_sagas=count_sagas,
-                total_pages=total_pages, page=page
-                    )
+                total_pages=total_pages, page=page)
 
 
 @app.route('/mySagas/<page>')
@@ -105,11 +144,11 @@ def mySagas(page):
             [('_id', pymongo.DESCENDING)]
         )
     count_my_sagas = my_sagas.count()
-    offset = (int(page) - 1) * 2
-    limit = 15
+    limit = 12
+    offset = (int(page) - 1) * limit
     # All the changes to be made for showSagas, must be made here
-    my_total_pages = int(math.ceil(count_my_sagas/limit))
     my_sagas_pages = my_sagas.skip(offset).limit(limit)
+    my_total_pages = int(math.ceil(count_my_sagas/limit))
 
     return render_template(
                 "mySagas.html",

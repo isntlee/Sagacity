@@ -180,61 +180,68 @@ section > div > div > div > p::first-letter {
 } */
 
 .fullPage-title {
-padding-left: 5px;
-color: #FF9F00;
-font-weight: 500; 
+    padding-left: 5px;
+    color: #FF9F00;
+    font-weight: 500;
+    text-align: left;
 }
 
-/* .addSaga-label {
-color: green;
-} This is a tricky one!! */
+.sortPage {
+    padding-right: 50px;
+    color: #FF9F00;
+    font-weight: 500;
+    text-align: right;
+}
 
+.paginatePage-block {
+    padding-top: 10vh;
+}
 
+.paginatePage-item {
+    color: #FF9F00;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.paginatePage-pageCount {
+    padding-top: 0px;
+}
+
+/* This is just an experiment */
+.rotate-180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
 
 .input-field label {
-     color: #5a5a5a;
-   }
-   /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #5a5a5a;
-   }
-   /* label underline focus color */
-   .input-field input[type=text]:focus {
-     border-bottom: 1px solid #5a5a5a;
-     box-shadow: 0 1px 0 0 #5a5a5a;
-   }
-   /* valid color */
-   .input-field input[type=text].valid {
-     border-bottom: 1px solid #5a5a5a;
-     box-shadow: 0 1px 0 0 #5a5a5a;
-   }
-   
-   /* icon prefix focus color */
-   .input-field .prefix.active {
-     color: #5a5a5a;
-   }
-
-
-/* 
-.input-field input[type=text]:focus + label {
-    color: #000;
+    color: #7a7a7a;
 }
 
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid #000;
-} */
-
-
-.btn {
-font-weight: 600;
-background: #FF9F00;
-color: #fafafa;
+.input-field .select-wrapper [type=text] {
+    color: #7a7a7a;
 }
 
-.btn:hover{
-background: rgb(248, 189, 93);
-color: #fafafa;
+ul.dropdown-content.select-dropdown li.disabled>span {
+    color: #8a8a8a;
 }
+
+ul.dropdown-content.select-dropdown li span {
+    color: #FF9F00;
+}  
+
+    .btn {
+    font-weight: 600;
+    background-color: #FF9F00;
+    color:#fafafa;
+    }
+
+    .btn:hover{
+    background: rgb(248, 189, 93);
+    color: #fafafa;
+    }
 
 .card {
   /* color: #FF9F00;  */
