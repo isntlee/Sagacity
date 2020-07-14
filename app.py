@@ -23,6 +23,7 @@ sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
 # sagaMap = mongo.db.searchMap
+sortBy = ('_id', pymongo.DESCENDING)
 
 
 @app.route('/')
@@ -86,7 +87,7 @@ def singleSaga(saga_id):
 @app.route('/tester/<page>')
 def tester(page):
 
-    limit = 9
+    limit = 6
     offset = (int(page) - 1) * limit
     all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
     current_saga = (int(page) * limit) - (limit - 1)
@@ -104,7 +105,7 @@ def tester(page):
         next_page = page
 
     sagas_pages = sagas.find().sort(
-        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
+        [sortBy]).skip(offset).limit(limit)
 
     return render_template(
                 "tester.html",
