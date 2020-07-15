@@ -23,7 +23,7 @@ sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
 # sagaMap = mongo.db.searchMap
-sortBy = ('_id', pymongo.DESCENDING)
+# sortBy = ('_id', -1)
 
 
 @app.route('/')
@@ -89,34 +89,49 @@ def tester(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
-    all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
-    current_saga = (int(page) * limit) - (limit - 1)
-    count_sagas = all_sagas.count()
-    total_pages = int(math.ceil(count_sagas/limit))
 
-    if int(page) > 1:
-        prev_page = int(page) - 1
-    else:
-        prev_page = page
+    requestChoice = request.args.get('fromHTMLchoice')
+    workableChoice = str(requestChoice)
+    print(workableChoice)
 
-    if int(page) < total_pages:
-        next_page = int(page) + 1
-    else:
-        next_page = page
-
-    sagas_pages = sagas.find().sort(
-        [sortBy]).skip(offset).limit(limit)
+    sagas_pages = sagas.find().sort(workableChoice).skip(offset).limit(limit)
 
     return render_template(
                 "tester.html",
-                sagas_pages=sagas_pages, current_saga=current_saga,
-                count_sagas=count_sagas, total_pages=total_pages,
-                page=page, next_page=next_page, prev_page=prev_page)
+                sagas_pages=sagas_pages, page=page,
+                data=[
+                      {'name': ('_id', pymongo.DESCENDING)},
+                      {'name': ('_id', pymongo.ASCENDING)},
+                      {'name': ('totalLikes', pymongo.DESCENDING)},
+                      {'name': ('totalLikes', pymongo.ASCENDING)}]
+                      )
 
 
 # --------------------------------------------------------------------------- #
 # --------------------------   Tester End ... ------------------------------- #
 # --------------------------------------------------------------------------- #
+
+
+# limit = 6
+    # offset = (int(page) - 1) * limit
+    # all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
+    # current_saga = (int(page) * limit) - (limit - 1)
+    # count_sagas = all_sagas.count()
+    # total_pages = int(math.ceil(count_sagas/limit))
+
+    # if int(page) > 1:
+    #     prev_page = int(page) - 1
+    # else:
+    #     prev_page = page
+
+    # if int(page) < total_pages:
+    #     next_page = int(page) + 1
+    # else:
+    #     next_page = page
+
+    # current_saga=current_saga,
+    # count_sagas=count_sagas, total_pages=total_pages,
+    # next_page=next_page, prev_page=prev_page
 
 
 @app.route('/showSagas/<page>')
