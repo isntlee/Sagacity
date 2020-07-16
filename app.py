@@ -23,7 +23,6 @@ sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
 # sagaMap = mongo.db.searchMap
-# sortBy = ('_id', -1)
 
 
 @app.route('/')
@@ -89,12 +88,16 @@ def tester(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
+    workingCondition = ('_id', -1)
 
-    requestChoice = request.args.get('fromHTMLchoice')
-    workableChoice = str(requestChoice)
-    print(workableChoice)
+    requestChoice = request.form.get('fromHTMLchoice')
 
-    sagas_pages = sagas.find().sort(workableChoice).skip(offset).limit(limit)
+    sagas_pages = sagas.find().sort([workingCondition]).skip(offset).limit(limit)
+
+    print(requestChoice)
+    print(workingCondition)
+    print(type(requestChoice))
+    print(type(workingCondition))
 
     return render_template(
                 "tester.html",
@@ -108,7 +111,7 @@ def tester(page):
 
 
 # --------------------------------------------------------------------------- #
-# --------------------------   Tester End ... ------------------------------- #
+# --------------------------   Tester End  ---------------------------------- #
 # --------------------------------------------------------------------------- #
 
 
