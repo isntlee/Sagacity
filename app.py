@@ -88,16 +88,19 @@ def tester(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
-    workingCondition = ('_id', -1)
+    # There's a serious concern in all of this, you can't be sure if python will declare "Nonetype"
 
-    requestChoice = request.form.get('fromHTMLchoice')
+    requestChoice = (request.args.get('fromHTMLchoice')).split()
+    a = requestChoice[0]
+    b = requestChoice[1]
+    done = tuple(a[2:-2], int(b[:-1]))
 
-    sagas_pages = sagas.find().sort([workingCondition]).skip(offset).limit(limit)
+    sagas_pages = sagas.find().sort(
+                        [done]).skip(offset).limit(limit)
 
     print(requestChoice)
-    print(workingCondition)
-    print(type(requestChoice))
-    print(type(workingCondition))
+    print(a)
+    print(done)
 
     return render_template(
                 "tester.html",
