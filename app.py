@@ -83,33 +83,26 @@ def singleSaga(saga_id):
 # --------------------------------------------------------------------------- #
 
 
-@app.route('/tester/<page>')
+@app.route('/tester/<page>', methods=['GET'])
 def tester(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
-    # There's a serious concern in all of this, you can't be sure if python will declare "Nonetype"
+    # hard_code = ('totalLikes', -1)
 
-    requestChoice = (request.args.get('fromHTMLchoice')).split()
+    requested = request.form.get('fromHTMLchoice')
+    print(requested)
+    requestChoice = requested.split()
     a = requestChoice[0]
     b = requestChoice[1]
-    done = tuple(a[2:-2], int(b[:-1]))
+    convertChoice = tuple(a[2:-2], int(b[:-1]))
 
     sagas_pages = sagas.find().sort(
-                        [done]).skip(offset).limit(limit)
-
-    print(requestChoice)
-    print(a)
-    print(done)
+                        [convertChoice]).skip(offset).limit(limit)
 
     return render_template(
                 "tester.html",
-                sagas_pages=sagas_pages, page=page,
-                data=[
-                      {'name': ('_id', pymongo.DESCENDING)},
-                      {'name': ('_id', pymongo.ASCENDING)},
-                      {'name': ('totalLikes', pymongo.DESCENDING)},
-                      {'name': ('totalLikes', pymongo.ASCENDING)}]
+                sagas_pages=sagas_pages, page=page
                       )
 
 
