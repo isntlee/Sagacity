@@ -83,54 +83,50 @@ def singleSaga(saga_id):
 # --------------------------------------------------------------------------- #
 
 
-@app.route('/tester/<page>', methods=['GET'])
+@app.route('/tester/<page>', methods=['GET', 'POST'])
 def tester(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
-    # hard_code = ('totalLikes', -1)
+    sagaChoice = ('totalLikes', -1)
+    all_sagas = sagas.find()
+    count_sagas = all_sagas.count()
+    current_saga = (int(page) * limit) - (limit - 1)
+    total_pages = int(math.ceil(count_sagas/limit))
+    requested = request.form.get("FromHTMLchoice")
 
-    requested = request.form.get('fromHTMLchoice')
-    print(requested)
-    requestChoice = requested.split()
-    a = requestChoice[0]
-    b = requestChoice[1]
-    convertChoice = tuple(a[2:-2], int(b[:-1]))
+    if isinstance(requested, str):
+        requestChoice = requested.split()
+        a = requestChoice[0]
+        b = requestChoice[1]
+        sagaChoice = (a[2:-2], int(b[:-1]))
+    else:
+        print("Initial Nonetype value")
+
+    if int(page) > 1:
+        prev_page = int(page) - 1
+    else:
+        prev_page = page
+
+    if int(page) < total_pages:
+        next_page = int(page) + 1
+    else:
+        next_page = page
 
     sagas_pages = sagas.find().sort(
-                        [convertChoice]).skip(offset).limit(limit)
+                            [sagaChoice]).skip(offset).limit(limit)
 
     return render_template(
-                "tester.html",
-                sagas_pages=sagas_pages, page=page
+                "tester.html", current_saga=current_saga,
+                count_sagas=count_sagas, total_pages=total_pages,
+                next_page=next_page, prev_page=prev_page, page=page,
+                requested=requested, sagas_pages=sagas_pages
                       )
 
 
 # --------------------------------------------------------------------------- #
 # --------------------------   Tester End  ---------------------------------- #
 # --------------------------------------------------------------------------- #
-
-
-# limit = 6
-    # offset = (int(page) - 1) * limit
-    # all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
-    # current_saga = (int(page) * limit) - (limit - 1)
-    # count_sagas = all_sagas.count()
-    # total_pages = int(math.ceil(count_sagas/limit))
-
-    # if int(page) > 1:
-    #     prev_page = int(page) - 1
-    # else:
-    #     prev_page = page
-
-    # if int(page) < total_pages:
-    #     next_page = int(page) + 1
-    # else:
-    #     next_page = page
-
-    # current_saga=current_saga,
-    # count_sagas=count_sagas, total_pages=total_pages,
-    # next_page=next_page, prev_page=prev_page
 
 
 @app.route('/showSagas/<page>')

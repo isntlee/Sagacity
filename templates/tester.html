@@ -5,15 +5,15 @@
 <div class = "container">
         <h5 class="fullPage-title">Sagas</h5>
 
-        <form class="form-inline" method="GET" action="{{url_for('tester', page=1)}}">
+        <form class="form-inline" method="POST" action="{{ url_for('tester', page=1) }}">
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">Please select</span>
-                        <select name="fromHTMLchoice" class="selectpicker form-control">
-                            <option value= "('totalLikes', -1)">Likes</option>
-                            <option value= "('totalLikes', 1)">Dislikes</option>
-                            <option value= "('_id', -1)">Most_Recent</option>
-                            <option value= "('_id', 1)">Least_Recent</option>
+                        <select id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
+                            <option value="('totalLikes', -1)">Likes</option>
+                            <option value="('totalLikes', 1)">Dislikes</option>
+                            <option value="('_id', -1)">Most_Recent</option>
+                            <option value="('_id', 1)">Least_Recent</option>
                         </select>
                 </div>
                 <button type="submit" class="btn btn-default">Go</button>
@@ -39,8 +39,8 @@
                             </div>
                             
                             <div class="card-reveal">
-                            <!-- Hover could be a real problem for mobile -->
-                                <span class="card-title"><i class="material-icons right">close</i></span>
+                            <!-- Hover could be a real problem for mobile --> -->
+                                 <span class="card-title"><i class="material-icons right">close</i></span>
                             <div class="card-reveal-details">
                                     <div class="card-reveal-title">{{saga.sagaTitle}}</div>
                                     <br>
@@ -59,13 +59,13 @@
                     </div>
                 {% endfor %}
             </div>
-        <!-- <div class="paginatePage-block center-align"> 
+        <div class="paginatePage-block center-align"> 
             <a class="paginatePage-item" href="{{ url_for('tester', page = 1) }}"><i class="material-icons">fast_rewind</i></a>
             <a class="paginatePage-item" href="{{ url_for('tester', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
             <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{total_pages}} </a>
             <a class="paginatePage-item" href="{{ url_for('tester', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
             <a class="paginatePage-item" href="{{ url_for('tester', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
-        </div> -->
+        </div>
             
 </div>
       
