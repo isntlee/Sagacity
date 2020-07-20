@@ -190,7 +190,31 @@ section > div > div > div > p::first-letter {
     padding-right: 50px;
     color: #FF9F00;
     font-weight: 500;
-    text-align: right;
+}
+
+.select-wrapper input.select-dropdown {
+    border-bottom: transparent;
+    color: #FF9F00;
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+#sortList_second {
+    border-bottom: transparent;
+    color: #FF9F00;
+    font-weight: 500;
+    font-size: 20px;
+    width: 10vw;
+}
+
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: transparent;
+}
+
+.select-wrapper .caret {
+    fill: #FF9F00;
+    padding-top: 10px;
 }
 
 .paginatePage-block {
