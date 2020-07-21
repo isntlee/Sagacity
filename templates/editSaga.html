@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} 
 {% block content %}
 
@@ -7,38 +8,56 @@
                 <form action="{{ url_for('updateSaga', saga_id=saga._id) }}" method="POST" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                    <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" autocomplete="off"  required>
+                    <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" autocomplete="off">
                     <label for="title">Title</label>
                     </div>
                     <div class="input-field col s12">
-                    <input id="sagaTagline" name="sagaTagline" type="text" class="validate" value="{{saga.sagaTagline}}" autocomplete="off" >
+                    <input id="sagaTagline" name="sagaTagline" type="text" class="validate" value="{{saga.sagaTagline}}" autocomplete="off">
                     <label for="tagline">Tagline</label>
                     </div>
                 </div>
                     <div class="row">
                         <div class="input-field col s12">
-                        <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" value="{{saga.sagaImage}}" autocomplete="off" > 
+                        <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" value="{{saga.sagaImage}}" autocomplete="off"> 
                         <!--Might be someway to include a responsive tag here,
                         or in the code where the image would work-->
-                        <label for="image">Image</label>
+                        <label for="image">Main Image - paste link</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                        <textarea id="Intro" name="Intro" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Intro}}"></textarea>
+                            <input placeholder="https://yourURL..." id="contextImage" name="contextImage" type="text" class="validate"  value="{{saga.contextImage}}" autocomplete="off"> 
+                            <label  for="contextImage">Context/secondary Image</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Search in GoogleMaps, latitude after '@' in result URL " id="lat" name="lat" type="text" class="validate" value="{{saga.lat}}" autocomplete="off" >
+                            <label  for="lat">Latitude</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Number after latitude, e.g. ',-6.23535,'" id="lng" name="lng" type="text" class="validate" value="{{saga.lng}}" autocomplete="off" >
+                            <label  for="lng">Longitude</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <textarea id="intro" name="intro" type="text" class="materialize-textarea validate" value="{{saga.intro}}" autocomplete="off">{{saga.intro}}</textarea>
                         <label for="intro">Intro</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                        <textarea id="Body" name="Body" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Body}}"></textarea>
-                        <label for="intro">Body</label>
+                        <textarea id="body" name="body" type="text" class="materialize-textarea validate" value="{{saga.body}}" autocomplete="off">{{saga.body}}</textarea>
+                        <label for="body">Body</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                        <textarea id="Conclusion" name="Conclusion" type="text" class="materialize-textarea validate" data-length="120" value="{{saga.Conclusion}}"></textarea>
-                        <label for="intro">Conclusion</label>
+                        <textarea id="conclusion" name="conclusion" type="text" class="materialize-textarea validate" value="{{saga.conclusion}}" autocomplete="off">{{saga.conclusion}}</textarea>
+                        <label for="conclusion">Conclusion</label>
                         </div>
                     </div> 
                     <!-- Seems the jquery just isn't coming through on this one-->
@@ -47,7 +66,7 @@
                             <select  id="siteName" name="siteName">
                                 <option value="" disabled selected>Location</option>
                                 {% for site in sagaSite %}
-                                <option value="{{site.siteName}}">{{site.siteName}}</option>
+                                <option value="{{site.siteName}}" autocomplete="off">{{site.siteName}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -57,14 +76,13 @@
                             <select id="eraName" name="eraName">
                                 <option value="" disabled selected >Era</option>
                                 {% for era in sagaEra %}
-                                <option value="{{era.eraName}}">{{era.eraName}}</option>
+                                <option value="{{era.eraName}}" autocomplete="off">{{era.eraName}}</option>
                                 {% endfor %}
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn waves-orange waves-light" type="submit" name="action">Edit Saga
-                            <i class="material-icons right">send</i>
+                        <button class="btn waves-effect waves-orange" type="submit" name="action">Edit Saga
                         </button>
                     </div>
                 </form>

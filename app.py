@@ -60,9 +60,8 @@ def showSagas(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
-    sagaChoice = ('totalLikes', -1)
-    all_sagas = sagas.find()
-    count_sagas = all_sagas.count()
+    sagaChoice = ('_id', -1)
+    count_sagas = sagas.count_documents({})
     current_saga = (int(page) * limit) - (limit - 1)
     total_pages = int(math.ceil(count_sagas/limit))
 
@@ -74,7 +73,7 @@ def showSagas(page):
         b = requestChoice[1]
         sagaChoice = (a[2:-2], int(b[:-1]))
     else:
-        print("Initial Nonetype value")
+        print("Entries page loading...")
 
     if int(page) > 1:
         prev_page = int(page) - 1
@@ -105,12 +104,12 @@ def mySagas(page):
         {'authorName': username}).sort(
             [('_id', pymongo.DESCENDING)]
         )
-    print(my_sagas)
     count_my_sagas = my_sagas.count()
+    # Can't replace count with count_documents here, too awkward
 
     limit = 6
     offset = (int(page) - 1) * limit
-    sagaChoice = ('totalLikes', -1)
+    sagaChoice = ('_id', -1)
     current_saga = (int(page) * limit) - (limit - 1)
     my_total_pages = int(math.ceil(count_my_sagas/limit))
     requested = request.form.get("FromHTMLchoice")
@@ -121,7 +120,7 @@ def mySagas(page):
         b = requestChoice[1]
         sagaChoice = (a[2:-2], int(b[:-1]))
     else:
-        print("Initial Nonetype value")
+        print("Entries page loading...")
 
     if int(page) > 1:
         prev_page = int(page) - 1
@@ -158,9 +157,9 @@ def addSaga():
 @app.route('/insertSaga', methods=['POST'])
 def insertSaga():
 
-    Intro = request.form.get('Intro')
-    Body = request.form.get('Body')
-    Conclusion = request.form.get('Conclusion')
+    Intro = request.form.get('intro')
+    Body = request.form.get('body')
+    Conclusion = request.form.get('conclusion')
     words = (Intro + Body + Conclusion).split(" ")
     wordCount = len(words)
     readingTime = math.ceil(wordCount/200)
@@ -173,9 +172,9 @@ def insertSaga():
         'contextImage': request.form.get('contextImage'),
         'lat': request.form.get('lat'),
         'lng': request.form.get('lng'),
-        'Intro': request.form.get('Intro'),
-        'Body': request.form.get('Body'),
-        'Conclusion': request.form.get('Conclusion'),
+        'intro': request.form.get('intro'),
+        'body': request.form.get('body'),
+        'conclusion': request.form.get('conclusion'),
         'eraName': request.form.get('eraName'),
         'siteName': request.form.get('siteName'),
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
@@ -203,25 +202,42 @@ def editSaga(saga_id):
 
 @app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
+
+    Intro = request.form.get('intro')
+    Body = request.form.get('body')
+    Conclusion = request.form.get('conclusion')
+    words = (Intro + Body + Conclusion).split(" ")
+    wordCount = len(words)
+    readingTime = math.ceil(wordCount/200)
+
     sagas.update({'_id': ObjectId(saga_id)}, {
 
         'sagaTitle': request.form.get('sagaTitle'),
         'sagaTagline': request.form.get('sagaTagline'),
-        'userName': request.form.get('userName'),
         'sagaImage': request.form.get('sagaImage'),
-        'Intro': request.form.get('Intro'),
-        'Body': request.form.get('Body'),
-        'Conclusion': request.form.get('Conclusion'),
+        'contextImage': request.form.get('contextImage'),
+        'lat': request.form.get('lat'),
+        'lng': request.form.get('lng'),
+        'intro': request.form.get('intro'),
+        'body': request.form.get('body'),
+        'conclusion': request.form.get('conclusion'),
         'eraName': request.form.get('eraName'),
-        'siteName': request.form.get('siteName')
+        'siteName': request.form.get('siteName'),
+        'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
+        'dateCard': datetime.today().strftime('%B %d, %Y'),
+        'authorName': session['username'],
+        # This'll be a future problem, 'username' and 'authorname' confusion
+        'wordCount': wordCount,
+        'readingTime': readingTime,
+        # 'totalLikes': request.form.get('totalLikes'),
 
     })
-    return redirect(url_for('showSagas'))
+    return redirect(url_for('showSagas', page=1))
 
 
 @app.route('/deleteSaga/<saga_id>')
 def deleteSaga(saga_id):
-    sagas.remove({'_id': ObjectId(saga_id)}),
+    sagas.delete_one({'_id': ObjectId(saga_id)}),
     return redirect(url_for('showSagas', page=1))
 
 
