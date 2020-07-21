@@ -1,12 +1,23 @@
 {% extends 'base.html' %} 
-
 {% block content %}
 
-<!-- Displaying {{count_my_sagas}} Sagas(s). 
-<p>Total pages = {{my_total_pages}}</p>
-
     <div class = "container">
-        <h5 class="fullPage-title">My Sagas</h5>
+        <div class="row">
+            <h5 class="col s10  fullPage-title">My Sagas</h5>
+            <form class="form-inline" id="sortList_first" method="POST" action="{{ url_for('mySagas', page=1) }}">
+                <div class="col s2 form-group">
+                    <div class="input-group" id="sortList_second">
+                            <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
+                                <option value="" disabled selected>Sort By</option>
+                                <option value="('totalLikes', -1)">Likes</option>
+                                <option value="('totalLikes', 1)">Dislikes</option>
+                                <option value="('_id', -1)">Most_Recent</option>
+                                <option value="('_id', 1)">Least_Recent</option>
+                            </select>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="row">
             {% for saga in my_sagas_pages %}
                 <div class="col s12 m6 l4">
@@ -45,5 +56,14 @@
                 </div>
             {% endfor %}
         </div>
-    </div> -->
+         <div class="paginatePage-block center-align"> 
+            <a class="paginatePage-item" href="{{ url_for('mySagas', page = 1) }}"><i class="material-icons">fast_rewind</i></a>
+            <a class="paginatePage-item" href="{{ url_for('mySagas', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
+            <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{total_pages}} </a>
+            <a class="paginatePage-item" href="{{ url_for('mySagas', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
+            <a class="paginatePage-item" href="{{ url_for('mySagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
+        </div>
+    </div>
+
+        
 {% endblock %}

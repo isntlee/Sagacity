@@ -22,7 +22,6 @@ users = mongo.db.users
 sagas = mongo.db.sagas
 sagaEra = mongo.db.sagaEra
 sagaSite = mongo.db.sagaSite
-# sagaMap = mongo.db.searchMap
 
 
 @app.route('/')
@@ -30,23 +29,6 @@ sagaSite = mongo.db.sagaSite
 def home():
 
     return render_template('home.html', sagas=sagas.find())
-
-
-# @app.route('/searchMap/<saga_id>', methods=['POST', 'GET'])
-# def searchMap(saga_id):
-#     searchMapSaga = sagas.find_one({"_id": ObjectId(saga_id)})
-#     searchMapCoOrds = {
-#         'lat': searchMapSaga['lat'],
-#         'lng': searchMapSaga['lng'],
-#         }
-
-#     print(searchMapCoOrds)
-#     sagaMap.insert_one(searchMapCoOrds)
-#     return render_template(
-#                             'home.html',
-#                             sagas=sagas.find(),
-#                             searchMapCoOrds=searchMapCoOrds
-#                             )
 
 
 @app.route('/fetch')
@@ -59,16 +41,6 @@ def fetch():
         return jsonify(sagaList)
 
 
-# @app.route('/fetchMap')
-# def fetchMap():
-#     if request.method == "GET":
-#         searchMapList = []
-#         for coOrds in (sagaMap.find()):
-#             coOrds['_id'] = str(coOrds['_id'])
-#             searchMapList.append(coOrds)
-#         return jsonify(searchMapList)
-
-
 # -------------------------- Handling Entries ------------------------------- #
 
 
@@ -79,11 +51,12 @@ def singleSaga(saga_id):
 
 
 # --------------------------------------------------------------------------- #
-# -------------------------- Tester Function  ------------------------------- #
+# --------------------------   Tester End  ---------------------------------- #
 # --------------------------------------------------------------------------- #
 
-@app.route('/tester/<page>', methods=['GET', 'POST'])
-def tester(page):
+
+@app.route('/showSagas/<page>', methods=['GET', 'POST'])
+def showSagas(page):
 
     limit = 6
     offset = (int(page) - 1) * limit
@@ -92,6 +65,7 @@ def tester(page):
     count_sagas = all_sagas.count()
     current_saga = (int(page) * limit) - (limit - 1)
     total_pages = int(math.ceil(count_sagas/limit))
+
     requested = request.form.get("FromHTMLchoice")
 
     if isinstance(requested, str):
@@ -116,56 +90,58 @@ def tester(page):
                             [sagaChoice]).skip(offset).limit(limit)
 
     return render_template(
-                "tester.html", current_saga=current_saga,
+                "showSagas.html", current_saga=current_saga,
                 count_sagas=count_sagas, total_pages=total_pages,
                 next_page=next_page, prev_page=prev_page, page=page,
                 requested=requested, sagas_pages=sagas_pages
                       )
 
 
-# --------------------------------------------------------------------------- #
-# --------------------------   Tester End  ---------------------------------- #
-# --------------------------------------------------------------------------- #
-
-
-@app.route('/showSagas/<page>')
-def showSagas(page):
-    all_sagas = sagas.find().sort([('_id', pymongo.DESCENDING)])
-    # count() to count_documents(), see below
-    count_sagas = all_sagas.count()
-    # goin to have to figure out what offset does actually
-    limit = 12
-    offset = (int(page) - 1) * limit
-    sagas_pages = sagas.find().sort(
-        [('_id', pymongo.DESCENDING)]).skip(offset).limit(limit)
-    total_pages = int(math.ceil(count_sagas/limit))
-
-    return render_template(
-                "showSagas.html",
-                sagas_pages=sagas_pages, count_sagas=count_sagas,
-                total_pages=total_pages, page=page)
-
-
-@app.route('/mySagas/<page>')
+@app.route('/mySagas/<page>', methods=['GET', 'POST'])
 def mySagas(page):
+
     username = session.get('username')
     my_sagas = sagas.find(
         {'authorName': username}).sort(
             [('_id', pymongo.DESCENDING)]
         )
+    print(my_sagas)
     count_my_sagas = my_sagas.count()
-    limit = 12
+
+    limit = 6
     offset = (int(page) - 1) * limit
-    # All the changes to be made for showSagas, must be made here
-    my_sagas_pages = my_sagas.skip(offset).limit(limit)
+    sagaChoice = ('totalLikes', -1)
+    current_saga = (int(page) * limit) - (limit - 1)
     my_total_pages = int(math.ceil(count_my_sagas/limit))
+    requested = request.form.get("FromHTMLchoice")
+
+    if isinstance(requested, str):
+        requestChoice = requested.split()
+        a = requestChoice[0]
+        b = requestChoice[1]
+        sagaChoice = (a[2:-2], int(b[:-1]))
+    else:
+        print("Initial Nonetype value")
+
+    if int(page) > 1:
+        prev_page = int(page) - 1
+    else:
+        prev_page = page
+
+    if int(page) < my_total_pages:
+        next_page = int(page) + 1
+    else:
+        next_page = page
+
+    my_sagas_pages = my_sagas.sort(
+                            [sagaChoice]).skip(offset).limit(limit)
 
     return render_template(
-                "mySagas.html",
-                my_sagas_pages=my_sagas_pages, count_my_sagas=count_my_sagas,
-                username=username, my_total_pages=my_total_pages, page=page
-                )
-
+                "mySagas.html", current_saga=current_saga,
+                count_my_sagas=count_my_sagas, my_total_pages=my_total_pages,
+                next_page=next_page, prev_page=prev_page, page=page,
+                requested=requested, my_sagas_pages=my_sagas_pages
+                      )
 
 # ----------------------------------- Add ------------------------------------#
 
@@ -315,25 +291,24 @@ def register():
 @app.route('/sagaSearch', methods=["POST"])
 def sagaSearch():
     if request.method == 'POST':
-        search = request.form.to_dict().get('sagaSearch-sagaTitle')
-        result = []
-        print(search)
 
+        result = []
+        search = request.form.to_dict().get('sagaSearch-sagaTitle')
         collection = mongo.db.sagas
         collection.create_index([('sagaTitle', 'text')])
         # the index searched is just the titles
         answer = collection.find({'$text': {'$search': search}},
                                  {'$score': {'$meta': "textScore"}}
                                  )
-
         for i in answer:
             result.append(i)
+
+        searchResult = result
+
         # There has to be some way to increase the accuracy of results
-        print(result)
-        return render_template('sagaSearch.html', searchedSagas=result)
+        return render_template('sagaSearch.html', searchedSagas=searchResult)
 
     return redirect(url_for('home'))
-
 
 # ------------------------------ Likes/Ratings -------------------------------#
 
