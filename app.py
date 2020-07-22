@@ -206,6 +206,11 @@ def updateSaga(saga_id):
     Intro = request.form.get('intro')
     Body = request.form.get('body')
     Conclusion = request.form.get('conclusion')
+    print("                                           ")
+    print("Testing here; let's figure this fucker out")
+    print("                                           ")
+    print("Fuck yeah")
+    print()
     words = (Intro + Body + Conclusion).split(" ")
     wordCount = len(words)
     readingTime = math.ceil(wordCount/200)
@@ -229,7 +234,7 @@ def updateSaga(saga_id):
         # This'll be a future problem, 'username' and 'authorname' confusion
         'wordCount': wordCount,
         'readingTime': readingTime,
-        # 'totalLikes': request.form.get('totalLikes'),
+        'totalLikes': request.form.get('totalLikes'),
 
     })
     return redirect(url_for('showSagas', page=1))

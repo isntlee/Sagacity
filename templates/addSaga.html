@@ -75,6 +75,7 @@
                 <div class="input-field col s12 ">
                     <select id="eraName" name="eraName" required>
                         <option  value="" disabled selected>Era</option>
+                        {% set origin = sagaEra.rewind() %}
                         {% for era in sagaEra %}
                         <option value="{{era.eraName}}">{{era.eraName}}</option>
                         {% endfor %}
