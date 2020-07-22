@@ -192,7 +192,7 @@ section > div > div > div > p::first-letter {
     font-weight: 500;
 }
 
-.select-wrapper input.select-dropdown {
+/* .select-wrapper input.select-dropdown {
     border-bottom: transparent;
     color: #FF9F00;
     font-weight: 500;
@@ -215,7 +215,7 @@ section > div > div > div > p::first-letter {
 .select-wrapper .caret {
     fill: #FF9F00;
     padding-top: 10px;
-}
+} */
 
 .paginatePage-block {
     padding-top: 10vh;
@@ -316,6 +316,10 @@ ul.dropdown-content.select-dropdown li span {
   color: #fafafa;
   margin-top: -1vh;
   float: left;
+}
+
+main { 
+  white-space: pre-wrap
 }
 
 #addSaga {

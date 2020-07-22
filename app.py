@@ -64,7 +64,6 @@ def showSagas(page):
     count_sagas = sagas.count_documents({})
     current_saga = (int(page) * limit) - (limit - 1)
     total_pages = int(math.ceil(count_sagas/limit))
-
     requested = request.form.get("FromHTMLchoice")
 
     if isinstance(requested, str):
@@ -206,11 +205,15 @@ def updateSaga(saga_id):
     Intro = request.form.get('intro')
     Body = request.form.get('body')
     Conclusion = request.form.get('conclusion')
-    print("                                           ")
-    print("Testing here; let's figure this fucker out")
-    print("                                           ")
-    print("Fuck yeah")
-    print()
+    likes = int(request.form.get('totalLikes'))
+
+    # Python testing print list
+    # print("                                           ")
+    # print("Testing here; let's figure this fucker out")
+    # print("                                           ")
+    # print()
+    # print(type())
+
     words = (Intro + Body + Conclusion).split(" ")
     wordCount = len(words)
     readingTime = math.ceil(wordCount/200)
@@ -234,7 +237,7 @@ def updateSaga(saga_id):
         # This'll be a future problem, 'username' and 'authorname' confusion
         'wordCount': wordCount,
         'readingTime': readingTime,
-        'totalLikes': request.form.get('totalLikes'),
+        'totalLikes': likes,
 
     })
     return redirect(url_for('showSagas', page=1))

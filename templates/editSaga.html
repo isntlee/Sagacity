@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                         <textarea id="conclusion" name="conclusion" type="text" class="materialize-textarea validate" value="{{saga.conclusion}}" autocomplete="off">{{saga.conclusion}}</textarea>
-                        <input hidden id="totalLikes" name="totalLikes" type="text" class="validate" value="{{saga.totalLikes}}" autocomplete="off">
+                        <input type="number" hidden id="totalLikes" name="totalLikes" class="validate" value="{{saga.totalLikes}}" autocomplete="off">
                         <label for="conclusion">Conclusion</label>
                         </div>
                     </div> 
@@ -65,7 +65,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                                 <select  id="siteName" name="siteName">
-                                <option value="" disabled selected>{{saga.siteName}}</option>
+                                <option class="editSaga_initialOption" value="{{saga.siteName}}">{{saga.siteName}}</option>
                                 <option value="Northside" autocomplete="off">Northside</option>
                                 <option value="Southside" autocomplete="off">Southside</option>
                                 <option value="Culchies" autocomplete="off">Culchies</option>
@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select  id="eraName" name="eraName">
-                                <option value="" disabled selected>{{saga.eraName}}</option>
+                                <option class="editSaga_initialOption" value="{{saga.eraName}}">{{saga.eraName}}</option>
                                 <option value="Pre-Vikings" autocomplete="off">Pre-Vikings</option>
                                 <option value="The Brits2" autocomplete="off">The Brits2</option>
                                 <option value="Free at last" autocomplete="off">Free at last</option>
