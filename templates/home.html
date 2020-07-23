@@ -24,14 +24,6 @@
             fetchFunction(data);
         })
         .catch(err => console.log(err));
-    
-
-    // fetch('/fetchMap')
-    //     .then(response => response.json())
-    //     .then(data => { 
-    //         fetchFunction(dataMap);
-    //     })
-    //     .catch(err => console.log(err));
 
 
     function fetchFunction(data) {
@@ -162,6 +154,6 @@
 
     <div class="container" id="map"></div>
 
-    <div id="selectordiv">true</div>
+    <div hidden id="selectordiv">true</div>
 
 {% endblock %}

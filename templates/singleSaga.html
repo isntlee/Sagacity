@@ -1,68 +1,68 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-
+<div class = "singleSaga_container" id="singleSaga_css">
         <div class="row">
             <div class="col s12 m12">
-                <h3>{{saga.sagaTitle}}</h3><br>
-                <h6>{{saga.authorName}}</h6>
+                <br><br>
+                <h6>Stories: {{saga.eraName}}, {{saga.siteName}}</h6>
+                <h2>{{saga.sagaTitle}}</h2>
+                <h6>{{saga.dateFull}} by {{saga.authorName}}</h6>
+                <br><br>
             </div>
-            <div class="row">
-            
-                    <div class="col s12 m12">
-                        <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
-
-                        {% if session.username %}
-                            <a href="/liked/{{saga._id}}" onclick="changeColor_liked()"><i class="las la-arrow-circle-up" id="up-arrow-liked-inSession" ></i></a> 
-                            {{saga.totalLikes}}
-                            <a href="/disliked/{{saga._id}}" onclick="changeColor_disliked()"><i class="las la-arrow-circle-down" id="down-arrow-disliked-inSession" ></i></a>
-                            <!-- There should be the failure condition built in here -->
-                        {% else %}
-                            <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
-                            {{saga.totalLikes}}
-                            <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
-                        {% endif %}
-
-                        <p><h6>{{saga.sagaTagline}}</h6></p><br>
-                        <p><h6>{{saga.dateFull}}</h6></p><br>
-                        <h6>{{saga.eraName}}{{saga.siteName}}</h6>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <img src="{{saga.sagaImage}}" alt="{{saga.sagaImage}}}" style="width:100%;">
             </div>
-                <div class="row">
-                    <div class="col s12 m12">
-                        <h5><main>{{saga.intro}}</main></h5><br>
-                            <br>
-                    </div> 
-                </div>
-                
-                    <!-- There's going to be an option to add another photograph here -->
-                <div class="row">
-                    <div class="col s12 m12">
-                        <h5><main>{{saga.body}}</main></h5><br>
-                            <br>
-                    </div> 
-                </div>
-                <div class="row">
-                    <div class="col s12 m12">
-                        <img src="{{saga.sagaImage2nd}}" alt="" style="width:100%;">
-                        <!-- There should be the failure condition built in here -->
-                        <p><h6>{{saga.sagaImage2ndTagline}}</h6></p><br>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m12">
-                        <h5><main>{{saga.conclusion}}</main></h5><br>
-                            <br>
-                    </div> 
-                </div>
-                {% if saga.authorName == session.username %}
-                <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Delete</a>
-                <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Edit</a>
+        <div>
+        <div class="row">
+            <div class="col s6">
+                {% if session.username %}
+                    <a href="/liked/{{saga._id}}" onclick="changeColor_liked()"><i class="las la-arrow-circle-up" id="up-arrow-liked-inSession" ></i></a> 
+                    {{saga.totalLikes}}
+                    <a href="/disliked/{{saga._id}}" onclick="changeColor_disliked()"><i class="las la-arrow-circle-down" id="down-arrow-disliked-inSession" ></i></a>
+                    <!-- There should be the failure condition built in here -->
+                {% else %}
+                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                    {{saga.totalLikes}}
+                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
                 {% endif %}
-                <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Find on map</a>
-             </div>
+            </div>
+        </div>
+        <div class="row singleSaga_firstLetter">
+            <div class="main_textBlock col s12 m12">
+                <h5><main><p>{{saga.intro}}</p></main></h5>
+                <h5><b>"{{saga.sagaTagline}}"</b></h5>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="main_textBlock col s12 m12">
+                <h5><main>{{saga.body}}</main></h5><br>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <img src="{{saga.contextImage}}" alt="" style="width:100%;">
+                <!-- There should be the failure condition built in here -->
+            </div>
+        </div>
+        <div class="row singleSaga_firstLetter">
+            <div class="main_textBlock col s12 m12">
+                <h5><main><p>{{saga.conclusion}}</p></main></h5>
+                <br>
+                <h6>By {{saga.authorName}}, contributor to Sagacity</h6>
+                <br><br>
+            </div> 
+        </div>
+        {% if saga.authorName == session.username %}
+        <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Delete</a>
+        <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Edit</a>
+        {% endif %}
+        <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Find on map</a>
+        </div>
 
         <!-- Consider four additions; first, two randomly selected display cards at the very bottom of the page.
             Also figure out how to enlargen the first letter of Intro. And the sharing buttons (obvs)  -->
-        
+    </div>    
 {% endblock %}

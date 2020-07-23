@@ -27,8 +27,6 @@ body {
     border-bottom: none;
     }
 
-
-
 #background-image{
     background: url(../images/NewYorkSunset.jpg);
     background-size: cover;
@@ -145,6 +143,40 @@ body {
 section > div > div > div > p::first-letter {
     font-size: 110%;
     color: #FF9F00;
+}
+
+.singleSaga_container {
+    margin: 0 auto;
+    width: 60%;
+}
+
+#singleSaga_css {
+    font-family: "Roboto";
+    color: #505050;
+}
+
+/* .singleSaga_firstLetter > div > h5 > main > p::first-letter {
+    float: left;
+    font-size: 390%;
+    margin-top: -.5em;
+    margin-bottom: -.75em;
+    font-weight:thin;
+    color: #FF9F00;
+} */
+
+h5 > main {
+  font-size: 21.5px;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: lighter;
+}
+
+main { 
+    line-height: 1.75;
+    word-spacing: 1.75;
+     
 }
 
 .navbar-icons {
