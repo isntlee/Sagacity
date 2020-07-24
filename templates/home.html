@@ -9,6 +9,7 @@
         center: { lat: 53.323543, lng: -6.265295},
         zoom: 14,
         mapTypeControl: true,
+        gestureHandling: 'greedy',
         mapTypeControlOptions: {
           mapTypeIds: [
             google.maps.MapTypeId.ROADMAP,
@@ -33,6 +34,7 @@
         var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
         var markerName = data[i].sagaTitle; 
         var mapImage = '"'+data[i].sagaImage+'"';
+        var tagline = data[i].sagaTagline;
         var id = (data[i]._id);
         var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
         var singleSagaLink = fullSaga.concat(id)
@@ -41,13 +43,17 @@
                 '<div id="iw-container">' +
                     '<div class="iw-title">'+data[i].sagaTitle+'</div>' +
                     '<div class="iw-content">' +
-                        '<div class="iw-subTitle">Subtitle</div>' +
+                        '<p>Era: '+data[i].eraName+'</p>' +
                         '<img src='+mapImage+'/>' +
-                        '<p>Icon -'+data[i].eraName+'</p>' + '<p>'+data[i].readingTime+'</p>'+
-                        '<a href='+singleSagaLink+'>Full-page Reader</a>' +
-                        '<p>'+data[i].Intro+'</p>' +
-                        '<div class="iw-subTitle">Subtitle</div>' +
-                        '<a href="'+singleSagaLink+'">Link</a>'+
+                        '<p>Read Time: '+data[i].readingTime+' mins</p>'+
+                        '<a class="infocontent_aLink" href='+singleSagaLink+'>Full-page Reader</a>' +
+                        '<p>'+data[i].intro+'</p>'+
+                        '<p><b>'+tagline+'</b></p>'+
+                        '<p>'+data[i].body+'</p>'+
+                        '<p>'+data[i].conclusion+'</p>'+
+                        // '<div class="iw-subTitle">Subtitle</div>' +
+                        '<a class="infocontent_aLink" href="'+singleSagaLink+'">Full-page Entry</a>'+
+                        '<p>By '+data[i].authorName+', contributor to Sagacity</p>'+
                         '<p><br>'+
                         '<br></p>'+
                     '</div>' +
@@ -57,7 +63,7 @@
 
         var markerIcon = {
         path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-        fillColor: '#FF9F00',
+        fillColor: '#FFA400',
         fillOpacity: 0.95,
         scale: 1.7,
         strokeColor: '#fff',

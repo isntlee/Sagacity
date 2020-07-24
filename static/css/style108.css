@@ -147,12 +147,16 @@ section > div > div > div > p::first-letter {
 
 .singleSaga_container {
     margin: 0 auto;
-    width: 60%;
+    width: 65%;
 }
 
 #singleSaga_css {
     font-family: "Roboto";
     color: #505050;
+}
+
+.sagaTitle_details {
+    color: rgb(240, 148, 0);
 }
 
 /* .singleSaga_firstLetter > div > h5 > main > p::first-letter {
@@ -165,7 +169,7 @@ section > div > div > div > p::first-letter {
 } */
 
 h5 > main {
-  font-size: 21.5px;
+  font-size: 21px;
   margin-top: 1.67em;
   margin-bottom: 1.67em;
   margin-left: 0;
@@ -388,13 +392,18 @@ main {
 #iw-container {
 	margin-bottom: 10px;
 }
+
+.infocontent_aLink {
+    color: #FF9F00;
+}
+
 #iw-container .iw-title {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 22px;
-	font-weight: 400;
+	font-weight: bolder;
 	padding: 10px;
-	background-color: #48b5e9;
-	color: white;
+	background-color: white;
+	color:  rgb(240, 148, 0);
 	margin: 0;
 	border-radius: 2px 2px 0 0;
 }
@@ -403,14 +412,14 @@ main {
 	line-height: 18px;
 	font-weight: 400;
 	margin-right: 1px;
-	padding: 15px 5px 20px 15px;
+	padding: 10px 5px 15px 15px;
 	max-height: 30vh;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 .iw-content img {
 	width: 100%;
-	margin: 0 5px 5px 10px;	
+	margin: 0 5px 5px -2px;	
 }
 .iw-subTitle {
 	font-size: 16px;
