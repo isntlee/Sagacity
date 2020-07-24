@@ -4,17 +4,17 @@
 
     <div class = "container">
         <div class="row">
-            <h5 class="col s10  fullPage-title">Sagas</h5>
+            <h5 class="col s8 m9 l10 fullPage-title">Sagas</h5>
             <form class="form-inline" id="sortList_first" method="POST" action="{{ url_for('showSagas', page=1) }}">
-                <div class="col s2 form-group">
+                <div class="col s4 m3 l2 form-group">
                     <div class="input-group" id="sortList_second">
-                            <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
-                                <option value="" disabled selected>Sort By</option>
-                                <option value="('totalLikes', -1)">Likes</option>
-                                <option value="('totalLikes', 1)">Dislikes</option>
-                                <option value="('_id', -1)">Most_Recent</option>
-                                <option value="('_id', 1)">Least_Recent</option>
-                            </select>
+                        <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
+                            <option value="" disabled selected>Sort By</option>
+                            <option value="('totalLikes', -1)">Likes</option>
+                            <option value="('totalLikes', 1)">Dislikes</option>
+                            <option value="('_id', -1)">Latest</option>
+                            <option value="('_id', 1)">Earliest</option>
+                        </select>
                     </div>
                 </div>
             </form>
@@ -38,7 +38,7 @@
                         
                         <div class="card-reveal">
                         <!-- Hover could be a real problem for mobile -->
-                            <span><i class="material-icons right">close</i></span>
+                            <span class="card-title"><i class="material-icons right">close</i></span>
                            <div class="card-reveal-details">
                                 <br><br>
                                 <div class="card-reveal-title">{{saga.sagaTitle}}</div>
@@ -63,6 +63,7 @@
             <a class="paginatePage-item" href="{{ url_for('showSagas', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
             <a class="paginatePage-item" href="{{ url_for('showSagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
         </div>
+        <br><br><br><br>
     </div>
 
         

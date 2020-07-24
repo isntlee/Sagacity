@@ -17,16 +17,16 @@
             </div>
         <div>
         <div class="row">
-            <div class="col s6">
+            <div class="col s6" id="singleSaga-arrow" >
                 {% if session.username %}
                     <a href="/liked/{{saga._id}}" onclick="changeColor_liked()"><i class="las la-arrow-circle-up" id="up-arrow-liked-inSession" ></i></a> 
                     {{saga.totalLikes}}
                     <a href="/disliked/{{saga._id}}" onclick="changeColor_disliked()"><i class="las la-arrow-circle-down" id="down-arrow-disliked-inSession" ></i></a>
                     <!-- There should be the failure condition built in here -->
                 {% else %}
-                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up"></i></a> 
                     {{saga.totalLikes}}
-                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+                    <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-down"></i></a>
                 {% endif %}
             </div>
         </div>
