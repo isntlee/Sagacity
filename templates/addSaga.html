@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <textarea id="intro" name="intro" class="materialize-textarea" data-length="350" required></textarea>
+                <textarea id="intro" name="intro" class="materialize-textarea" data-length="350"></textarea>
                 <label  for="intro">Intro</label>
                 </div>
             </div>
@@ -57,13 +57,13 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 ">
-                <textarea id="conclusion" name="conclusion" class="materialize-textarea" required></textarea>
+                <textarea id="conclusion" name="conclusion" class="materialize-textarea"></textarea>
                 <label  for="conclusion">Conclusion</label>
                 </div>
             </div> 
             <div class="row">
                 <div class="input-field col s12 ">
-                    <select id="siteName" name="siteName" required>
+                    <select id="siteName" name="siteName">
                         <option  value="" disabled selected>Location</option>
                         {% for site in sagaSite %}
                         <option value="{{site.siteName}}">{{site.siteName}}</option>
@@ -73,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 ">
-                    <select id="eraName" name="eraName" required>
+                    <select id="eraName" name="eraName">
                         <option  value="" disabled selected>Era</option>
                         {% set origin = sagaEra.rewind() %}
                         {% for era in sagaEra %}

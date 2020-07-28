@@ -22,9 +22,13 @@ body {
     box-shadow: none;
 }
 
+nav .input-field label {
+    top: -6px; 
+}
+
 /* label .material-icons .navbar-icons {
     vertical-align: -8px; */
-}
+
 
 .input-field input[type="search"]:not([readonly]),
 .input-field input[type="search"]:focus:not([readonly]) {
@@ -236,6 +240,7 @@ main {
     color: #FF9F00;
     font-weight: 500;
     font-size: 20px;
+    margin-top: 8px;
 } 
 
 #sortList_second {
@@ -505,6 +510,7 @@ main {
 .la-arrow-circle-up{
 color:#B2BEB5;
 font-size: 30px;
+margin-top: 3px;
 }
 
 .la-arrow-circle-up:hover {
@@ -512,11 +518,13 @@ color:#cd5c5c;
 font-size:30px;
 opacity: 0.8;
 transition: 0.5s;
+margin-top: 3px;
 }
 
 .la-arrow-circle-down {
 color:#B2BEB5;
 font-size: 30px;
+margin-top: 3px;
 }
 
 .la-arrow-circle-down:hover {
@@ -524,6 +532,7 @@ color:#76ABDF;
 font-size:30px;
 opacity: 0.9;
 transition: 0.5s;
+margin-top: 3px;
 }
 
 #singleSaga-arrow .la-arrow-circle-up {
