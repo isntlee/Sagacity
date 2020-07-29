@@ -179,7 +179,6 @@ def insertSaga():
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
-        # This'll be a future problem, 'username' and 'authorname' confusion
         'wordCount': wordCount,
         'readingTime': readingTime,
         'totalLikes': 0,
@@ -207,13 +206,6 @@ def updateSaga(saga_id):
     Conclusion = request.form.get('conclusion')
     likes = int(request.form.get('totalLikes'))
 
-    # Python testing print list
-    # print("                                           ")
-    # print("Testing here; let's figure this fucker out")
-    # print("                                           ")
-    # print()
-    # print(type())
-
     words = (Intro + Body + Conclusion).split(" ")
     wordCount = len(words)
     readingTime = math.ceil(wordCount/200)
@@ -234,7 +226,6 @@ def updateSaga(saga_id):
         'dateFull': datetime.today().strftime('%A, %B %d, %Y'),
         'dateCard': datetime.today().strftime('%B %d, %Y'),
         'authorName': session['username'],
-        # This'll be a future problem, 'username' and 'authorname' confusion
         'wordCount': wordCount,
         'readingTime': readingTime,
         'totalLikes': likes,
@@ -324,12 +315,12 @@ def sagaSearch():
         answer = collection.find({'$text': {'$search': search}},
                                  {'$score': {'$meta': "textScore"}}
                                  )
+
         for i in answer:
             result.append(i)
 
         searchResult = result
 
-        # There has to be some way to increase the accuracy of results
         return render_template('sagaSearch.html', searchedSagas=searchResult)
 
     return redirect(url_for('home'))

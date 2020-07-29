@@ -13,8 +13,9 @@ body {
     border-bottom: none!important 
 }
 
-/* This (width - between search & search-focus) could be a happy compromise,
- text-indent on search-focus could be a problem */
+.brand-logo {
+    font-weight: 400;
+}
 
 #search:focus {
     width: 320px;
@@ -22,18 +23,79 @@ body {
     box-shadow: none;
 }
 
+.white {
+    background-color: #fafafa !important;
+}
+/* This (width - between search & search-focus) could be a happy compromise,
+ text-indent on search-focus could be a problem */
+
+
 nav .input-field label {
-    top: -6px; 
+    top: -6.5px; 
 }
 
-/* label .material-icons .navbar-icons {
-    vertical-align: -8px; */
+.sidenav {
+    width: 175px;
+    background-color: rgba(255, 255, 255, 0.95);
+}
 
+.sidenav li > a  {
+    height: 40px;
+    line-height: 48px;
+    padding: 0 32px 0 45px;
+    color: #FF9F00;
+    font-size: 20px;
+}
+
+.sidenav-overlay {
+    z-index: 1;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.sideNav_icons .input-field>label {
+    height: 40px;
+    line-height: 20px;
+    padding: 0 32px 0 45px;
+    color: #FF9F00;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 0px transparent;
+    box-shadow: 0px transparent;
+    -webkit-box-shadow: 0px transparent;
+    color: transparent;
+} */
+
+.sideNav_icons .input-field {
+    margin-top: 0px;
+}
 
 .input-field input[type="search"]:not([readonly]),
 .input-field input[type="search"]:focus:not([readonly]) {
     border-bottom: none;
-    }
+}
+
+input[type=text]:not(.browser-default) {
+    border-bottom: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: none;
+    color: #FF9F00;
+    font-weight: 400;
+    padding-left: 45px;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: transparent
+}
+
+/* .input-field>label:not(.label-icon).active {
+    color: transparent;
+} */
 
 #background-image{
     background: url(../images/NewYorkSunset.jpg);
@@ -293,7 +355,11 @@ ul.dropdown-content.select-dropdown li.disabled>span {
 
 ul.dropdown-content.select-dropdown li span {
     color: #FF9F00;
-}  
+} 
+
+ul.dropdown-content.select-dropdown li:first-of-type span {
+    color: #8a8a8a;
+}
 
 .btn {
 font-weight: 600;
@@ -452,7 +518,7 @@ main {
 	width: 350px !important;
 	top: 15px !important;
 	left: 0px !important;
-	background-color: #fff;
+	background-color: #fafafa;
 	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
 	border: 1px solid rgba(72, 181, 233, 0.6);
 	border-radius: 2px 2px 10px 10px;
@@ -467,10 +533,10 @@ main {
 
 #iw-container .iw-title {
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: bolder;
-	padding: 10px;
-	background-color: white;
+	padding: 10px 10px 0px 10px;
+	background-color: #fafafa;
 	color:  rgb(240, 148, 0);
 	margin: 0;
 	border-radius: 2px 2px 0 0;
@@ -505,7 +571,6 @@ main {
 	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
 }
-
 
 .la-arrow-circle-up{
 color:#B2BEB5;
@@ -549,4 +614,127 @@ font-size:45px;
 
 #singleSaga-arrow .la-arrow-circle-down:hover {
 font-size:45px;
+}
+
+
+
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 1.6em;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.resp-sharing-button__icon svg {
+  width: 1.6em;
+  height: 1.9em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Non solid icons get a stroke */
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+/* Solid icons get a fill */
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--reddit {
+  background-color: #5f99cf
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #FF5700;
+  border-color: #FF5700;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #FF4500;
+  border-color: #FF4500;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
 }
