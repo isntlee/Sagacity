@@ -18,6 +18,9 @@
                 </div>
             </form>
         </div>
+        {% if count_my_sagas == 0 %}
+        <br><br><h5 class="flash_message">&nbsp Doesn't seem you've added anything yet</h5>
+        {% else %}
         <div class="row">
             {% for saga in my_sagas_pages %}
                 <div class="col s12 m6 l4">
@@ -62,6 +65,7 @@
             <a class="paginatePage-item" href="{{ url_for('mySagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
         </div>
         <br><br><br><br>
+        {% endif %}
     </div>
 
         

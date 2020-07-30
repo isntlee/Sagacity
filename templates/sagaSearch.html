@@ -4,6 +4,9 @@
 
     <div class = "container">
         <h5 class="fullPage-title">&nbspSearch</h5>
+        {% if not searchedSagas %}
+            <br><br><h5 class="flash_message">&nbspNo results matched your search criteria</h5>
+        {% else %}
         <div class="row">
             {% for saga in searchedSagas %}
                 <div class="col s12 m6 l4">
@@ -43,4 +46,6 @@
             {% endfor %}
         </div>
     </div>
+    {%  endif %}
+
     {% endblock %}

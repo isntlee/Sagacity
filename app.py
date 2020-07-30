@@ -246,7 +246,6 @@ def deleteSaga(saga_id):
 @app.route('/login')
 def login():
     if 'username' in session:
-        flash('You are logged in as ' + session['username']),
         return render_template('home.html', users=mongo.db.users.find())
 
     return render_template('login.html', users=mongo.db.users.find())
@@ -255,7 +254,6 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username')
-    flash("And you're out...")
     return_url = request.referrer
 
     return redirect(return_url)
@@ -275,6 +273,7 @@ def logging():
             return redirect(url_for('home'))
 
     flash('Invalid username/password combination')
+    return redirect(url_for('login'))
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -293,9 +292,8 @@ def register():
                  'password': hashpass,
                  })
             session['username'] = request.form['username']
-            flash("Done, and done")
             return redirect(url_for('home'))
-        flash('That username already exists!')
+        flash('It seems that username is already taken')
 
     return render_template('register.html', users=mongo.db.users.find())
 
@@ -334,7 +332,7 @@ def liked(saga_id):
     likes = likes["totalLikes"] + 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": likes}})
-    # flash("Some message")
+
     return redirect(request.referrer)
 
 
@@ -344,7 +342,7 @@ def disliked(saga_id):
     dislikes = dislikes["totalLikes"] - 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": dislikes}})
-    # flash("Some message")
+
     return redirect(request.referrer)
 
 
