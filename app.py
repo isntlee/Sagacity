@@ -1,5 +1,6 @@
-import os,math
-from flask import Flask, render_template, redirect, request, url_for, session, abort, flash, jsonify, json
+import os
+import math
+from flask import Flask, render_template, redirect, request, url_for, session, flash, jsonify
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from datetime import datetime
@@ -254,9 +255,8 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username')
-    return_url = request.referrer
 
-    return redirect(return_url)
+    return redirect(url_for('home'))
 
 
 @app.route('/logging', methods=['POST', 'GET'])
@@ -343,12 +343,6 @@ def disliked(saga_id):
     sagas.update_one({'_id': ObjectId(saga_id)}, {
                                 "$set": {"totalLikes": dislikes}})
 
-    return redirect(request.referrer)
-
-
-@app.route('/flashed/<saga_id>', methods=['GET'])
-def flashed(saga_id):
-    flash("Some message")
     return redirect(request.referrer)
 
 
