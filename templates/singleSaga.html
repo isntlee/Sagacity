@@ -33,8 +33,6 @@
                 <h5><main><p>{{saga.intro}}</p></main></h5>
                 <h5><b>"{{saga.sagaTagline}}"</b></h5>
             </div> 
-        </div>
-        <div class="row">
             <div class="main_textBlock col s12 m12">
                 <h5><main>{{saga.body}}</main></h5><br>
             </div> 
@@ -56,10 +54,10 @@
         <div class="row">
             <div class= "col s8">
                 {% if saga.authorName == session.username %}
-                <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Delete</a>
-                <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Edit</a>
+                <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Delete</a>
+                <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Edit</a>
                 {% endif %}
-                <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="waves-effect waves-orange btn btn_small">Find on map</a>
+                <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Find on map</a>
             </div>
 
         <!-- This is not done by a mile, but first steps in place  -->

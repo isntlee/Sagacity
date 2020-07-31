@@ -6,15 +6,15 @@
     function initMap() {
       
       var options = { 
-        center: { lat: 53.323543, lng: -6.265295},
-        zoom: 14,
+        center: { lat: 53.34679, lng: -6.27346},
+        zoom: 15,
         mapTypeControl: true,
         gestureHandling: 'greedy',
         mapTypeControlOptions: {
           mapTypeIds: [
             google.maps.MapTypeId.ROADMAP,
             google.maps.MapTypeId.SATELLITE,
-          ],
+          ],  
         }
       };
 
@@ -61,9 +61,9 @@
 
         var markerIcon = {
         path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-        fillColor: '#FFA400',
-        fillOpacity: 0.95,
-        scale: 1.7,
+        fillColor: '#FFAD1A',
+        fillOpacity: 0.90,
+        scale: 1.95,
         strokeColor: '#fff',
         strokeWeight: 2.2,
         anchor: new google.maps.Point(8, 24)
@@ -107,14 +107,15 @@
 
 
  <section class="container" id="aboutUs">
+ <!-- PRETTY SURE THAT THIS IS A PROBLEM -->
  <!-- <div class="parallax-container">
     <div class="parallax">
         <img src="../static/images/Dots-experiment.png" alt="" class="responsive-img"> -->
         <div class="row">
-            <div class="col s12 l5 ">
+            <div class="col s12 m10 offset-m1 l5 ">
                 <img src="../static/images/MooreStreet.jpg" alt="" class="responsive-img materialboxed" data-caption="Moore St, and the finest butchers in the city">
             </div>
-            <div class="col s12 l6 offset-l1 aboutUs-both">
+            <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
                 <h2 class="aboutUs-intro">Cities are...</h2>
                 <div class="aboutUs-letters">
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -126,10 +127,10 @@
         </div>
         <br><br>
         <div class="row">
-            <div class="col s12 l6 push-l6">
+            <div class="col s12 m10 offset-m1 l6 push-l6">
                 <img src="../static/images/PhoenixParkDear.jpg" alt="" class="responsive-img materialboxed" data-caption="Some of the Phoenix Park locals">
             </div>
-            <div class="col s12 l5 pull-l6 right-align aboutUs-both">
+            <div class="col s12 m10 offset-m1 l5 pull-l6 right-align aboutUs-both">
                 <h2 class="aboutUs-intro">How to...</h2>
                 <div class="aboutUs-letters left-align">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -140,10 +141,10 @@
         </div>
         <br><br>
         <div class="row">
-            <div class="col s12 l5">
+            <div class="col s12 m10 offset-m1 l5">
                 <img src="../static/images/SingingMary.jpg" alt="" class="responsive-img materialboxed" data-caption="Holy Mary in an unfamilar spot, at College Green">
             </div>
-            <div class="col s12 l6 offset-l1 aboutUs-both">
+            <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
                 <h2 class="aboutUs-intro">About Us</h2>
                 <div class="aboutUs-letters">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -152,8 +153,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
   </section>
 
     <div class="container" id="map"></div>
