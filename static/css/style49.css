@@ -233,14 +233,14 @@ nav .input-field label {
 }
 
 .aboutUs-intro {
-    font-family:"Roboto";
+    font-family:'Roboto', sans-serif;
     /* font-size: 5vw; */
     font-weight: 500;
     color: #FF9F00;
 }
 
 .aboutUs-letters {
-    font-family:"Roboto";
+    font-family:'Roboto', sans-serif;
     /* font-size: 5vw; */
     font-weight: 400;
     color: #202020;
@@ -257,7 +257,7 @@ section > div > div > div > p::first-letter {
 }
 
 #singleSaga_css {
-    font-family: "Roboto";
+    font-family: 'Roboto', sans-serif;
     color: #505050;
 }
 
@@ -782,24 +782,31 @@ font-size:35px;
     width: 85%;
   } */
 
-  .singleSaga_container {
+   .singleSaga_container {
     width: 80%;
+    }
+
+    .card-image img {
+    height: 70vh;
     }  
 
-    h2 {
+    .singleSaga_container h2 {
     font-size: 44px;
     }
 
-    h5 main {
+    .singleSaga_container h5 main {
     font-size: 16px;
     }
 
-    h5 {
+    .singleSaga_container h5 {
     font-size: 17px;
     }
 
-    .singleSaga_button {
-    
+    .singleSaga_button.btn {
+    line-height: 30px;
+    font-size: 13px;
+    padding: 0 5px;
+    height: 30px;
     }
 }
 
@@ -813,7 +820,15 @@ font-size:35px;
 
     .singleSaga_container {
     width: 90%;
-    }  
+    } 
+
+    .card-image img {
+    height: 60vh;
+    } 
+
+    .singleSaga_firstLetter {
+    margin-top: -20px;
+    }
 
     .singleSaga_container h2 {
     font-size: 38px;
@@ -829,11 +844,12 @@ font-size:35px;
 
     .singleSaga_container h6 {
     font-size: 14px;
+    margin: 0 0 -14px 0;
     }
 
     .resp-sharing-button__icon svg {
-    width: 1em;
-    height: 1em;
+    width: .8em;
+    height: .8em;
     }
 
     .resp-sharing-button__link {
@@ -845,10 +861,44 @@ font-size:35px;
     }
 
     .singleSaga_button.btn {
-    line-height: 30px;
-    font-size: 12px;
-    padding: 0 7px;
-    height: 30px;
+    line-height: 25px;
+    font-size: 8px;
+    padding: 0 2.5px;
+    height: 25px;
     }
+}
 
+@media only screen and (max-width: 420px) {
+
+    @keyframes typing_1{ 
+   0% { width: 0vw;
+        opacity: 1;}
+  10% { width: 56vw;
+        opacity: 1;}
+  30% { width: 56vw;
+        opacity: 1;}     
+  47% { width: 56vw;
+        opacity: 1;}
+  50% { width: 56vw;
+        opacity: 0}
+  100%{ width: 56vw;
+        opacity: 0}
+}
+
+@keyframes typing_2{
+   0% { width: 0vw;
+        opacity: 0;}
+  50% { width: 0vw;
+        opacity: 0;}
+  51% { width: 0vw;
+        opacity: 1;}
+  70% { width: 81vw;
+        opacity: 1;}
+  85% { width: 81vw;
+        opacity: 1;}
+  98% { width: 81vw;
+        opacity: 0;}     
+  100%{ width: 81vw;
+        opacity: 0}}
+    
 }
