@@ -24,17 +24,17 @@ if (selectorvar == 'true'){
    
     $(document).scroll(function () {
         scroll_pos = $(this).scrollTop();
-        var width = $(window).width();
+        var height = $(window).height();
 
-        if (width >= 310) {
+        if (height >= 800) {
             
-            if (scroll_pos > 1000) {
+            if (scroll_pos > 700) {
                 $(".nav-wrapper").removeClass("visible").addClass("hidden");
                 $(".navbar-icons").removeClass("visible").addClass("hidden");
                 $(".sidenav-trigger").removeClass("visible").addClass("hidden");
             }
             
-            if (scroll_pos > 1200) {
+            if (scroll_pos > 900) {
                 $(".nav-wrapper").removeClass("hidden").addClass("visible");
                 $(".navbar-icons").removeClass("hidden").addClass("visible");
                 $(".sidenav-trigger").removeClass("hidden").addClass("visible");
@@ -43,7 +43,34 @@ if (selectorvar == 'true'){
                 $(".sidenav-trigger").css('color', '#FF9F00');
             }
 
-            if (scroll_pos < 250) {
+            if (scroll_pos < 300) {
+                $(".nav-wrapper").removeClass("hidden").addClass("visible");
+                $(".navbar-icons").removeClass("hidden").addClass("visible");
+                $(".sidenav-trigger").removeClass("hidden").addClass("visible");
+                $(".nav-wrapper").removeClass("white").addClass("transparent");
+                $(".navbar-icons").css('color', 'white');
+                $(".sidenav-trigger").css('color', 'white');
+            }
+        }
+
+        else if (height >= 500) {
+           
+            if (scroll_pos > 250) {
+                $(".nav-wrapper").removeClass("visible").addClass("hidden");
+                $(".navbar-icons").removeClass("visible").addClass("hidden");
+                $(".sidenav-trigger").removeClass("visible").addClass("hidden");
+            }
+            
+            if (scroll_pos > 550) {
+                $(".nav-wrapper").removeClass("hidden").addClass("visible");
+                $(".navbar-icons").removeClass("hidden").addClass("visible");
+                $(".sidenav-trigger").removeClass("hidden").addClass("visible");
+                $(".nav-wrapper").removeClass("transparent").addClass("white");
+                $(".navbar-icons").css('color', '#FF9F00');
+                $(".sidenav-trigger").css('color', '#FF9F00');
+            }
+
+            if (scroll_pos < 200) {
                 $(".nav-wrapper").removeClass("hidden").addClass("visible");
                 $(".navbar-icons").removeClass("hidden").addClass("visible");
                 $(".sidenav-trigger").removeClass("hidden").addClass("visible");
