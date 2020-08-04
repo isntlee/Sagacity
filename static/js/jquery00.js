@@ -6,7 +6,6 @@ $(document).ready(function () {
       });
       $('.materialboxed').materialbox();
       $('textarea#intro').characterCounter();
-      $('.parallax').parallax();
 });
  
       

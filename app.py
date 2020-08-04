@@ -36,7 +36,7 @@ def home():
 def fetch():
     if request.method == "GET":
         sagaList = []
-        for saga in (sagas.find()):
+        for saga in (sagas.find().sort('totalLikes', -1).limit(20)):
             saga['_id'] = str(saga['_id'])
             sagaList.append(saga)
         return jsonify(sagaList)
@@ -344,6 +344,16 @@ def disliked(saga_id):
                                 "$set": {"totalLikes": dislikes}})
 
     return redirect(request.referrer)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def somethings_wrong(error):
+    return render_template('500.html'), 500
 
 
 if __name__ == '__main__':

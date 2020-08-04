@@ -212,6 +212,19 @@ nav .input-field label {
     text-align: left;
 }
 
+.search_message {
+    color: #FF9F00;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.searchPage-title {
+    color: #FF9F00;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10px;
+}
 .slightly_grayer {
     color: #606060;
 }
@@ -220,18 +233,6 @@ nav .input-field label {
     margin-top: 4px;
     padding-right: -2px;
 }
-
-/*.parallax{
-
-  background-image: url("Dots.png");
-
-  height: 100%;
-
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 #aboutUs{
     /* background: url(../images/);
@@ -246,14 +247,14 @@ nav .input-field label {
 }
 
 .aboutUs-intro {
-    font-family:'Roboto', sans-serif;
+    font-family:"Roboto", sans-serif;
     /* font-size: 5vw; */
     font-weight: 500;
     color: #FF9F00;
 }
 
 .aboutUs-letters {
-    font-family:'Roboto', sans-serif;
+    font-family:"Roboto", sans-serif;
     /* font-size: 5vw; */
     font-weight: 400;
     color: #202020;
@@ -270,7 +271,7 @@ section > div > div > div > p::first-letter {
 }
 
 #singleSaga_css {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #505050;
 }
 
@@ -596,7 +597,7 @@ main {
 	font-weight: 400;
 	margin-right: 1px;
 	padding: 10px 5px 15px 15px;
-	max-height: 30vh;
+	max-height: 50vh;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -615,10 +616,10 @@ main {
 	height: 25px;
 	bottom: 10px;
 	right: 18px;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+	background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .la-arrow-circle-up{
@@ -788,6 +789,23 @@ font-size:35px;
   border-color: #1DA851;
 }
 
+.page_not_found {
+  background-color:  rgb(253,253,253);
+  height: 100vh;
+  color: #FF9F00;
+  font-weight: 500; 
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+.somethings_wrong {
+    width: 100%;
+    color: #FF9F00;
+    font-weight: 500;
+}
+
 /*----------------------------- MEDIA QUERIES---------------------------------- */
 
 @media only screen and (max-width: 993px) {
@@ -880,65 +898,25 @@ font-size:35px;
     height: 25px;
     }
 
-    
-.gm-style-iw {
-	width: 400px !important;
-	top: 15px !important;
-	left: 0px !important;
-	background-color: #fafafa;
-	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
-	border-radius: 2px 2px 10px 10px;
-}
-#iw-container {
-	margin-bottom: 10px;
-}
+    .gm-style-iw {
+    width: 400px !important;
+    }
 
-.infocontent_aLink {
-    color: #FF9F00;
-}
+    #iw-container .iw-title {
+    padding: 10px 5px 0px 5px;
+    }
 
-#iw-container .iw-title {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 24px;
-	font-weight: bolder;
-	padding: 10px 5px 0px 5px;
-	background-color: #fafafa;
-	color:  rgb(240, 148, 0);
-	margin: 0;
-	border-radius: 2px 2px 0 0;
-}
-#iw-container .iw-content {
-	font-size: 11px;
-	line-height: 14px;
-	font-weight: 400;
-	margin-right: 1px;
-	padding: 10px 5px 15px 5px;
-	max-height: 37vh;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-.iw-content img {
-	width: 100%;
-	margin: 0 5px 5px -2px;	
-}
-.iw-subTitle {
-	font-size: 16px;
-	font-weight: 700;
-	padding: 5px 0;
-}
-.iw-bottom-gradient {
-	position: absolute;
-	width: 385px;
-	height: 25px;
-	bottom: 10px;
-	right: 18px;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    #iw-container .iw-content {
+    font-size: 11px;
+    line-height: 14px;
+    max-height: 37vh;
+    }
+
+    .iw-bottom-gradient {
+    width: 385px;
     }
 }
+
 
 @media only screen and (max-width: 420px) {
 
