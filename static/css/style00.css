@@ -791,7 +791,9 @@ font-size:35px;
 
 .page_not_found {
   background-color:  rgb(253,253,253);
-  height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  height: 100%;
   color: #FF9F00;
   font-weight: 500; 
 }
