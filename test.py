@@ -1,14 +1,15 @@
-import os, math,  unittest
+import os
+import math
+import bcrypt
+import unittest
 from flask import Flask, render_template, redirect, request, url_for, session, flash, jsonify
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+from datetime import datetime
 from app import app
-
-
-app.config['DEBUG'] = False
-app.config['TESTING'] = True
-app.config['WTF_CSRF_ENABLED'] = False
-app.secret_key = os.environ.get("SECRET_KEY")
+from os import path
+if path.exists("env.py"):
+    import env
 
 
 mongo = PyMongo(app)
@@ -23,7 +24,11 @@ sagaSite = mongo.db.sagaSite
 class TestApp(unittest.TestCase):
 
     def setUp(self):
+        app.config['DEBUG'] = False
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
         self.mongo = app.test_client()
+        app.secret_key = os.environ.get("SECRET_KEY")
 
     def test_routes(self):
 
@@ -45,25 +50,14 @@ class TestApp(unittest.TestCase):
         print('All the tests passed')
 
     def test_successful_registration(self):
-        response = self.mongo.post('/logging', data=dict(
-            username='testuser', password='password'), follow_redirects=True)
-        data = response.data.decode('utf-8')
+        response = self.mongo.post('/logging', data=dict(username='testuser',password='password'), follow_redirects=True)
+        print(response)
+
         find_user = users.find_one({'username': 'testuser'})
-        self.assertIsNotNone(find_user)
-        print('User Found. Preparing for Deletion')
-        delete_user = users.remove({'username': 'testuser'})
-        print('User Deleted.')
-
-    def test_deleting_saga(self):
-        response = self.mongo.post('/deleteSaga/5ee697e97abe7f5f0513e577')
-        saga = sagas.find_one(
-            {'_id': ObjectId('5ee697e97abe7f5f0513e577')})
-        self.assertIsNone(saga)
-
-        print('Saga Deleted.')
+        print(find_user)
 
     def tearDown(self):
-        sign_out = self.mongo.get('/logout')
+        pass
 
 
 if __name__ == '__main__':
