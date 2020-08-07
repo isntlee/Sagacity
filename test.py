@@ -43,7 +43,7 @@ class TestApp(unittest.TestCase):
         print('All the tests passed')
 
     def test_successful_registration(self):
-        response = self.mongo.post(
+        self.mongo.post(
             '/logging',
             data=dict(username='testuser', password='testpass'),
             follow_redirects=True)
@@ -51,7 +51,7 @@ class TestApp(unittest.TestCase):
         hashpass = bcrypt.hashpw(
                         'testpass'.encode('utf-8'),
                         bcrypt.gensalt()
-                       )
+                    )
         users.insert_one(
                 {'name': 'testuser',
                  'password': hashpass,
@@ -62,16 +62,15 @@ class TestApp(unittest.TestCase):
         self.assertIsNotNone(find_user)
         print('User Found. Preparing for Deletion')
 
-        delete_user = users.delete_many({'name': 'testuser'})
+        users.delete_many({'name': 'testuser'})
         print('User Deleted.')
 
     def test_deleting_a_saga(self):
-        response = self.mongo.post('/deleteSaga/5edfb7ba86bc0fbf85fd8853')
+        self.mongo.post('/deleteSaga/5edfb7ba86bc0fbf85fd8853')
         saga = sagas.find_one({'_id': ObjectId('5edfb7ba86bc0fbf85fd8853')})
         self.assertIsNone(saga)
 
-        print('Recipe Deleted')
-
+        print('Saga Deleted')
 
     def tearDown(self):
         pass

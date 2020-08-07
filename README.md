@@ -1,3 +1,112 @@
+## Table of Contents
+1. [Sagacity] (#sagacity)
+2. [**UX**](#ux)
+    - [**User Stories**](#user-stories)
+    - [**Design**](#design)
+    - [**Wireframes**](#wireframes)
+
+3. [**Features**](#features)
+    - [**Current Features**](#current-features)
+    - [**Potential Improvements**](#potential-improvements)
+
+4. [**Technologies Used**](#technologies-used)
+    - [**Front-End **](#front-ends)
+    - [**Back-End **](#back-end)
+
+5. [**Testing**](#testing)
+    - [**Validators**](#validators)
+    - [**Unit Testing**](#unit-testing)
+    - [**Compatibility**](#compatibility)
+    - [**Concerns**](#known-issues)
+
+6. [**Deployment**](#deployment)
+    - [**Local**](#local)
+    - [**Remote**](#remote)
+
+7. [**Credits**](#credits)
+    - [**Content**](#content)
+    - [**Coding**](#coding)
+    - [**Special Thanks**](#special-thanks)
+
+---
+
+## UX
+
+### User Stories
+
+"** As a user I want to... **" 
+
+- be informed of the site's purpose and functions.
+- navigate easily through the entries.
+- navigate the map, and view various entries.  
+- browse the site as a guest.
+- create a user profile, log in and out.
+- add, edit and delete my own entries through my user account.
+- like/dislike a saga, as long as I am logged in as a user.
+- receive an error message if I am unable to login or register.
+- be able to access the site from any device (mobile, tablet, desktop).
+- search easily for a entry.
+- see the total likes/dislikes of an entry.
+- share an entry on an variety of platforms. 
+- be able to see the total number of entries.
+- be able to see the details of the entry.
+- be prompted to sign up or add an entry.
+
+### Design
+
+#### Framework
+
+- [Materialize 1.0.0](https://materializecss.com/)
+    - Materialize is a framework, created and designed by Google, that emphasizes a modern and clean layout. 
+- [jQuery 3.5.0](https://jquery.com/y/)
+    - jQuery, the classic choice, I decided to make this the corner-stone of my scripts framework.
+- [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
+    - Flask is a lightweight WSGI web application framework used to render the back-end with the front.
+
+#### Icons
+
+- [Materialize Icons](https://materializecss.com/icons.html)
+    - These are the standard icons that come with Materialize 1.0.0, completely fit for purpose. 
+- [Line Awesome 1.3.0](https://icons8.com/line-awesome)
+    - An additional series of icons were required, this is a font awesome clone and more than sufficient. 
+
+#### Alerts
+
+ - [Sweet Alerts](https://sweetalert.js.org/docs/)
+    - Instead of using the standard alerts-system, I decided to apply this visually improved option. 
+
+### Wireframes
+
+
+## Features
+
+### Current Features
+
+**Register Account** 
+- Anyone can open/register a personal account. A username/password is required, passwords are hashed to enhance security. 
+
+**Login**
+- For users with accounts, the sign-in procedure checks the username/password matches the database record.  
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+** ** 
+
+
 Deployment
 -----------------------------------------
 Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
