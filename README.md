@@ -77,43 +77,75 @@
 
 ### Wireframes
 
+-- 
 
 ## Features
 
 ### Current Features
 
-**Register Account** 
+**Register** 
 - Anyone can open/register a personal account. A username/password is required, passwords are hashed to enhance security. 
 
-**Login**
-- For users with accounts, the sign-in procedure checks the username/password matches the database record.  
+**Login/Logout**
+- For users with accounts, the sign-in procedure checks that the username/password matches the database record.  
 
-** ** 
+**View Entries** 
+- This is the *Show Sagas* page or the *My Sagas* page, all entries are listed by date added, this criteria changed by selecting sort-by options.   
 
-** ** 
+**Search** 
+- Easily accessible search function, searches through the full collection based on title word choice. 
 
-** ** 
+**Add Entry** 
+- Create or add a new entry/saga. There are several required conditions to meet to add an entry such as title, tagline, image, etc, etc. 
 
-** ** 
+**View Entry**
+- Read saga/entries in full, from the *Show Sagas* page, *My Sagas* page or from the map marker's "Full page reader" option. There are further options on the view page: 
+    - Like/dislike the entry, it's only on this view page that both buttons are active if the user is logged-in. 
+    - Find on map, this button returns the user to the map. 
+    - Social media buttons, availible for the user to share this entry on a range of platforms.     
 
-** ** 
+**Update Entry** 
+- Update or edit your saga/entry, as the option is only availiable with user's own entries.  
 
-** ** 
+**Delete Entry** 
+- Delete your saga/entry, as the option is only availiable with user's own entries. 
 
-** ** 
+**Map**
+- This is another means of displaying entries, the user is encouraged to provide co-ordinates with their entry as then the entry/saga will be discoverable on the map. However, only the twenty most liked entries/sagas are discoverable on the map as loading periods are a concern.
 
-** ** 
+**Map Reader**
+- On the map, if the user selects a marker the full entry is there availible to read within a mini-reader. The user is informed of the entry length and the option of the full-page reader. 
 
-** ** 
+**Pagination**
+- Navigation method that organizes the entries into pages, the number of pages depends on the amount of entries displayed per page.
+
+**Sort-By**
+- Navigation method that organizes entries by set criteria whether the date added or the number of likes/dislikes added by various users. 
 
 
-Deployment
------------------------------------------
-Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
+### Potential Improvements 
 
-Heroku App Location is as follows [https://sagacity.herokuapp.com/]
+**Image Storage** 
+- Rather than the user inputting a URL, it would be more user-friendly to allow the user to upload an image file from their device. 
 
-Following steps were taken to deploy the website:
+**Account Personalisation** 
+- To build-in a series of additional options for the user after registering such as saving favourites, hiding personal entries that are still work-in-progress, undo entry deletes and an option to re-set passwords if lost. 
+
+**Geo-location** 
+- This would be an additional map feature, that would track the user's location and update the map-centre as the page refreshed. Cost concerns with the API, have delayed its incorporation.
+
+**Error Pages**
+- There are two custom error pages for both 404 and 500 errors.
+
+--
+
+## Deployment
+
+### Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
+
+### Heroku App Location is as follows [https://sagacity.herokuapp.com/]
+
+### Following steps were taken to deploy the website:
 1. Database and Tables were created in an Atlas MongoDB account
 2. Project workspace was created in GitPod. In this workspace: Flask was installed - `pip3 install flask`.
 3. Setup app.py file and imported flask and os - `from flask import Flask. import os`
@@ -136,7 +168,7 @@ Following steps were taken to deploy the website:
 21. Connect GitHub repository to Heroku using code provided by heroku and github.
 22. Set Debug to False
 
-Sources: 
+### Sources: 
 
 1. Materialize: https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff
 2. Flask: https://www.youtube.com/watch?v=bLA6eBGN-_0&feature=emb_title
