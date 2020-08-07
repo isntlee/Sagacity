@@ -1,16 +1,9 @@
 import os
-import math
-import bcrypt
 import unittest
-from flask import Flask, render_template, redirect, request, url_for, session, flash, jsonify
+import bcrypt
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
-from datetime import datetime
 from app import app
-from os import path
-if path.exists("env.py"):
-    import env
-
 
 mongo = PyMongo(app)
 
@@ -50,11 +43,35 @@ class TestApp(unittest.TestCase):
         print('All the tests passed')
 
     def test_successful_registration(self):
-        response = self.mongo.post('/logging', data=dict(username='testuser',password='password'), follow_redirects=True)
-        print(response)
+        response = self.mongo.post(
+            '/logging',
+            data=dict(username='testuser', password='testpass'),
+            follow_redirects=True)
 
-        find_user = users.find_one({'username': 'testuser'})
-        print(find_user)
+        hashpass = bcrypt.hashpw(
+                        'testpass'.encode('utf-8'),
+                        bcrypt.gensalt()
+                       )
+        users.insert_one(
+                {'name': 'testuser',
+                 'password': hashpass,
+                 })
+
+        find_user = users.find_one({'name': 'testuser'})
+
+        self.assertIsNotNone(find_user)
+        print('User Found. Preparing for Deletion')
+
+        delete_user = users.delete_many({'name': 'testuser'})
+        print('User Deleted.')
+
+    def test_deleting_a_saga(self):
+        response = self.mongo.post('/deleteSaga/5edfb7ba86bc0fbf85fd8853')
+        saga = sagas.find_one({'_id': ObjectId('5edfb7ba86bc0fbf85fd8853')})
+        self.assertIsNone(saga)
+
+        print('Recipe Deleted')
+
 
     def tearDown(self):
         pass
