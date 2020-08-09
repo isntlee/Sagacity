@@ -1,40 +1,34 @@
-## Table of Contents
-1. [Sagacity] (#sagacity)
-2. [**UX**](#ux)
+# Table of Contents
+-[Sagacity](#sagacity)
+-[**UX**](#ux)
     - [**User Stories**](#user-stories)
     - [**Design**](#design)
     - [**Wireframes**](#wireframes)
-
-3. [**Features**](#features)
+-[**Features**](#features)
     - [**Current Features**](#current-features)
     - [**Potential Improvements**](#potential-improvements)
-
-4. [**Technologies Used**](#technologies-used)
-    - [**Front-End **](#front-ends)
-    - [**Back-End **](#back-end)
-
-5. [**Testing**](#testing)
+-[**Technologies**](#technologies)
+    - [**Front-End**](#front-end)
+    - [**Back-End**](#back-end)
+-[**Testing**](#testing)
     - [**Validators**](#validators)
     - [**Unit Testing**](#unit-testing)
     - [**Compatibility**](#compatibility)
     - [**Concerns**](#known-issues)
-
-6. [**Deployment**](#deployment)
+-[**Deployment**](#deployment)
     - [**Local**](#local)
     - [**Remote**](#remote)
-
-7. [**Credits**](#credits)
-    - [**Content**](#content)
+-[**Credits**](#credits)
     - [**Coding**](#coding)
+    - [**Content**](#content)
     - [**Special Thanks**](#special-thanks)
-
 ---
 
 ## UX
 
 ### User Stories
 
-"** As a user I want to... **" 
+"**As a user I want to...**" 
 
 - be informed of the site's purpose and functions.
 - navigate easily through the entries.
@@ -136,6 +130,76 @@
 
 **Error Pages**
 - There are two custom error pages for both 404 and 500 errors.
+
+--
+
+## Technologies Used
+
+- [Gitpod](https://www.gitpod.io/) - Used as my IDE for coding.
+- [GitHub](https://github.com/) - Used as remote storage of my code.
+- [Gimp](https://www.gimp.org/) - Used for editing images.
+- [TinyPNG](https://tinypng.com/) - Used to compress images for faster loading.
+
+### Front-End Technologies
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
+- [jQuery 3.5.0](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
+- [Javascript](https://www.javascript.com/) - Used as the primary JavaScript functionality.
+- [GoogleMaps API](https://developers.google.com/maps) - Used as the interactive map.
+- [Materialize 1.0.0](https://materializecss.com/) - Used as the overall design framework.
+
+### Back-End Technologies
+
+- **Flask**
+    - [Flask 1.1.2](http://flask.pocoo.org/) - Used as the microframework.
+    - [Jinja 2.11](http://jinja.pocoo.org/docs/2.10/) - Used for templating with Flask.
+    - [Bcrypt 3.1.7](https://www.npmjs.com/package/bcrypt) - Bcrypt is a password-hashing function.
+- **Heroku**
+    - [Heroku](https://www.heroku.com) - Used for the app hosting.
+- **Python**    
+    - [Python 3.8.5](https://www.python.org/) - Used as for back-end programming.
+    - [MongoDB Atlas](https://www.mongodb.com/) - Used to store my database onilne.
+    - [PyMongo 3.10.1](https://api.mongodb.com/python/current/) - Used as the Python API for MongoDB.
+
+
+--
+
+## Testing 
+
+### Validators
+
+**HTML**
+- [W3C HTML Validator](https://validator.w3.org) - The Jinja template would only throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. 
+
+**CSS**
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - The code is completely valid, the only warnings concern imported CSS items: the social media buttons, and infowindow details. 
+
+**JavaScript**
+- [JShint](https://jshint.com/)
+    - The code is valid, all undefined/unused variables are concerned with jQuery, Materialize or SweetAlert
+    Three undefined variables:
+        - '$' , 'M', 'swal' 
+
+**Python**
+- [PEP8 Online](http://pep8online.com/)
+    - All python files are all right.
+
+### Automated Testing
+
+- Tests were developed with the Unit testing framework, these tests were applied to the application's routes/forms. See [test.py](https://github.com/isntlee/sagacity/blob/master/test.py) for the full suite of tests. 
+- There are two varieties of tests: route/form tests watching clear behaviour and tests verifying actions. 
+    - Behavior: testing routes/forms, asserting that all cases behave correctly and returning a request succeed status 200. 
+    - Verify actions: the tests created concern writing/deleting from the database; users, sagas, etc, etc. 
+
+### Responsiveness Testing:
+
+Chrome Developer Tools, android/apple mobile phones used to test appearance of site and its various features. 
+
+### User Testing: 
+
+
+
 
 --
 

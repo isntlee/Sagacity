@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
@@ -5,11 +6,11 @@
         <div class="col s10 offset-s1 m8 offset-m2 xl6 offset-xl3">
             <form method="POST" action="{{url_for('logging')}}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
+                    <label>Username</label>
                     <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off" >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label>Password</label>
                     <input type="password" class="form-control" name="pass" placeholder="Password">
                 </div>
                 <button type="submit" class="btn">Log In</button>

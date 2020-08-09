@@ -232,7 +232,7 @@ nav .input-field label {
 
  nav i.material-icons.accountCircle{
     margin-top: 4px;
-    padding-right: -2px;
+    padding-right: 0px;
 }
 
 #aboutUs{
@@ -300,7 +300,7 @@ h5 > main {
 
 main { 
     line-height: 1.75;
-    word-spacing: 1.75;
+    word-spacing: 8px;
      
 }
 .navbar-icons {
@@ -692,7 +692,7 @@ font-size:35px;
   border-radius: 1.6em;
   transition: 25ms ease-out;
   padding: 0.5em 0.75em;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
 }
 
 .resp-sharing-button__icon svg {

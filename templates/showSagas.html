@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} 
 
 {% block content %}
@@ -43,13 +44,13 @@
                                 <br><br>
                                 <div class="card-reveal-title">{{saga.sagaTitle}}</div>
                                 <br>
-                                <div class="card-reveal-intro"><i class="material-icons">info_outline</i>&nbsp{{saga.intro}}...</div>
+                                <div class="card-reveal-intro"><i class="material-icons">info_outline</i>&nbsp;{{saga.intro}}...</div>
                                 <br><br>
                                 <div class="card-reveal-read"><a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a></div>
                                     <br><br><br>
                                 <div class="card-reveal-where"><i class="material-icons">place</i>{{saga.siteName}}</div>
-                                <div class="card-reveal-when"><i class="material-icons">today</i>&nbsp{{saga.eraName}}</div>
-                                <div class="card-reveal-reading"><i class="material-icons">timer</i>&nbsp{{saga.readingTime}} mins</div>
+                                <div class="card-reveal-when"><i class="material-icons">today</i>&nbsp;{{saga.eraName}}</div>
+                                <div class="card-reveal-reading"><i class="material-icons">timer</i>&nbsp;{{saga.readingTime}} mins</div>
                              </div> 
                         </div>
                     </div> 
