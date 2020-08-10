@@ -9,28 +9,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-
-/* div {
-  word-break: break-word;
-} */
-
-
-/* .container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 90%;
-}
-@media only screen and (min-width: 601px) {
-  .container {
-    width: 85%;
-  }
-}
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 70%;
-  }
-} */
-
 #search {
 	color: #fafafa;
 	width: 60px;
@@ -39,8 +17,9 @@ html {
 }
 
 .brand-logo {
-	font-family: "Open Sans", sans-serif;
-	font-weight: 400;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+    left: 5vw;
 }
 
 #search:focus {
@@ -53,9 +32,6 @@ html {
 	background-color: #fafafa !important;
 }
 
-
-/* This (width - between search & search-focus) could be a happy compromise,
- text-indent on search-focus could be a problem */
 
 nav .input-field label {
 	top: -6.5px;
@@ -88,14 +64,6 @@ nav .input-field label {
 	font-weight: 500;
 }
 
-
-/* input[type=text]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 0px transparent;
-    box-shadow: 0px transparent;
-    -webkit-box-shadow: 0px transparent;
-    color: transparent;
-} */
-
 .sideNav_icons .input-field {
 	margin-top: 0px;
 }
@@ -121,18 +89,12 @@ nav .input-field label {
 	color: transparent
 }
 
-
-/* .input-field>label:not(.label-icon).active {
-    color: transparent;
-} */
-
 #background-image {
 	background: url(../images/NewYorkSunset.jpg);
 	background-size: cover;
 	background-position: center;
 	min-height: 100vh;
 	width: 100%;
-	/* This is a hack, hope I won't have to rely on it. Media queries to fix it on mobile */
 	margin-top: -64px;
 }
 
@@ -244,12 +206,6 @@ nav .input-field label {
 	}
 }
 
-
-/* section{
-    padding-top:4vh;
-    padding-bottom:4vh;
-} */
-
 .signUp {
 	font-weight: 500;
 	color: #FFA400;
@@ -285,11 +241,8 @@ nav i.material-icons.accountCircle {
 }
 
 #aboutUs {
-	/* background: url(../images/);
-    background-repeat: ; */
 	margin-top: 85px;
 	margin-bottom: 75px;
-	/* height: 50vh; */
 	width: 100%;
 }
 
@@ -299,21 +252,14 @@ nav i.material-icons.accountCircle {
 
 .aboutUs-intro {
 	font-family: "Roboto", sans-serif;
-	/* font-size: 5vw; */
 	font-weight: 500;
 	color: #FF9F00;
 }
 
 .aboutUs-letters {
 	font-family: "Roboto", sans-serif;
-	/* font-size: 5vw; */
 	font-weight: 400;
 	color: #202020;
-}
-
-section>div>div>div>p::first-letter {
-	font-size: 110%;
-	color: #FF9F00;
 }
 
 .singleSaga_container {
@@ -347,7 +293,8 @@ span {
 
 .navbar-icons {
 	color: #fafafa;
-	font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+	font-family: "Roboto", sans-serif;
 }
 
 .visible {
@@ -361,24 +308,6 @@ span {
 	opacity: 0;
 	transition: visibility .50s, opacity .50s linear, color .5s;
 }
-
-
-/* .showSagasContainer {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 95%;
-} 
-
-@media only screen and (min-width: 601px) {
-  .showSagasContainer {
-    width: 90%;
-  }
-}
-@media only screen and (min-width: 993px) {
-  .showSagasContainer {
-    width: 85%;
-  }
-} */
 
 .fullPage-title {
     font-family: "Open Sans", sans-serif;
@@ -430,9 +359,6 @@ span {
 	padding-top: 0px;
 }
 
-
-/* This is just an experiment */
-
 .rotate-180 {
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
@@ -473,9 +399,6 @@ ul.dropdown-content.select-dropdown li:first-of-type span {
 }
 
 
-/* .card {
-} */
-
 .card-image {
 	max-height: 40% !important;
 }
@@ -486,11 +409,6 @@ ul.dropdown-content.select-dropdown li:first-of-type span {
 	width: 100%;
 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), 45%, rgba(0, 0, 0, 1));
 }
-
-
-/* .card-content .card-date {
-  margin-top: -20px;
-} */
 
 .card .card-reveal {
 	background-color: rgba(255, 255, 255, 0.9);
@@ -593,20 +511,13 @@ img {
 
 .card-date {
 	color: #fafafa;
-	margin-top: -2vh;
+	margin-top: -1vh;
 	float: left;
 }
 
 #addSaga {
 	height: 90vh;
 }
-
-
-/* @media screen and (max-width: 300px){
-#background-image{
-    min-height: 75vh;
-    }  */
-
 
 /* This is the CSS for Miquel Marnoto's infoWindow (http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html) */
 
@@ -759,16 +670,10 @@ img {
 	vertical-align: middle
 }
 
-
-/* Non solid icons get a stroke */
-
 .resp-sharing-button__icon {
 	stroke: #fff;
 	fill: none
 }
-
-
-/* Solid icons get a fill */
 
 .resp-sharing-button__icon--solid,
 .resp-sharing-button__icon--solidcircle {
@@ -875,9 +780,7 @@ img {
 /*----------------------------- MEDIA QUERIES---------------------------------- */
 
 @media only screen and (max-width: 993px) {
-	/* .container {
-    width: 85%;
-  } */
+	
 	.singleSaga_container {
 		width: 80%;
 	}
@@ -902,9 +805,7 @@ img {
 }
 
 @media only screen and (max-width: 601px) {
-	/* .container {
-    width: 70%;
-    } */
+    
 	.singleSaga_container {
 		width: 90%;
 	}
@@ -1023,12 +924,12 @@ img {
 
 @media only screen and (min-height: 1000px) {
 	.card-likes {
-		margin-top: -1vh;
+		margin-top: -2vh;
 		float: right;
 	}
 
     .card-date {
         margin-top: -1vh;
         float: left;
-}
+    }
 }
