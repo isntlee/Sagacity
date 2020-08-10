@@ -1,27 +1,29 @@
-# Table of Contents
--[Sagacity](#sagacity)
--[**UX**](#ux)
+
+## Table of Contents
+[**Table of Contents**](#table-of-contents)
+1. [**UX**](#ux)
     - [**User Stories**](#user-stories)
     - [**Design**](#design)
     - [**Wireframes**](#wireframes)
--[**Features**](#features)
+2. [**Features**](#features)
     - [**Current Features**](#current-features)
     - [**Potential Improvements**](#potential-improvements)
--[**Technologies**](#technologies)
+3. [**Technologies**](#technologies)
     - [**Front-End**](#front-end)
     - [**Back-End**](#back-end)
--[**Testing**](#testing)
+4. [**Testing**](#testing)
     - [**Validators**](#validators)
     - [**Unit Testing**](#unit-testing)
     - [**Compatibility**](#compatibility)
     - [**Concerns**](#known-issues)
--[**Deployment**](#deployment)
+5. [**Deployment**](#deployment)
     - [**Local**](#local)
     - [**Remote**](#remote)
--[**Credits**](#credits)
+6. [**Credits**](#credits)
     - [**Coding**](#coding)
     - [**Content**](#content)
     - [**Special Thanks**](#special-thanks)
+
 ---
 
 ## UX
@@ -56,6 +58,13 @@
     - jQuery, the classic choice, I decided to make this the corner-stone of my scripts framework.
 - [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
     - Flask is a lightweight WSGI web application framework used to render the back-end with the front.
+
+#### Aesthetic
+
+The core ambition of the site is to make the material/sagas as interesting as possible. The aesthetic was chosen to make the text/pictures of the entries take centre stage. This is achieved by bold uncluttered text, and a warm contrast of two key colours.
+
+- (#FAFAFA) (**white/slightly-off** - *primary color*)
+- (##FF9F00)(**orange/slightly-off** - *secondary/contrast color*)
 
 #### Icons
 
@@ -117,6 +126,7 @@
 - Navigation method that organizes entries by set criteria whether the date added or the number of likes/dislikes added by various users. 
 
 
+
 ### Potential Improvements 
 
 **Image Storage** 
@@ -126,7 +136,7 @@
 - To build-in a series of additional options for the user after registering such as saving favourites, hiding personal entries that are still work-in-progress, undo entry deletes and an option to re-set passwords if lost. 
 
 **Geo-location** 
-- This would be an additional map feature, that would track the user's location and update the map-centre as the page refreshed. Cost concerns with the API, have delayed its incorporation.
+- This would be an additional map feature, that would track the user's location and update the map-centre as the page refreshed. Potential cost concerns with the API have delayed its incorporation.
 
 **Error Pages**
 - There are two custom error pages for both 404 and 500 errors.
@@ -162,7 +172,6 @@
     - [MongoDB Atlas](https://www.mongodb.com/) - Used to store my database onilne.
     - [PyMongo 3.10.1](https://api.mongodb.com/python/current/) - Used as the Python API for MongoDB.
 
-
 --
 
 ## Testing 
@@ -170,16 +179,19 @@
 ### Validators
 
 **HTML**
-- [W3C HTML Validator](https://validator.w3.org) - The Jinja template would only throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. 
+- [W3C HTML Validator](https://validator.w3.org) - The Jinja template solely throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. 
 
 **CSS**
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - The code is completely valid, the only warnings concern imported CSS items: the social media buttons, and infowindow details. 
 
 **JavaScript**
 - [JShint](https://jshint.com/)
-    - The code is valid, all undefined/unused variables are concerned with jQuery, Materialize or SweetAlert
-    Three undefined variables:
+    - The code is valid, all undefined/unused variables are concerned with jQuery, Materialize and SweetAlert
+    - The three undefined variables:
         - '$' , 'M', 'swal' 
+- [JSLint](https://jslint.com/)
+    - For JS file, there are two warnings concerning unexpected use of terms with the search-bar code. This is a minor error, that I'll address at a later stage.    
+    - For jQuery, all the warning are particularly minor and centre around undeclared/unexpected terms, the major warning is about "$". This is not that helpful.   
 
 **Python**
 - [PEP8 Online](http://pep8online.com/)
@@ -192,9 +204,13 @@
     - Behavior: testing routes/forms, asserting that all cases behave correctly and returning a request succeed status 200. 
     - Verify actions: the tests created concern writing/deleting from the database; users, sagas, etc, etc. 
 
-### Responsiveness Testing:
+### Compatibility
 
-Chrome Developer Tools, android/apple mobile phones used to test appearance of site and its various features. 
+**Mobile**
+- Chrome Developer Tools, android/apple mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic ,e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
+
+**Desktop**
+- 
 
 ### User Testing: 
 
@@ -231,6 +247,49 @@ Chrome Developer Tools, android/apple mobile phones used to test appearance of s
 20. Test connection to DB again to confirm it's working
 21. Connect GitHub repository to Heroku using code provided by heroku and github.
 22. Set Debug to False
+
+### Collections in Database
+
+**sagaEra**
+```
+_id: <ObjectId>
+eraName: <string>
+```
+
+**sagaSite**
+```
+_id: <ObjectId>
+siteName: <string>
+```
+
+**users**
+```
+_id: <ObjectId>
+name: <string>
+password: <string>
+```
+
+**sagas**
+```
+_id: <ObjectId>
+sagaTitle: <string>
+sagaTagline: <string>
+sagaImage: <string>
+lat: <string>
+lng: <string>
+intro: <string>
+body: <string>
+conclusion: <string>
+eraName: <string>
+siteName: <string>
+total_time: <string>
+dateFull: <string>
+dateCard: <string>
+authorName: <string>
+wordCount: <int 32>
+readingTime: <int 32>
+totalLikes: <int32>
+```
 
 ### Sources: 
 

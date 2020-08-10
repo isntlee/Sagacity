@@ -1,159 +1,152 @@
-
 {% extends 'base.html' %} 
-
 {% block javascript %} 
 <script>
-
-    function initMap() {
-      
-      var options = { 
-        center: { lat: 53.349809, lng: -6.260254},
-        zoom: 14,
-        mapTypeControl: true,
-        gestureHandling: 'greedy',
-        mapTypeControlOptions: {
-          mapTypeIds: [
-            google.maps.MapTypeId.ROADMAP,
-            google.maps.MapTypeId.SATELLITE,
-          ],  
-        }
-      };
-
-
-    fetch('/fetch')
-        .then(response => response.json())
-        .then(data => { 
-            fetchFunction(data);
-        })
-        .catch(err => console.log(err));
-
-
-    function fetchFunction(data) {
-        console.log(data)
-
-    for(var i = 0; i < data.length; i++){
-        var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
-        var markerName = data[i].sagaTitle; 
-        var mapImage = '"'+data[i].sagaImage+'"';
-        var tagline = data[i].sagaTagline;
-        var id = (data[i]._id);
-        var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
-        var singleSagaLink = fullSaga.concat(id)
-        var infoContent = 
-        
-                '<div id="iw-container">' +
-                    '<div class="iw-title">'+data[i].sagaTitle+'</div>' +
-                    '<div class="iw-content">' +
-                        '<img src='+mapImage+'/>' +
-                        '<p>Read Time: '+data[i].readingTime+' mins</p>'+
-                        '<a class="infocontent_aLink" href='+singleSagaLink+'>Full-page Reader</a>'+
-                        '<p>'+data[i].intro+'</p>'+
-                        '<p><b>"'+tagline+'"</b></p>'+
-                        '<p>'+data[i].body+'</p>'+
-                        '<p>'+data[i].conclusion+'</p>'+
-                        // '<div class="iw-subTitle">Subtitle</div>' +
-                        '<a class="infocontent_aLink" href="'+singleSagaLink+'">Full-page Reader</a>'+
-                        '<p>By '+data[i].authorName+', contributor to Sagacity.</p>'+
-                        '<p></p>'
-                    '</div>' +
-                    '<div class="iw-bottom-gradient"></div>' +
-                '</div>';
-        // There's goin to have to be an accomodation made for MapImages, as in store in DB differently
-
-        var markerIcon = {
-        path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-        fillColor: '#FFAD1A',
-        fillOpacity: 0.90,
-        scale: 1.95,
-        strokeColor: '#fff',
-        strokeWeight: 2.2,
-        anchor: new google.maps.Point(8, 24)
-        };
-
-        var marker = new google.maps.Marker({
-        position: markerPosition,
-        map: map,
-        icon: markerIcon,
-        title: markerName, 
-        info : infoContent
-        });
-
-        var infoWindow = new google.maps.InfoWindow({
-        content: infoContent
-        });
-
-
-        google.maps.event.addListener(marker, "click", function () {
-        infoWindow.setContent( this.info );
-        infoWindow.open( map, this );
-        });
-    }
-    };
-
-        var map = new google.maps.Map(document.getElementById("map"), options);
-    }
-
+   function initMap() {
+     
+     var options = { 
+       center: { lat: 53.349809, lng: -6.260254},
+       zoom: 14,
+       mapTypeControl: true,
+       gestureHandling: 'greedy',
+       mapTypeControlOptions: {
+         mapTypeIds: [
+           google.maps.MapTypeId.ROADMAP,
+           google.maps.MapTypeId.SATELLITE,
+         ],  
+       }
+     };
+   
+   
+   fetch('/fetch')
+       .then(response => response.json())
+       .then(data => { 
+           fetchFunction(data);
+       })
+       .catch(err => console.log(err));
+   
+   
+   function fetchFunction(data) {
+       console.log(data)
+   
+   for(var i = 0; i < data.length; i++){
+       var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
+       var markerName = data[i].sagaTitle; 
+       var mapImage = '"'+data[i].sagaImage+'"';
+       var tagline = data[i].sagaTagline;
+       var id = (data[i]._id);
+       var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
+       var singleSagaLink = fullSaga.concat(id)
+       var infoContent = 
+       
+               '<div id="iw-container">' +
+                   '<div class="iw-title">'+data[i].sagaTitle+'</div>' +
+                   '<div class="iw-content">' +
+                       '<img src='+mapImage+'/>' +
+                       '<p>Read Time: '+data[i].readingTime+' mins</p>'+
+                       '<a class="infocontent_aLink" href='+singleSagaLink+'>Full-page Reader</a>'+
+                       '<p>'+data[i].intro+'</p>'+
+                       '<p><b>"'+tagline+'"</b></p>'+
+                       '<p>'+data[i].body+'</p>'+
+                       '<p>'+data[i].conclusion+'</p>'+
+                       // '<div class="iw-subTitle">Subtitle</div>' +
+                       '<a class="infocontent_aLink" href="'+singleSagaLink+'">Full-page Reader</a>'+
+                       '<p>By '+data[i].authorName+', contributor to Sagacity.</p>'+
+                       '<p></p>'
+                   '</div>' +
+                   '<div class="iw-bottom-gradient"></div>' +
+               '</div>';
+       // There's goin to have to be an accomodation made for MapImages, as in store in DB differently
+   
+       var markerIcon = {
+       path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+       fillColor: '#FFAD1A',
+       fillOpacity: 0.90,
+       scale: 1.95,
+       strokeColor: '#fff',
+       strokeWeight: 2.2,
+       anchor: new google.maps.Point(8, 24)
+       };
+   
+       var marker = new google.maps.Marker({
+       position: markerPosition,
+       map: map,
+       icon: markerIcon,
+       title: markerName, 
+       info : infoContent
+       });
+   
+       var infoWindow = new google.maps.InfoWindow({
+       content: infoContent
+       });
+   
+   
+       google.maps.event.addListener(marker, "click", function () {
+       infoWindow.setContent( this.info );
+       infoWindow.open( map, this );
+       });
+   }
+   };
+   
+       var map = new google.maps.Map(document.getElementById("map"), options);
+   }
+   
 </script>
 {% endblock %}
-
 {% block content %} 
-
 <header id="background-image">
-<!--Try asking around for the full page image later,
- this is frustrating though-->
-    <p class="typewriter anim-typewriter_1">Cities are made</p><p class="typewriter anim-typewriter_2">of more than buildings</p>
- 
+   <!--Try asking around for the full page image later,
+      this is frustrating though-->
+   <p class="typewriter anim-typewriter_1">Cities are made</p>
+   <p class="typewriter anim-typewriter_2">of more than buildings</p>
 </header>
-
-
-
- <section class="container" id="aboutUs">
-        <div class="row">
-            <div class="col s12 m10 offset-m1 l5 ">
-                <img src="../static/images/MooreStreet.jpg" alt="" class="responsive-img materialboxed" data-caption="Moore St and the city's finest butchers">
-            </div>
-            <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
-                <h2 class="aboutUs-intro">Cities are...</h2>
-                <div class="aboutUs-letters">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="row">
-            <div class="col s12 m10 offset-m1 l6 push-l6">
-                <img src="../static/images/PhoenixParkDear.jpg" alt="" class="responsive-img materialboxed" data-caption="Some of the Phoenix Park locals">
-            </div>
-            <div class="col s12 m10 offset-m1 l5 pull-l6 right-align aboutUs-both">
-                <h2 class="aboutUs-intro">How to...</h2>
-                <div class="aboutUs-letters left-align">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <div class="row">
-            <div class="col s12 m10 offset-m1 l5">
-                <img src="../static/images/SingingMary.jpg" alt="" class="responsive-img materialboxed" data-caption="Holy Mary in an unfamilar spot">
-            </div>
-            <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
-                <h2 class="aboutUs-intro">About Us</h2>
-                <div class="aboutUs-letters">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                </div>
-            </div>
-        </div>
-  </section>
-
-    <div class="container" id="map"></div>
-
-    <div hidden id="selectordiv">true</div>
-
+<section class="container" id="aboutUs">
+   <div class="row">
+      <div class="col s12 m10 offset-m1 l5 ">
+         <img src="../static/images/MooreStreet.jpg" alt="" class="responsive-img materialboxed" data-caption="Moore St and the city's finest butchers">
+      </div>
+      <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
+         <h2 class="aboutUs-intro">Cities are...</h2>
+         <div class="aboutUs-letters">
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.Ut enim ad minim veniam, quis nostrud exercitation ullamco
+               laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+               Excepteur sint occaecat cupidatat non proident. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+         </div>
+      </div>
+   </div>
+   <br><br>
+   <div class="row">
+      <div class="col s12 m10 offset-m1 l6 push-l6">
+         <img src="../static/images/PhoenixParkDear.jpg" alt="" class="responsive-img materialboxed" data-caption="Some of the Phoenix Park locals">
+      </div>
+      <div class="col s12 m10 offset-m1 l5 pull-l6 right-align aboutUs-both">
+         <h2 class="aboutUs-intro">How to...</h2>
+         <div class="aboutUs-letters left-align">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+         </div>
+      </div>
+   </div>
+   <br><br>
+   <div class="row">
+      <div class="col s12 m10 offset-m1 l5">
+         <img src="../static/images/SingingMary.jpg" alt="" class="responsive-img materialboxed" data-caption="Holy Mary in an unfamilar spot">
+      </div>
+      <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
+         <h2 class="aboutUs-intro">About Us</h2>
+         <div class="aboutUs-letters">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            </p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+         </div>
+      </div>
+   </div>
+</section>
+<div class="container" id="map"></div>
+<div hidden id="selectordiv">true</div>
 {% endblock %}

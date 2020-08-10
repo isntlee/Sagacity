@@ -1,95 +1,91 @@
 {% extends 'base.html' %} 
 {% block content %}
-
-
 <div class = "container">
-    <h3 class ="fullPage-title">Add Saga</h3>
-    <div class="row" id="addSaga">
-        <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
-        <div class="row">
+   <h3 class ="fullPage-title">Add Saga</h3>
+   <div class="row" id="addSaga">
+      <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
+         <div class="row">
             <div class="input-field col s12">
-            <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" required>
-            <label>Title</label>
+               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" required>
+               <label>Title</label>
             </div>
             <div class="input-field col s12">
-            <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" required>
-            <label>Tagline</label>
+               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" required>
+               <label>Tagline</label>
             </div>
-        </div>
-            <div class="row">
-                <div class="input-field col s12 ">
-                    <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" autocomplete="off" required> 
-                    <!--Might be someway to include a responsive tag here,
-                    or in the code where the image would work-->
-                    <label>Main Image - paste link</label>
-                    <!-- And I'm goin to have to adapt this input field, and maybe change image to base64  -->
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12 ">
+               <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" autocomplete="off" required> 
+               <!--Might be someway to include a responsive tag here,
+                  or in the code where the image would work-->
+               <label>Main Image - paste link</label>
+               <!-- And I'm goin to have to adapt this input field, and maybe change image to base64  -->
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="https://yourURL..." id="contextImage" name="contextImage" type="text" class="validate" autocomplete="off"> 
-                    <label>Context/secondary Image</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <input placeholder="https://yourURL..." id="contextImage" name="contextImage" type="text" class="validate" autocomplete="off"> 
+               <label>Context/secondary Image</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="Search in GoogleMaps, latitude after '@' in result URL " id="lat" name="lat" type="text" autocomplete="off" >
-                    <label>Latitude</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <input placeholder="Search in GoogleMaps, latitude after '@' in result URL " id="lat" name="lat" type="text" autocomplete="off" >
+               <label>Latitude</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="Number after latitude, e.g. ',-6.23535,'" id="lng" name="lng" type="text" autocomplete="off" >
-                    <label>Longitude</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <input placeholder="Number after latitude, e.g. ',-6.23535,'" id="lng" name="lng" type="text" autocomplete="off" >
+               <label>Longitude</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                <textarea id="intro" name="intro" class="materialize-textarea validate" data-length="350" required></textarea>
-                <label>Intro</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <textarea id="intro" name="intro" class="materialize-textarea validate" data-length="350" required></textarea>
+               <label>Intro</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 ">
-                <textarea id="body" name="body" class="materialize-textarea"></textarea>
-                <label>Body</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12 ">
+               <textarea id="body" name="body" class="materialize-textarea"></textarea>
+               <label>Body</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 ">
-                <textarea id="conclusion" name="conclusion" class="materialize-textarea validate" required></textarea>
-                <label>Conclusion</label>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="input-field col s12 ">
-                    <select id="siteName" name="siteName">
-                        <option  value="" disabled selected>Location</option>
-                        {% for site in sagaSite %}
-                        <option value="{{site.siteName}}">{{site.siteName}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12 ">
+               <textarea id="conclusion" name="conclusion" class="materialize-textarea validate" required></textarea>
+               <label>Conclusion</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 ">
-                    <select id="eraName" name="eraName">
-                        <option  value="" disabled selected>Era</option>
-                        {% set origin = sagaEra.rewind() %}
-                        {% for era in sagaEra %}
-                        <option value="{{era.eraName}}">{{era.eraName}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12 ">
+               <select id="siteName" name="siteName">
+                  <option  value="" disabled selected>Location</option>
+                  {% for site in sagaSite %}
+                  <option value="{{site.siteName}}">{{site.siteName}}</option>
+                  {% endfor %}
+               </select>
             </div>
-            <!-- You'll have to fix the 'invalid' status on a few of these, but so far so good  -->
-
-            <div class="row">
-                <button class="btn waves-effect waves-orange" type="submit">Create   
-                </button>
-            </div> 
-        </form>
-    </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12 ">
+               <select id="eraName" name="eraName">
+                  <option  value="" disabled selected>Era</option>
+                  {% set origin = sagaEra.rewind() %}
+                  {% for era in sagaEra %}
+                  <option value="{{era.eraName}}">{{era.eraName}}</option>
+                  {% endfor %}
+               </select>
+            </div>
+         </div>
+         <!-- You'll have to fix the 'invalid' status on a few of these, but so far so good  -->
+         <div class="row">
+            <button class="btn waves-effect waves-orange" type="submit">Create   
+            </button>
+         </div>
+      </form>
+   </div>
 </div>
-
 {% endblock %}

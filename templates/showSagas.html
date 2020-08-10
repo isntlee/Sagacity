@@ -1,71 +1,67 @@
-
 {% extends 'base.html' %} 
-
 {% block content %}
-
-    <div class = "container showSagas">
-        <div class="row">
-            <h5 class="col s8 m9 l10 fullPage-title">Sagas</h5>
-            <form class="form-inline" id="sortList_first" method="POST" action="{{ url_for('showSagas', page=1) }}">
-                <div class="col s4 m3 l2 form-group">
-                    <div class="input-group" id="sortList_second">
-                        <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
-                            <option value="" disabled selected>Sort By</option>
-                            <option value="('totalLikes', -1)">Likes</option>
-                            <option value="('totalLikes', 1)">Dislikes</option>
-                            <option value="('_id', -1)">Latest</option>
-                            <option value="('_id', 1)">Earliest</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row">
-            {% for saga in sagas_pages %}
-                <div class="col s12 m6 l4">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img class="activator" src="{{saga.sagaImage}}" alt="' {{saga.sagaTagline}}'">
-                            <a class="card-title"><h5>{{saga.sagaTitle}}</h5></a>
-                        </div> 
-                        <div class="card-content">
-                            <a class="card-date">{{saga.dateCard}}</a>
-                            <div class="card-likes">
-                                <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
-                                <a class="card-totalLikes">{{saga.totalLikes}}</a>
-                                <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
-                            </div>
-                        </div>
-                        
-                        <div class="card-reveal">
-                        <!-- Hover could be a real problem for mobile -->
-                            <span class="card-title"><i class="material-icons right">close</i></span>
-                           <div class="card-reveal-details">
-                                <br><br>
-                                <div class="card-reveal-title">{{saga.sagaTitle}}</div>
-                                <br>
-                                <div class="card-reveal-intro"><i class="material-icons">info_outline</i>&nbsp;{{saga.intro}}...</div>
-                                <br><br>
-                                <div class="card-reveal-read"><a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a></div>
-                                    <br><br><br>
-                                <div class="card-reveal-where"><i class="material-icons">place</i>{{saga.siteName}}</div>
-                                <div class="card-reveal-when"><i class="material-icons">today</i>&nbsp;{{saga.eraName}}</div>
-                                <div class="card-reveal-reading"><i class="material-icons">timer</i>&nbsp;{{saga.readingTime}} mins</div>
-                             </div> 
-                        </div>
-                    </div> 
-                </div>
-            {% endfor %}
-        </div>
-         <div class="paginatePage-block center-align"> 
-            <a class="paginatePage-item" href="{{ url_for('showSagas', page = 1) }}"><i class="material-icons">fast_rewind</i></a>
-            <a class="paginatePage-item" href="{{ url_for('showSagas', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
-            <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{total_pages}} </a>
-            <a class="paginatePage-item" href="{{ url_for('showSagas', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
-            <a class="paginatePage-item" href="{{ url_for('showSagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
-        </div>
-        <br><br><br><br>
-    </div>
-
-        
+<div class = "container showSagas">
+   <div class="row">
+      <h5 class="col s8 m9 l10 fullPage-title">Sagas</h5>
+      <form class="form-inline" id="sortList_first" method="POST" action="{{ url_for('showSagas', page=1) }}">
+         <div class="col s4 m3 l2 form-group">
+            <div class="input-group" id="sortList_second">
+               <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
+                  <option value="" disabled selected>Sort By</option>
+                  <option value="('totalLikes', -1)">Likes</option>
+                  <option value="('totalLikes', 1)">Dislikes</option>
+                  <option value="('_id', -1)">Latest</option>
+                  <option value="('_id', 1)">Earliest</option>
+               </select>
+            </div>
+         </div>
+      </form>
+   </div>
+   <div class="row">
+      {% for saga in sagas_pages %}
+      <div class="col s12 m6 l4">
+         <div class="card hoverable">
+            <div class="card-image">
+               <img class="activator" src="{{saga.sagaImage}}" alt="' {{saga.sagaTagline}} '">
+               <a class="card-title">
+                  <h5>{{saga.sagaTitle}}</h5>
+               </a>
+            </div>
+            <div class="card-content">
+               <a class="card-date">{{saga.dateShort}}</a>
+               <div class="card-likes">
+                  <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
+                  <a class="card-totalLikes">{{saga.totalLikes}}</a>
+                  <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-down" id="down-arrow" ></i></a>
+               </div>
+            </div>
+            <div class="card-reveal">
+               <!-- Hover could be a real problem for mobile -->
+               <span class="card-title"><i class="material-icons right">close</i></span>
+               <div class="card-reveal-details">
+                  <br><br>
+                  <div class="card-reveal-title">{{saga.sagaTitle}}</div>
+                  <br>
+                  <div class="card-reveal-intro"><i class="material-icons">info_outline</i>&nbsp;{{saga.intro}}...</div>
+                  <br><br>
+                  <div class="card-reveal-read"><a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a></div>
+                  <br><br><br>
+                  <div class="card-reveal-where"><i class="material-icons">place</i>{{saga.siteName}}</div>
+                  <div class="card-reveal-when"><i class="material-icons">today</i>&nbsp;{{saga.eraName}}</div>
+                  <div class="card-reveal-reading"><i class="material-icons">timer</i>&nbsp;{{saga.readingTime}} mins</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+   <div class="paginatePage-block center-align"> 
+      <a class="paginatePage-item" href="{{ url_for('showSagas', page = 1) }}"><i class="material-icons">fast_rewind</i></a>
+      <a class="paginatePage-item" href="{{ url_for('showSagas', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
+      <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{total_pages}} </a>
+      <a class="paginatePage-item" href="{{ url_for('showSagas', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
+      <a class="paginatePage-item" href="{{ url_for('showSagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
+   </div>
+   <br><br><br><br>
+</div>
 {% endblock %}
