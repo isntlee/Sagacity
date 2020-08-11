@@ -5,6 +5,9 @@
       <h5 class="col s8 m9 l10 fullPage-title">Sagas</h5>
       <form class="form-inline" id="sortList_first" method="POST" action="{{ url_for('showSagas', page=1) }}">
          <div class="col s4 m3 l2 form-group">
+         <!-- SortBy option to select between database criteria, see:
+              https://stackoverflow.com/questions/10242149/using-sort-with-pymongo,
+              https://stackoverflow.com/questions/8109122/how-to-sort-mongodb-with-pymongo -->
             <div class="input-group" id="sortList_second">
                <select onchange="this.form.submit()" id="FromHTMLchoice"  name="FromHTMLchoice" class="selectpicker form-control">
                   <option value="" disabled selected>Sort By</option>
@@ -28,6 +31,7 @@
                </a>
             </div>
             <div class="card-content">
+            <!-- SweetAlert javascript alerts, see: https://sweetalert.js.org/guides/#getting-started  -->
                <a class="card-date">{{saga.dateShort}}</a>
                <div class="card-likes">
                   <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
@@ -36,7 +40,7 @@
                </div>
             </div>
             <div class="card-reveal">
-               <!-- Hover could be a real problem for mobile -->
+            <!-- Materialize card reveal function, see: https://materializecss.com/cards.html  -->
                <span class="card-title"><i class="material-icons right">close</i></span>
                <div class="card-reveal-details">
                   <br><br>
@@ -56,6 +60,9 @@
       {% endfor %}
    </div>
    <div class="paginatePage-block center-align"> 
+   <!-- Pagination, see: 
+        https://www.youtube.com/watch?v=Lnt6JqtzM7I&t
+        https://www.youtube.com/watch?v=PSWf2TjTGNY&t-->
       <a class="paginatePage-item" href="{{ url_for('showSagas', page = 1) }}"><i class="material-icons">fast_rewind</i></a>
       <a class="paginatePage-item" href="{{ url_for('showSagas', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
       <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{total_pages}} </a>

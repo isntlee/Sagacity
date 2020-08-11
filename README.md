@@ -1,30 +1,30 @@
-# [sagacity](https://sagacity.herokuapp.com/)
+[sagacity](https://sagacity.herokuapp.com/)
 
-## Table of Contents
+# **sagacity**
 
-1. [**UX**](#ux)
+- [**UX**](#ux)
     - [**User Stories**](#user-stories)
     - [**Design**](#design)
     - [**Wireframes**](#wireframes)
 
-2. [**Features**](#features)
+- [**Features**](#features)
     - [**Current Features**](#current-features)
-
     - [**Potential Improvements**](#potential-improvements)
-3. [**Technologies**](#technologies)
+
+- [**Technologies**](#technologies)
     - [**Front-End**](#front-end)
     - [**Back-End**](#back-end)
 
-4. [**Testing**](#testing)
-    - [**Validators**](#validators)
+- [**Testing**](#testing)
+    - [**Validators**](#validators)Com
     - [**Unit Testing**](#unit-testing)
     - [**Compatibility**](#compatibility)
 
-5. [**Deployment**](#deployment)
+- [**Deployment**](#deployment)
     - [**Local**](#local)
     - [**Remote**](#remote)
 
-6. [**Credits**](#credits)
+- [**Credits**](#credits)
     - [**Coding**](#coding)
     - [**Content**](#content)
     - [**Special Thanks**](#special-thanks)

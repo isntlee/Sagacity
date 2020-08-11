@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
 {% block javascript %} 
 <script>
+// This is the GoogleMaps API, see: https://developers.google.com/maps/documentation/javascript/overview. 
+
    function initMap() {
      
      var options = { 
@@ -15,8 +17,11 @@
          ],  
        }
      };
-   
-   
+//  Fetch request connects GoogleMaps with the database, see:
+//   https://stackoverflow.com/questions/45018338/javascript-fetch-api-how-to-save-output-to-variable-as-an-object-not-the-prom, 
+//   https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch, 
+//   https://developers.google.com/web/updates/2015/03/introduction-to-fetch. 
+
    fetch('/fetch')
        .then(response => response.json())
        .then(data => { 
@@ -26,8 +31,12 @@
    
    
    function fetchFunction(data) {
-       console.log(data)
-   
+       console.log(data);
+       
+// This is the GoogleMaps marker configuration, and design/html of the infowindow/infocontent, see:
+// https://stackoverflow.com/questions/39518991/add-markers-to-google-maps-from-js-array 
+// http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
+
    for(var i = 0; i < data.length; i++){
        var markerPosition = {lat: parseFloat(data[i].lat), lng: parseFloat(data[i].lng)};
        var markerName = data[i].sagaTitle; 
@@ -35,7 +44,7 @@
        var tagline = data[i].sagaTagline;
        var id = (data[i]._id);
        var fullSaga = "{{url_for('singleSaga',saga_id=id)}}";
-       var singleSagaLink = fullSaga.concat(id)
+       var singleSagaLink = fullSaga.concat(id);
        var infoContent = 
        
                '<div id="iw-container">' +
@@ -48,14 +57,12 @@
                        '<p><b>"'+tagline+'"</b></p>'+
                        '<p>'+data[i].body+'</p>'+
                        '<p>'+data[i].conclusion+'</p>'+
-                       // '<div class="iw-subTitle">Subtitle</div>' +
                        '<a class="infocontent_aLink" href="'+singleSagaLink+'">Full-page Reader</a>'+
                        '<p>By '+data[i].authorName+', contributor to Sagacity.</p>'+
-                       '<p></p>'
+                       '<p></p>';
                    '</div>' +
                    '<div class="iw-bottom-gradient"></div>' +
                '</div>';
-       // There's goin to have to be an accomodation made for MapImages, as in store in DB differently
    
        var markerIcon = {
        path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
@@ -84,9 +91,8 @@
        infoWindow.setContent( this.info );
        infoWindow.open( map, this );
        });
+   	 }
    }
-   };
-   
        var map = new google.maps.Map(document.getElementById("map"), options);
    }
    
@@ -94,14 +100,17 @@
 {% endblock %}
 {% block content %} 
 <header id="background-image">
-   <!--Try asking around for the full page image later,
-      this is frustrating though-->
+<!--CSS typewriter animation, see: 
+    https://css-tricks.com/snippets/css/typewriter-effect/
+    https://www.w3schools.com/cssref/css3_pr_animation.asp   -->
    <p class="typewriter anim-typewriter_1">Cities are made</p>
    <p class="typewriter anim-typewriter_2">of more than buildings</p>
 </header>
 <section class="container" id="aboutUs">
    <div class="row">
       <div class="col s12 m10 offset-m1 l5 ">
+      <!-- Material Box effect, see: 
+           https://materializecss.com/media.html  -->
          <img src="../static/images/MooreStreet.jpg" alt="" class="responsive-img materialboxed" data-caption="Moore St and the city's finest butchers">
       </div>
       <div class="col s12 m10 offset-m1 l6 offset-l1 aboutUs-both">
