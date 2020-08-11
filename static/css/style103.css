@@ -206,6 +206,79 @@ nav .input-field label {
 	}
 }
 
+/* For Mozilla FireFox compatibility */
+
+@-moz-keyframes typing_1 {
+	0% {
+		width: 0vw;
+		opacity: 1;
+	}
+	10% {
+		width: 51vw;
+		opacity: 1;
+	}
+	30% {
+		width: 51vw;
+		opacity: 1;
+	}
+	47% {
+		width: 51vw;
+		opacity: 1;
+	}
+	50% {
+		width: 51vw;
+		opacity: 0
+	}
+	100% {
+		width: 51vw;
+		opacity: 0
+	}
+}
+
+@-moz-keyframes typing_2 {
+	0% {
+		width: 0vw;
+		opacity: 0;
+	}
+	50% {
+		width: 0vw;
+		opacity: 0;
+	}
+	51% {
+		width: 0vw;
+		opacity: 1;
+	}
+	70% {
+		width: 75vw;
+		opacity: 1;
+	}
+	85% {
+		width: 75vw;
+		opacity: 1;
+	}
+	98% {
+		width: 75vw;
+		opacity: 0;
+	}
+	100% {
+		width: 75vw;
+		opacity: 0
+	}
+}
+
+
+/* The typewriter cursor effect */
+
+@-moz-keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent
+	}
+	50% {
+		border-color: orange
+	}
+}
+
 .signUp {
 	font-weight: 500;
 	color: #FFA400;
@@ -287,7 +360,7 @@ h5>span {
 	margin-bottom: 1.67em;
 	margin-left: 0;
 	margin-right: 0;
-	font-weight: lighter;
+	font-weight: 400;
 }
 
 span {

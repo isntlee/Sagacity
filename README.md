@@ -1,24 +1,29 @@
+# [sagacity](https://sagacity.herokuapp.com/)
 
 ## Table of Contents
-[**Table of Contents**](#table-of-contents)
+
 1. [**UX**](#ux)
     - [**User Stories**](#user-stories)
     - [**Design**](#design)
     - [**Wireframes**](#wireframes)
+
 2. [**Features**](#features)
     - [**Current Features**](#current-features)
+
     - [**Potential Improvements**](#potential-improvements)
 3. [**Technologies**](#technologies)
     - [**Front-End**](#front-end)
     - [**Back-End**](#back-end)
+
 4. [**Testing**](#testing)
     - [**Validators**](#validators)
     - [**Unit Testing**](#unit-testing)
     - [**Compatibility**](#compatibility)
-    - [**Concerns**](#known-issues)
+
 5. [**Deployment**](#deployment)
     - [**Local**](#local)
     - [**Remote**](#remote)
+
 6. [**Credits**](#credits)
     - [**Coding**](#coding)
     - [**Content**](#content)
@@ -63,8 +68,8 @@
 
 The core ambition of the site is to make the material/sagas as interesting as possible. The aesthetic was chosen to make the text/pictures of the entries take centre stage. This is achieved by bold uncluttered text, and a warm contrast of two key colours.
 
-- (#FAFAFA) (**white/slightly-off** - *central color*)
-- (##FF9F00)(**orange/slightly-off** - *contrast color*)
+- (#FAFAFA) (**off-white** - *central color*)
+- (#FF9F00)(**off-orange, slightly** - *contrast color*)
 
 #### Icons
 
@@ -80,7 +85,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 ### Wireframes
 
-- The wireframes for this site were made with [draw.io](https://www.draw.io/), and accessible in the folder [README>wireframes](https://github.com/isntlee/sagacity/tree/master/README/wireframes)
+- The wireframes for this site were made with [draw.io](https://www.draw.io/), and accessible in the folder [wireframes](https://github.com/isntlee/sagacity/tree/master/wireframes)
 
 -- 
 
@@ -212,7 +217,8 @@ The core ambition of the site is to make the material/sagas as interesting as po
 - Chrome Developer Tools, android/apple mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic ,e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
 
 **Desktop**
-- 
+- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly. There is one minor concern with how Firefox displays the landing page CSS animation, but that is being solved currently.
+
 
 ### User Testing: 
 
@@ -306,7 +312,7 @@ Manual tests were carried out and the testing process was as follows:
 22. Set Debug to False
 
 
-### Collections in Database
+### Database setup/collections
 
 **sagaEra**
 ```
