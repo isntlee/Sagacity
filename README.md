@@ -1,33 +1,32 @@
-[sagacity](https://sagacity.herokuapp.com/)
+[**sagacity**](https://sagacity.herokuapp.com/)
 
 # **sagacity**
 
-- [**UX**](#ux)
-    - [**User Stories**](#user-stories)
-    - [**Design**](#design)
-    - [**Wireframes**](#wireframes)
+This site was created to fill a niche as there is no carbon tracker centred on the Irish consumer available. A key ambition of the project was to make this site better than the broad choice of carbon trackers, which are frustratingly detailed, often requiring precise input (.e.g. rate of heating oil use). The site is designed as an intuitive, user-friendly and encouraging introduction to a more carbon-conscious lifestyle.
 
-- [**Features**](#features)
-    - [**Current Features**](#current-features)
-    - [**Potential Improvements**](#potential-improvements)
 
-- [**Technologies**](#technologies)
-    - [**Front-End**](#front-end)
-    - [**Back-End**](#back-end)
-
-- [**Testing**](#testing)
-    - [**Validators**](#validators)Com
-    - [**Unit Testing**](#unit-testing)
-    - [**Compatibility**](#compatibility)
-
-- [**Deployment**](#deployment)
-    - [**Local**](#local)
-    - [**Remote**](#remote)
-
-- [**Credits**](#credits)
-    - [**Coding**](#coding)
-    - [**Content**](#content)
-    - [**Special Thanks**](#special-thanks)
+- [**Table of Contents:**](#table-of-contents)
+    - [**UX**](#ux)
+        - [**User Stories**](#user-stories)
+        - [**Design**](#design)
+        - [**Wireframes**](#wireframes)
+    - [**Features**](#features)
+        - [**Current Features**](#current-features)
+        - [**Potential Improvements**](#potential-improvements)
+    - [**Technologies**](#technologies)
+        - [**Front-End**](#front-end)
+        - [**Back-End**](#back-end)
+    - [**Testing**](#testing)
+        - [**Validators**](#validators)
+        - [**Unit Testing**](#unit-testing)
+        - [**Compatibility**](#compatibility)
+    - [**Deployment**](#deployment)
+        - [**Local**](#local)
+        - [**Remote**](#remote)
+    - [**Credits**](#credits)
+        - [**Coding**](#coding)
+        - [**Content**](#content)
+        - [**Special Thanks**](#special-thanks)
 
 ---
 

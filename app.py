@@ -36,6 +36,9 @@ def home():
 
 @app.route('/fetch')
 def fetch():
+    # Fetch request, see:
+    # https://pythonise.com/series/learning-flask/flask-and-fetch-api,
+    # https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
     if request.method == "GET":
         sagaList = []
         for saga in (sagas.find().sort('totalLikes', -1).limit(20)):
@@ -58,6 +61,10 @@ def singleSaga(saga_id):
 @app.route('/showSagas/<page>', methods=['GET', 'POST'])
 def showSagas(page):
 
+    # Pagination, see:
+    # https://www.youtube.com/watch?v=PSWf2TjTGNY,
+    # https://www.youtube.com/watch?v=Lnt6JqtzM7I
+
     limit = 6
     offset = (int(page) - 1) * limit
     sagaChoice = ('_id', -1)
@@ -65,6 +72,10 @@ def showSagas(page):
     current_saga = (int(page) * limit) - (limit - 1)
     total_pages = int(math.ceil(count_sagas/limit))
     requested = request.form.get("FromHTMLchoice")
+
+    # Sort-By, see:
+    # https://stackoverflow.com/questions/10242149/using-sort-with-pymongo,
+    # https://stackoverflow.com/questions/8109122/how-to-sort-mongodb-with-pymongo
 
     if isinstance(requested, str):
         requestChoice = requested.split()
@@ -104,7 +115,6 @@ def mySagas(page):
             [('_id', pymongo.DESCENDING)]
         )
     count_my_sagas = my_sagas.count()
-    # Can't replace count with count_documents here, too awkward
 
     limit = 6
     offset = (int(page) - 1) * limit
@@ -254,6 +264,10 @@ def deleteSaga(saga_id):
 
 @app.route('/login')
 def login():
+
+    # Login/authentication, see:
+    # https://pythonspot.com/login-authentication-with-flask/
+
     if 'username' in session:
         return render_template('home.html', users=mongo.db.users.find())
 
@@ -269,6 +283,10 @@ def logout():
 
 @app.route('/logging', methods=['POST', 'GET'])
 def logging():
+
+    # Password hashing, see:
+    # https://www.youtube.com/watch?v=jJ4awOToB6k
+
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
 
@@ -313,17 +331,20 @@ def register():
 
 @app.route('/sagaSearch', methods=["POST"])
 def sagaSearch():
+
+    # Text Indexing/Search, see:
+    # https://www.youtube.com/watch?v=dTN8cBDEG_Q
+
     if request.method == 'POST':
 
         result = []
         search = request.form.to_dict().get('sagaSearch-sagaTitle')
         collection = mongo.db.sagas
         collection.create_index([('sagaTitle', 'text')])
-        # the index searched is just the titles
+        # the index searched is solely the titles
         answer = collection.find({'$text': {'$search': search}},
                                  {'$score': {'$meta': "textScore"}}
                                  )
-
         for i in answer:
             result.append(i)
 
