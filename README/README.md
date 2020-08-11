@@ -63,8 +63,8 @@
 
 The core ambition of the site is to make the material/sagas as interesting as possible. The aesthetic was chosen to make the text/pictures of the entries take centre stage. This is achieved by bold uncluttered text, and a warm contrast of two key colours.
 
-- (#FAFAFA) (**white/slightly-off** - *primary color*)
-- (##FF9F00)(**orange/slightly-off** - *secondary/contrast color*)
+- (#FAFAFA) (**white/slightly-off** - *central color*)
+- (##FF9F00)(**orange/slightly-off** - *contrast color*)
 
 #### Icons
 
@@ -79,6 +79,8 @@ The core ambition of the site is to make the material/sagas as interesting as po
     - Instead of using the standard alerts-system, I decided to apply this visually improved option. 
 
 ### Wireframes
+
+- The wireframes for this site were made with [draw.io](https://www.draw.io/), and accessible in the folder [README>wireframes](https://github.com/isntlee/sagacity/tree/master/README/wireframes)
 
 -- 
 
@@ -147,7 +149,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 - [Gitpod](https://www.gitpod.io/) - Used as my IDE for coding.
 - [GitHub](https://github.com/) - Used as remote storage of my code.
-- [Gimp](https://www.gimp.org/) - Used for editing images.
+- [GIMP](https://www.gimp.org/) - Used for editing images.
 - [TinyPNG](https://tinypng.com/) - Used to compress images for faster loading.
 
 ### Front-End Technologies
@@ -214,8 +216,63 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 ### User Testing: 
 
+Manual tests were carried out and the testing process was as follows:
 
+**Landing Page**
+ - Click "sagacity" and verify that home page appears.
+ - Click on Sagas button  - verify redirect to view entries/sagas page.
+ - If user is not logged in “Login” should be displayed in the navigation bar and clicking this link will bring you to the login page.
+ - Search Button - click to open search bar.
+ - Map Button - click and verify if redirected to map where twenty markers should load. 
 
+**User Account**
+
+###### Register Page
+- Verify that clicking on the link brings user to the registration page. 
+- Both fields required for registration. 
+- Tested registering successfully and was returned to the homepage.
+- Verify that username must be unique - message appears if details are not unique.
+
+###### Login Page
+- Verified that the login link directs to the login page
+- If user enters an incorrect set of details, the error message will fire. 
+- If user enters the correct login details they are returned to the homepage. 
+
+###### Add Sagas
+- User can only add an entry/saga if they are logged in.
+- Verified that only particular fields are required.
+- Confirmed that entry is added to the database and by marking it on site.
+
+###### Edit Sagas
+- User can only add an entry/saga if they are logged in.
+- On the singleSaga page, verified that the edit button is only displayed if logged in.
+- Verified that only particular fields are required, but that all filled categories appear in-full on form. 
+- Confirmed that entry is added to the database and by marking it on site.
+
+###### Delete Sagas
+- On the singleSaga page, verified that the delete button is only displayed if logged in.
+- Confirmed that the saga is deleted by checking database.
+
+###### My Sagas
+- Verified that only sagas added by the user are displayed.
+- Confirm that the user only sees this page if logged in.
+- Pagination is present only if user has more than 6 entries selected.
+
+###### Logout
+- Verified that the user is returned to home and logged out.
+
+**singleSaga Page**
+- Confirm that clicking on the "Read More" Sagas link directs to a detailed version of the entry/saga.
+- Verified that the correct details are in the correct positions for each entry.
+- Verified the social media links are working properly.
+- Confirmed that the user like/dislike buttons are working correctly, and that user must be logged in to vote.
+
+**Search by Keyword**
+- Enter a terms into the search form and confirm that the correct results are returned with paginaition if neccessary.
+
+**Error Pages**
+ - Try going to [http://sagacity.herokuapp.com/404](http://sagacity.herokuapp.com/404) and see a custom 404 error.
+ - Confirmed that there was a working link back to safety.
 
 --
 
@@ -247,6 +304,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 20. Test connection to DB again to confirm it's working
 21. Connect GitHub repository to Heroku using code provided by heroku and github.
 22. Set Debug to False
+
 
 ### Collections in Database
 

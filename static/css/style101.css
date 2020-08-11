@@ -19,7 +19,7 @@ html {
 .brand-logo {
 	font-family: "Roboto", sans-serif;
 	font-weight: 500;
-    left: 5vw;
+    left: 3vw;
 }
 
 #search:focus {
@@ -260,6 +260,11 @@ nav i.material-icons.accountCircle {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	color: #202020;
+}
+
+section > div > div > div > p::first-letter {
+    font-size: 110%;
+    color: #FF9F00;
 }
 
 .singleSaga_container {
