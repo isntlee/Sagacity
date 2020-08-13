@@ -38,7 +38,7 @@
       swal({title: "Little problem",
             text: "Have to log-in first",
             icon: "warning",
-            timer: 1500
+            timer: 2000
             });
         }
 
@@ -46,6 +46,6 @@
       swal({title: "",
             text: "You can only vote in the full story page",
             icon: "warning",
-            timer: 1500
+            timer: 2000
             });
         }

@@ -6,10 +6,10 @@
       <div class="col s10 offset-s1 m8 offset-m2 xl6 offset-xl3">
          <form method="POST" action="{{ url_for('register') }}">
             <label>Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off" >
+            <input type="text" class="form-control" name="username" placeholder="Username" pattern="(?=.*[a-z]).{3,}" autocomplete="off" >
             <br>
             <label>Password</label>
-            <input type="password" class="form-control" name="pass" placeholder="Password">
+            <input type="password" class="form-control" name="pass" placeholder="Password" pattern="(?=.*[a-z]).{3,}">
             <button type="submit" class="btn">Register</button>
          </form>
          <br>{% with messages = get_flashed_messages() %}

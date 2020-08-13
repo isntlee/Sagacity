@@ -19,7 +19,6 @@
          <a href="/liked/{{saga._id}}" onclick="changeColor_liked()"><i class="las la-arrow-circle-up" id="up-arrow-liked-inSession" ></i></a> 
          {{saga.totalLikes}}
          <a href="/disliked/{{saga._id}}" onclick="changeColor_disliked()"><i class="las la-arrow-circle-down" id="down-arrow-disliked-inSession" ></i></a>
-         <!-- There should be the failure condition built in here -->
          {% else %}
          <a href="#" onclick="sweetAlert_notLogged()"><i class="las la-arrow-circle-up"></i></a> 
          {{saga.totalLikes}}
@@ -29,37 +28,35 @@
    </div>
    <div class="row">
       <div class="span_textBlock col s12 m12">
-         <h5><span>{{saga.intro}}</span></h5><br>
-         <h5><b>"{{saga.sagaTagline}}"</b></h5><br>
-         <h5><span>{{saga.body}}</span></h5>
+         <p><h5><span>{{saga.intro}}</span></h5></p>
+         <p><h5><b>"{{saga.sagaTagline}}"</b></h5></p>
+         <p><h5><span>{{saga.body}}</span></h5></p>
          <br>
       </div>
    </div>
    <div class="row">
       <div class="col s12 m12">
          <img src="{{saga.contextImage}}" alt="" style="width:100%;">
-         <!-- There should be the failure condition built in here -->
       </div>
    </div>
    <div class="row">
       <div class="span_textBlock col s12 m12">
          <h5>
             <span>{{saga.conclusion}}</span>
-         </h5>
-         <h6>By {{saga.authorName}}, contributor to Sagacity</h6>
+         </h5><br>
+         <h6>By {{saga.authorName}}, a contributor to Sagacity</h6>
          <br>
       </div>
    </div>
    <div class="row">
-      <div class= "col s6 left-align">
+      <div class= "col s5 m6 left-align">
          {% if saga.authorName == session.username %}
          <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Delete</a>
          <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Edit</a>
          {% endif %}
-         <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Find on map</a>
+         <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Map</a>
       </div>
-      <!-- This is not done by a mile, but first steps in place  -->
-      <div class= "col s6 right-align">
+      <div class= "col s7 m6 right-align">
          <a class="resp-sharing-button__link" href="whatsapp://send?text='{{saga.sagaTitle}}' %20http%3A%2F%2Fsagacity.herokuapp.com{{url_for('singleSaga', saga_id = saga._id)}}" target="_blank" rel="noopener" aria-label="">
             <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small">
                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
@@ -98,7 +95,5 @@
          </a>
       </div>
    </div>
-   <!-- Consider four additions; first, two randomly selected display cards at the very bottom of the page.
-      Also figure out how to enlargen the first letter of Intro. And the sharing buttons (obvs)  -->
 </div>
 {% endblock %}

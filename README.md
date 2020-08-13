@@ -4,6 +4,7 @@
 
 This site was created to fill a niche as there is no carbon tracker centred on the Irish consumer available. A key ambition of the project was to make this site better than the broad choice of carbon trackers, which are frustratingly detailed, often requiring precise input (.e.g. rate of heating oil use). The site is designed as an intuitive, user-friendly and encouraging introduction to a more carbon-conscious lifestyle.
 
+---
 
 - [**Table of Contents:**](#table-of-contents)
     - [**UX**](#ux)

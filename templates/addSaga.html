@@ -6,17 +6,17 @@
       <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
          <div class="row">
             <div class="input-field col s12">
-               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" required>
+               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
                <label>Title</label>
             </div>
             <div class="input-field col s12">
-               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" required>
+               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
                <label>Tagline</label>
             </div>
          </div>
          <div class="row">
             <div class="input-field col s12 ">
-               <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" autocomplete="off" required> 
+               <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" pattern="https?://.+" autocomplete="off" required> 
                <label>Main Image - paste link</label>
             </div>
          </div>
@@ -58,11 +58,18 @@
          </div>
          <div class="row">
             <div class="input-field col s12 ">
-               <select id="siteName" name="siteName">
+               <select  id="siteName" name="siteName">
                   <option  value="" disabled selected>Location</option>
-                  {% for site in sagaSite %}
-                  <option value="{{site.siteName}}">{{site.siteName}}</option>
-                  {% endfor %}
+                  <option value="Georgian Quarter">Georgian Quarter (City Centre)</option>
+                  <option value="Christchurch">Christchurch (St Patrick's, Dame St, Usher's Quay) </option>
+                  <option value="Liberties">Liberties (Thomas St, Kilmainham, The Coombe)</option>
+                  <option value="Temple Bar">Temple Bar (Whitetavern St, Westmoreland St) </option>
+                  <option value="Clontarf">Clontarf (Howth, Raheny, Portmarnock)</option>
+                  <option value="Phibsborough">Phibsborough (Smithfield, Drumcondra, Stonybatter)</option>
+                  <option value="Rathmines">Rathmines (Portobello, Rathgar, Ranelagh)</option>
+                  <option value="Cabra">Cabra (Blanchardstown, Ballyfermot, Santry)</option>
+                  <option value="Drimnagh">Drimnagh (Tenerure, Tallaght, Clondalkin)</option>
+                  <option value="Blackrock">Blackrock (Ballsbridge, Dalkey, Dundrum)</option>
                </select>
             </div>
          </div>
@@ -70,10 +77,13 @@
             <div class="input-field col s12 ">
                <select id="eraName" name="eraName">
                   <option  value="" disabled selected>Era</option>
-                  {% set origin = sagaEra.rewind() %}
-                  {% for era in sagaEra %}
-                  <option value="{{era.eraName}}">{{era.eraName}}</option>
-                  {% endfor %}
+                  <option value="Medieval era">Medieval era (800-1500)</option>
+                  <option value="Elizabethan era">Elizabethan era (1500-1600)</option>
+                  <option value="Stuart era">Stuart era (1600-1715)</option>
+                  <option value="Georgian era">Georgian era (1715-1830)</option>
+                  <option value="Victorian era">Victorian era (1830-1900)</option>
+                  <option value="Modern era">Modern era (1900-1990)</option>
+                  <option value="Present Day">Present Day (1990-2020)</option>
                </select>
             </div>
          </div>

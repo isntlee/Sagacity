@@ -145,6 +145,8 @@ nav i.material-icons.accountCircle {
 	position: absolute;
 	left: 10vw;
 	top: 50vh;
+    -moz-animation: typing_1 15s steps(3) 7s 99 backwards, blink-caret .5s step-end infinite normal;
+    -webkit-animation: typing_1 15s steps(6) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 	animation: typing_1 15s steps(15) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 }
 
@@ -152,6 +154,8 @@ nav i.material-icons.accountCircle {
 	position: absolute;
 	left: 10vw;
 	top: 50vh;
+    -moz-animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
+    -webkit-animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 	animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 }
 
@@ -229,6 +233,79 @@ nav i.material-icons.accountCircle {
 	}
 }
 
+/* For Safari compatibility */
+
+@-webkit-keyframes typing_1 {
+	0% {
+		width: 0vw;
+		opacity: 1;
+	}
+	10% {
+		width: 54vw;
+		opacity: 1;
+	}
+	30% {
+		width: 54vw;
+		opacity: 1;
+	}
+	47% {
+		width: 54vw;
+		opacity: 1;
+	}
+	50% {
+		width: 54vw;
+		opacity: 0
+	}
+	100% {
+		width: 54vw;
+		opacity: 0
+	}
+}
+
+@-webkit-keyframes typing_2 {
+	0% {
+		width: 0vw;
+		opacity: 0;
+	}
+	50% {
+		width: 0vw;
+		opacity: 0;
+	}
+	51% {
+		width: 0vw;
+		opacity: 1;
+	}
+	70% {
+		width: 80vw;
+		opacity: 1;
+	}
+	85% {
+		width: 80vw;
+		opacity: 1;
+	}
+	98% {
+		width: 80vw;
+		opacity: 0;
+	}
+	100% {
+		width: 80vw;
+		opacity: 0
+	}
+}
+
+
+/* The typewriter cursor effect */
+
+@-webkit-keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent
+	}
+	50% {
+		border-color: blue
+	}
+}
+
 /* For Mozilla FireFox compatibility */
 
 @-moz-keyframes typing_1 {
@@ -237,23 +314,23 @@ nav i.material-icons.accountCircle {
 		opacity: 1;
 	}
 	10% {
-		width: 51vw;
+		width: 54vw;
 		opacity: 1;
 	}
 	30% {
-		width: 51vw;
+		width: 54vw;
 		opacity: 1;
 	}
 	47% {
-		width: 51vw;
+		width: 54vw;
 		opacity: 1;
 	}
 	50% {
-		width: 51vw;
+		width: 54vw;
 		opacity: 0
 	}
 	100% {
-		width: 51vw;
+		width: 54vw;
 		opacity: 0
 	}
 }
@@ -272,19 +349,19 @@ nav i.material-icons.accountCircle {
 		opacity: 1;
 	}
 	70% {
-		width: 75vw;
+		width: 80vw;
 		opacity: 1;
 	}
 	85% {
-		width: 75vw;
+		width: 80vw;
 		opacity: 1;
 	}
 	98% {
-		width: 75vw;
+		width: 80vw;
 		opacity: 0;
 	}
 	100% {
-		width: 75vw;
+		width: 80vw;
 		opacity: 0
 	}
 }
@@ -298,7 +375,7 @@ nav i.material-icons.accountCircle {
 		border-color: transparent
 	}
 	50% {
-		border-color: orange
+		border-color: green
 	}
 }
 
@@ -896,6 +973,9 @@ img {
 		padding: 0 5px;
 		height: 30px;
 	}
+     br  {
+         
+     }
 }
 
 @media only screen and (max-width: 601px) {
@@ -952,6 +1032,9 @@ img {
 	.iw-bottom-gradient {
 		width: 385px;
 	}
+     br  {
+         
+     }
 }
 
 @media only screen and (max-width: 420px) {
@@ -1014,7 +1097,31 @@ img {
 			opacity: 0
 		}
 	}
+
+    br  {
+         
+     }
 }
+
+@media only screen and (max-width: 370px) {
+    #sortList_second .select-wrapper .caret {
+	fill: transparent;
+    }
+
+    .resp-sharing-button__icon svg {
+		width: .5em;
+		height: .5em;
+	}
+
+	.resp-sharing-button__link {
+		margin: 0px;
+	}
+
+	.resp-sharing-button {
+		border-radius: .6em;
+	}
+}
+
 
 @media only screen and (min-height: 1000px) {
 	.card-likes {
