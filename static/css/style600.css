@@ -587,6 +587,7 @@ img {
 	font-size: 13px;
 	line-height: 18px;
 	font-weight: 400;
+    -webkit-margin-right: 20px;
 	margin-right: 1px;
 	padding: 10px 5px 15px 15px;
 	max-height: 50vh;
@@ -1064,23 +1065,23 @@ img {
 		opacity: 1;
 	}
 	10% {
-		width: 56vw;
+		width: 58vw;
 		opacity: 1;
 	}
 	30% {
-		width: 56vw;
+		width: 58vw;
 		opacity: 1;
 	}
 	47% {
-		width: 56vw;
+		width: 58vw;
 		opacity: 1;
 	}
 	50% {
-		width: 56vw;
+		width: 58vw;
 		opacity: 0
 	}
 	100% {
-		width: 56vw;
+		width: 58vw;
 		opacity: 0
 	}
 }
@@ -1099,19 +1100,19 @@ img {
 		opacity: 1;
 	}
 	70% {
-		width: 82vw;
+		width: 84vw;
 		opacity: 1;
 	}
 	85% {
-		width: 82vw;
+		width: 84vw;
 		opacity: 1;
 	}
 	98% {
-		width: 82vw;
+		width: 84vw;
 		opacity: 0;
 	}
 	100% {
-		width: 82vw;
+		width: 84vw;
 		opacity: 0
 	}
 }
