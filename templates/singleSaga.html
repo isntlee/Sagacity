@@ -51,7 +51,7 @@
    <div class="row">
       <div class= "col s5 m6 left-align">
          {% if saga.authorName == session.username %}
-         <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Delete</a>
+         <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small" onclick="sweetAlert_delete();">Delete</a>
          <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Edit</a>
          {% endif %}
          <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Map</a>

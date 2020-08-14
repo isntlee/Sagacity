@@ -92,6 +92,10 @@ nav .input-field label {
 	color: transparent
 }
 
+#sideNav_search {
+    padding: 3px;
+}
+
 nav i.material-icons.accountCircle {
 	margin-top: 4px;
 	padding-right: 0px;
@@ -1126,7 +1130,7 @@ img {
 	}
 
 	.resp-sharing-button {
-		border-radius: .6em;
+		border-radius: .9em;
 	}
 }
 

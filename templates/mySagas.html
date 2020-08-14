@@ -64,7 +64,7 @@
       <a class="paginatePage-item" href="{{ url_for('mySagas', page=prev_page) }}"><i class="material-icons rotate-180">play_arrow</i></a>
       <a class="paginatePage-item paginatePage-pageCount">{{page}} of {{my_total_pages}} </a>
       <a class="paginatePage-item" href="{{ url_for('mySagas', page=next_page) }}"><i class="material-icons">play_arrow</i></a>
-      <a class="paginatePage-item" href="{{ url_for('mySagas', page=total_pages) }}"><i class="material-icons">fast_forward</i></a>
+      <a class="paginatePage-item" href="{{ url_for('mySagas', page=my_total_pages) }}"><i class="material-icons">fast_forward</i></a>
    </div>
    <br><br><br><br>
    {% endif %}
