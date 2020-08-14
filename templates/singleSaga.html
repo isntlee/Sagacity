@@ -53,8 +53,10 @@
          {% if saga.authorName == session.username %}
          <a href="{{url_for('deleteSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small" onclick="sweetAlert_delete();">Delete</a>
          <a href="{{url_for('editSaga', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Edit</a>
-         {% endif %}
          <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Map</a>
+         {% else %}
+         <a href="{{url_for('home', _anchor='map', saga_id=saga._id)}}" class="singleSaga_button waves-effect waves-orange btn btn_small">Return to Map</a>
+         {% endif %}
       </div>
       <div class= "col s7 m6 right-align">
          <a class="resp-sharing-button__link" href="whatsapp://send?text='{{saga.sagaTitle}}' %20http%3A%2F%2Fsagacity.herokuapp.com{{url_for('singleSaga', saga_id = saga._id)}}" target="_blank" rel="noopener" aria-label="">

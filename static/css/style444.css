@@ -59,7 +59,7 @@ nav .input-field label {
 }
 
 .sideNav_icons .input-field>label {
-	height: 40px;
+	height: 10px;
 	line-height: 20px;
 	padding: 0 32px 0 45px;
 	color: #FF9F00;
@@ -90,10 +90,6 @@ nav .input-field label {
 
 .sideNav_icons input[type=text]:not(.browser-default):focus:not([readonly])+label {
 	color: transparent
-}
-
-#sideNav_search {
-    padding: 3px;
 }
 
 nav i.material-icons.accountCircle {
@@ -1022,7 +1018,7 @@ img {
 		margin: 0px;
 	}
 	.resp-sharing-button {
-		border-radius: 1em;
+		border-radius: 1.2em;
 	}
 	.singleSaga_button.btn {
 		line-height: 25px;
@@ -1121,8 +1117,8 @@ img {
     }
 
     .resp-sharing-button__icon svg {
-		width: .5em;
-		height: .5em;
+		width: .8em;
+		height: .8em;
 	}
 
 	.resp-sharing-button__link {
@@ -1130,7 +1126,7 @@ img {
 	}
 
 	.resp-sharing-button {
-		border-radius: .9em;
+		border-radius: .01em;
 	}
 }
 
