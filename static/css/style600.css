@@ -127,13 +127,11 @@ nav i.material-icons.accountCircle {
 }
 
 .typewriter {
-	
 	font-weight: 400;
 	font-size: 6vw;
 	text-align: center;
 	color: #fff;
 	font-family: monospace;
-	-moz-font-family: "Zilla Slab", serif;
 	overflow: hidden;
 	border-right: .35vw solid orange;
 	white-space: nowrap;
@@ -145,8 +143,6 @@ nav i.material-icons.accountCircle {
 	position: absolute;
 	left: 10vw;
 	top: 50vh;
-    -moz-animation: typing_1 15s steps(3) 7s 99 backwards, blink-caret .5s step-end infinite normal;
-    -webkit-animation: typing_1 15s steps(6) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 	animation: typing_1 15s steps(15) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 }
 
@@ -154,8 +150,6 @@ nav i.material-icons.accountCircle {
 	position: absolute;
 	left: 10vw;
 	top: 50vh;
-    -moz-animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
-    -webkit-animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 	animation: typing_2 15s steps(30) 7s 99 backwards, blink-caret .5s step-end infinite normal;
 }
 
@@ -220,7 +214,6 @@ nav i.material-icons.accountCircle {
 	}
 }
 
-
 /* The typewriter cursor effect */
 
 @keyframes blink-caret {
@@ -233,151 +226,6 @@ nav i.material-icons.accountCircle {
 	}
 }
 
-/* For Safari compatibility */
-
-@-webkit-keyframes typing_1 {
-	0% {
-		width: 0vw;
-		opacity: 1;
-	}
-	10% {
-		width: 54vw;
-		opacity: 1;
-	}
-	30% {
-		width: 54vw;
-		opacity: 1;
-	}
-	47% {
-		width: 54vw;
-		opacity: 1;
-	}
-	50% {
-		width: 54vw;
-		opacity: 0
-	}
-	100% {
-		width: 54vw;
-		opacity: 0
-	}
-}
-
-@-webkit-keyframes typing_2 {
-	0% {
-		width: 0vw;
-		opacity: 0;
-	}
-	50% {
-		width: 0vw;
-		opacity: 0;
-	}
-	51% {
-		width: 0vw;
-		opacity: 1;
-	}
-	70% {
-		width: 80vw;
-		opacity: 1;
-	}
-	85% {
-		width: 80vw;
-		opacity: 1;
-	}
-	98% {
-		width: 80vw;
-		opacity: 0;
-	}
-	100% {
-		width: 80vw;
-		opacity: 0
-	}
-}
-
-
-/* The typewriter cursor effect */
-
-@-webkit-keyframes blink-caret {
-	from,
-	to {
-		border-color: transparent
-	}
-	50% {
-		border-color: blue
-	}
-}
-
-/* For Mozilla FireFox compatibility */
-
-@-moz-keyframes typing_1 {
-	0% {
-		width: 0vw;
-		opacity: 1;
-	}
-	10% {
-		width: 54vw;
-		opacity: 1;
-	}
-	30% {
-		width: 54vw;
-		opacity: 1;
-	}
-	47% {
-		width: 54vw;
-		opacity: 1;
-	}
-	50% {
-		width: 54vw;
-		opacity: 0
-	}
-	100% {
-		width: 54vw;
-		opacity: 0
-	}
-}
-
-@-moz-keyframes typing_2 {
-	0% {
-		width: 0vw;
-		opacity: 0;
-	}
-	50% {
-		width: 0vw;
-		opacity: 0;
-	}
-	51% {
-		width: 0vw;
-		opacity: 1;
-	}
-	70% {
-		width: 80vw;
-		opacity: 1;
-	}
-	85% {
-		width: 80vw;
-		opacity: 1;
-	}
-	98% {
-		width: 80vw;
-		opacity: 0;
-	}
-	100% {
-		width: 80vw;
-		opacity: 0
-	}
-}
-
-
-/* The typewriter cursor effect */
-
-@-moz-keyframes blink-caret {
-	from,
-	to {
-		border-color: transparent
-	}
-	50% {
-		border-color: green
-	}
-}
 
 .signUp {
 	font-weight: 500;
@@ -1141,4 +989,142 @@ img {
         margin-top: -1vh;
         float: left;
     }
+}
+
+@-moz-document url-prefix() {
+    
+    .typewriter {
+    font-size: 7vw;
+	font-family: 'Inconsolata', serif;
+    font-weight: 400;
+                 }
+
+    @keyframes typing_1 {
+		0% {
+			width: 0vw;
+			opacity: 1;
+		}
+		10% {
+			width: 54vw;
+			opacity: 1;
+		}
+		30% {
+			width: 54vw;
+			opacity: 1;
+		}
+		47% {
+			width: 54vw;
+			opacity: 1;
+		}
+		50% {
+			width: 54vw;
+			opacity: 0
+		}
+		100% {
+			width: 54vw;
+			opacity: 0
+		}
+	}
+	@keyframes typing_2 {
+		0% {
+			width: 0vw;
+			opacity: 0;
+		}
+		50% {
+			width: 0vw;
+			opacity: 0;
+		}
+		51% {
+			width: 0vw;
+			opacity: 1;
+		}
+		70% {
+			width: 79vw;
+			opacity: 1;
+		}
+		85% {
+			width: 79vw;
+			opacity: 1;
+		}
+		98% {
+			width: 79vw;
+			opacity: 0;
+		}
+		100% {
+			width: 79vw;
+			opacity: 0
+		}
+	}
+}
+
+
+@-webkit-keyframes typing_1 {
+	0% {
+		width: 0vw;
+		opacity: 1;
+	}
+	10% {
+		width: 56vw;
+		opacity: 1;
+	}
+	30% {
+		width: 56vw;
+		opacity: 1;
+	}
+	47% {
+		width: 56vw;
+		opacity: 1;
+	}
+	50% {
+		width: 56vw;
+		opacity: 0
+	}
+	100% {
+		width: 56vw;
+		opacity: 0
+	}
+}
+
+@-webkit-keyframes typing_2 {
+	0% {
+		width: 0vw;
+		opacity: 0;
+	}
+	50% {
+		width: 0vw;
+		opacity: 0;
+	}
+	51% {
+		width: 0vw;
+		opacity: 1;
+	}
+	70% {
+		width: 82vw;
+		opacity: 1;
+	}
+	85% {
+		width: 82vw;
+		opacity: 1;
+	}
+	98% {
+		width: 82vw;
+		opacity: 0;
+	}
+	100% {
+		width: 82vw;
+		opacity: 0
+	}
+}
+
+
+/* The typewriter cursor effect */
+
+@-webkit-keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent
+	}
+	50% {
+		border-color: #FF9F00
+	}
 }

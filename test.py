@@ -60,17 +60,13 @@ class TestApp(unittest.TestCase):
         find_user = users.find_one({'name': 'testuser'})
 
         self.assertIsNotNone(find_user)
-        print('User Found. Preparing for Deletion')
 
         users.delete_many({'name': 'testuser'})
-        print('User Deleted.')
 
     def test_deleting_a_saga(self):
         self.mongo.post('/deleteSaga/5edfb7ba86bc0fbf85fd8853')
         saga = sagas.find_one({'_id': ObjectId('5edfb7ba86bc0fbf85fd8853')})
         self.assertIsNone(saga)
-
-        print('Saga Deleted')
 
     def tearDown(self):
         pass
