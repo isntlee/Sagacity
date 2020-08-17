@@ -60,8 +60,9 @@ nav .input-field label {
 
 .sideNav_icons .input-field>label {
 	height: 10px;
-	line-height: 20px;
-	padding: 0 32px 0 45px;
+    z-index: -1;
+	line-height: 0px;
+	padding: 0px 32px 0px 45px;
 	color: #FF9F00;
 	font-size: 20px;
 	font-weight: 500;
@@ -277,11 +278,11 @@ nav i.material-icons.accountCircle {
 .aboutUs-letters {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
-	color: #202020;
+	color: #404040;
 }
 
 section > div > div > div > p::first-letter {
-    font-size: 110%;
+    font-size: 120%;
     color: #FF9F00;
 }
 
@@ -409,6 +410,11 @@ ul.dropdown-content.select-dropdown li:first-of-type span {
 	font-weight: 600;
 	background-color: #FF9F00;
 	color: #fafafa;
+}
+
+button .singleSaga_button {
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .btn:hover {
@@ -587,7 +593,7 @@ img {
 	font-size: 13px;
 	line-height: 18px;
 	font-weight: 400;
-    -webkit-margin-right: 20px;
+    -webkit-margin-right: -10px;
 	margin-right: 1px;
 	padding: 10px 5px 15px 15px;
 	max-height: 50vh;
@@ -1065,23 +1071,23 @@ img {
 		opacity: 1;
 	}
 	10% {
-		width: 58vw;
+		width: 62vw;
 		opacity: 1;
 	}
 	30% {
-		width: 58vw;
+		width: 62vw;
 		opacity: 1;
 	}
 	47% {
-		width: 58vw;
+		width: 62vw;
 		opacity: 1;
 	}
 	50% {
-		width: 58vw;
+		width: 62vw;
 		opacity: 0
 	}
 	100% {
-		width: 58vw;
+		width: 62vw;
 		opacity: 0
 	}
 }
@@ -1100,19 +1106,19 @@ img {
 		opacity: 1;
 	}
 	70% {
-		width: 84vw;
+		width: 88vw;
 		opacity: 1;
 	}
 	85% {
-		width: 84vw;
+		width: 88vw;
 		opacity: 1;
 	}
 	98% {
-		width: 84vw;
+		width: 88vw;
 		opacity: 0;
 	}
 	100% {
-		width: 84vw;
+		width: 88vw;
 		opacity: 0
 	}
 }

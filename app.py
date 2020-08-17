@@ -14,7 +14,7 @@ if path.exists("env.py"):
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
-app.config["MONGO_DBNAME"] = 'Sagacity'
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 
@@ -30,12 +30,12 @@ sagaSite = mongo.db.sagaSite
 @app.route('/')
 @app.route('/home')
 def home():
-
     return render_template('home.html', sagas=sagas.find())
 
 
 @app.route('/fetch')
 def fetch():
+    # Fetch function allows GoogleMaps API to operate with data from MongoDB. 
     # Fetch request, see:
     # https://pythonise.com/series/learning-flask/flask-and-fetch-api,
     # https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
@@ -60,7 +60,7 @@ def singleSaga(saga_id):
 
 @app.route('/showSagas/<page>', methods=['GET', 'POST'])
 def showSagas(page):
-
+    # Basic display entries function but with pagination/sort-by additions
     # Pagination, see:
     # https://www.youtube.com/watch?v=PSWf2TjTGNY,
     # https://www.youtube.com/watch?v=Lnt6JqtzM7I
@@ -108,6 +108,7 @@ def showSagas(page):
 
 @app.route('/mySagas/<page>', methods=['GET', 'POST'])
 def mySagas(page):
+    # Displays the user's own entries, similar to def showSagas:
 
     username = session.get('username')
     my_sagas = sagas.find(
@@ -159,6 +160,7 @@ def mySagas(page):
 
 @app.route('/addSaga')
 def addSaga():
+    # addSaga function opens the addSaga.html page
     return render_template(
                 'addSaga.html',
                 sagaEra=sagaEra.find(), sagaSite=sagaSite.find(),
@@ -167,8 +169,8 @@ def addSaga():
 
 
 @app.route('/insertSaga', methods=['POST'])
+# This is the key data-input function with word counter addition.
 def insertSaga():
-
     Intro = request.form.get('intro')
     Body = request.form.get('body')
     Conclusion = request.form.get('conclusion')
@@ -210,12 +212,15 @@ def insertSaga():
 
 @app.route('/editSaga/<saga_id>')
 def editSaga(saga_id):
+    # editSaga function opens the editSaga.html page
+
     theSaga = sagas.find_one({"_id": ObjectId(saga_id)})
     return render_template('editSaga.html', saga=theSaga)
 
 
 @app.route('/updateSaga/<saga_id>', methods=["POST"])
 def updateSaga(saga_id):
+    # This is another data-input function with word counter addition.
 
     Intro = request.form.get('intro')
     Body = request.form.get('body')
@@ -251,8 +256,9 @@ def updateSaga(saga_id):
     return redirect(url_for('showSagas', page=1))
 
 
-@app.route('/deleteSaga/<saga_id>')
+@app.route('/deleteSaga/<saga_id>', methods=["POST"])
 def deleteSaga(saga_id):
+    # Deletes user's own entries
     sagas.delete_one({'_id': ObjectId(saga_id)}),
     return redirect(url_for('showSagas', page=1))
 
@@ -264,9 +270,7 @@ def deleteSaga(saga_id):
 
 @app.route('/login')
 def login():
-
-    # Login/authentication, see:
-    # https://pythonspot.com/login-authentication-with-flask/
+    # Directs user to login.html page, if user not currently in session.
 
     if 'username' in session:
         return render_template('home.html', users=mongo.db.users.find())
@@ -283,6 +287,9 @@ def logout():
 
 @app.route('/logging', methods=['POST', 'GET'])
 def logging():
+    # Allows user to access own account, with username/password verification
+    # Login/authentication, see:
+    # https://pythonspot.com/login-authentication-with-flask/
 
     # Password hashing, see:
     # https://www.youtube.com/watch?v=jJ4awOToB6k
@@ -304,6 +311,7 @@ def logging():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    # Allows initial user to register, tests if username/password unused
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'name': request.form['username']})
@@ -331,7 +339,7 @@ def register():
 
 @app.route('/sagaSearch', methods=["POST"])
 def sagaSearch():
-
+    # Searches through the titles of the collection's entries
     # Text Indexing/Search, see:
     # https://www.youtube.com/watch?v=dTN8cBDEG_Q
 
@@ -362,6 +370,7 @@ def sagaSearch():
 
 @app.route('/liked/<saga_id>', methods=['GET'])
 def liked(saga_id):
+    # Allows registered user to vote on entries, recorded in MongoDB 
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {

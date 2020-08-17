@@ -145,6 +145,9 @@ The core ambition of the site is to make the material/sagas as interesting as po
 **Geo-location** 
 - This would be an additional map feature, that would track the user's location and update the map-centre as the page refreshed. Potential cost concerns with the API have delayed its incorporation.
 
+**Like/dislike buttons**
+- The current format only restricts the user to voting once per refresh, with this vote altering the 'likes' DB record. With additional time, there would have been a framework in place to track whether a user had voted for an entry or not, limiting that user to only ever adding one upvote or one downvote. 
+
 **Error Pages**
 - There are two custom error pages for both 404 and 500 errors.
 
@@ -206,7 +209,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 ### Automated Testing
 
-- Tests were developed with the Unit testing framework, these tests were applied to the application's routes/forms. See [test.py](https://github.com/isntlee/sagacity/blob/master/test.py) for the full suite of tests. 
+- Tests were developed with the Unit testing framework, these tests were applied to the application's routes/forms. See [test.py](https://github.com/isntlee/sagacity/blob/master/test.py) for the full suite of tests. Unit-tests are run from CLI with command: "python3 test.py"
 - There are two varieties of tests: route/form tests watching clear behaviour and tests verifying actions. 
     - Behavior: testing routes/forms, asserting that all cases behave correctly and returning a request succeed status 200. 
     - Verify actions: the tests created concern writing/deleting from the database; users, sagas, etc, etc. 
@@ -214,10 +217,10 @@ The core ambition of the site is to make the material/sagas as interesting as po
 ### Compatibility
 
 **Mobile**
-- Chrome Developer Tools, android/apple mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic ,e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
+- Chrome Developer Tools, Android(Samsung A5/Galaxy S8) and Apple(Iphone 8) mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic ,e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
 
 **Desktop**
-- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly. There is one minor concern with how Firefox displays the landing page CSS animation, but that is being solved currently.
+- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly. There is one minor concern with how Safari displays the landing page CSS animation, but that is being solved currently.
 
 
 ### User Testing: 
@@ -284,32 +287,50 @@ Manual tests were carried out and the testing process was as follows:
 
 ## Deployment
 
-### Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
+#### Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
+#### Heroku App Location is as follows [https://sagacity.herokuapp.com/]
 
-### Heroku App Location is as follows [https://sagacity.herokuapp.com/]
+### Local Deployment
+
+Please note - in order to run this project locally on your own system, you will need the following installed:
+- [Python3](https://www.python.org/) to run the application.
+- [PIP](https://pip.pypa.io/en/stable/) to install app requirements.
+- [Gitpod](https://www.gitpod.io/).
+- [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for version control.
+- [MongoDB](https://www.mongodb.com) to develop your own database.
 
 ### Following steps were taken to deploy the website:
-1. Database and Tables were created in an Atlas MongoDB account
+1. Database created in an Atlas MongoDB account
 2. Project workspace was created in GitPod. In this workspace: Flask was installed - `pip3 install flask`.
 3. Setup app.py file and imported flask and os - `from flask import Flask. import os`
 4. Created an instance of flask - `app = flask(__name__)`
-6. Inside the app run() function set the host, ip and debug=true
-7. Create a new Heroku App - unique name and EU Server
-8. In GitPod login to Heroku through CLI to confirm existance of app. `CLI: heroku login. CLI: heroku apps`.
-9. Create a git repository in GitPod. CLI: git init. `CLI: git add . CLI: git commit -m "Initial Commit"`
-10. Connect GitPod to Heroku. Use code found on Heroku. `CLI - $heroku git remote -a sagacity`
-11. Create requirements.txt file - `CLI: pip3 freeze --local > requirements.txt`
-12. Create Procfile - `echo web:python app.py>Procfile`
-13. Add and Commit to Git Repository
-14. Push to Heroku using code supplied by Heroku
-15. `CLI - heroku ps:scale web=1` Command to tell Heroku to run the app
-16. Login to Heroku to add config variables including IP, Port, Mongo_DB and Mongo_URI
-17. Get Flask to talk to MongoDB - `CLI: pip3 install flask-pymongo` `CLI: pip3 install dnspython`
-18. Add extra libraries to app.py - `from flask_pymongo import Pymongo` `from bson.objectid import ObjectID`
-19. Add DB connection code to app.py
-20. Test connection to DB again to confirm it's working
-21. Connect GitHub repository to Heroku using code provided by heroku and github.
-22. Set Debug to False
+5. Inside the app run() function set the host, ip and debug=true
+6. Create a `.env` file with your credentials. 
+7. Create a git repository in GitPod. CLI: git init. `CLI: git add . CLI: git commit -m "Initial Commit"`
+8. Get Flask to talk to MongoDB - `CLI: pip3 install flask-pymongo` `CLI: pip3 install dnspython`
+9. Add extra libraries to app.py - `from flask_pymongo import Pymongo` `from bson.objectid import ObjectID`
+10. Add DB connection code to app.py
+11. Test connection to DB again to confirm it's working
+12. Set Debug to False
+
+
+### Remote Deployment
+
+This site is currently deployed on [Heroku](https://sagacity.herokuapp.com/) using the **master** branch on GitHub. To implement this project on Heroku, the following steps were taken:
+
+1. Create a new Heroku App - unique name and EU Server
+2. In GitPod login to Heroku through CLI to confirm existance of app. `CLI: heroku login. CLI: heroku apps`.
+3. Connect GitPod to Heroku. Use code found on Heroku. `CLI - $heroku git remote -a sagacity`
+4. Create requirements.txt file - `CLI: pip3 freeze --local > requirements.txt`
+5. Create Procfile - `echo web:python app.py>Procfile`
+6. Add and Commit to Git Repository
+7. Push to Heroku using code supplied by Heroku
+8. `CLI - heroku ps:scale web=1` Command to tell Heroku to run the app
+9. Login to Heroku to add config variables:
+    - **IP**: 0.0.0.0
+    - **Port**: 8080
+    - **SECRET_KEY**: your secret key
+    - **Mongo_URI**: link to Mongo DB
 
 
 ### Database setup/collections
@@ -357,6 +378,9 @@ totalLikes: <int32>
 
 ### Sources: 
 
-1. Materialize: https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff
+- [Materialize](https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff)
+- [GoogleMaps API]
+    - [GoogleMaps Garage ](https://www.youtube.com/watch?v=mfjqLmD6Li8)
+    - [GoogleMaps API Javascript example](https://www.youtube.com/watch?v=pFpBibg6nac)
 2. Flask: https://www.youtube.com/watch?v=bLA6eBGN-_0&feature=emb_title
 3. Flash messages in Flask: https://www.youtube.com/watch?v=lcVdZtVvnnk&t=7s

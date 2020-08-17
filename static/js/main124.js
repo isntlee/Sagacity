@@ -50,23 +50,26 @@
             });
         }
 
+        
+
 
     function sweetAlert_delete() {
       swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-        })
-        
-        .then((confirm) => {
-        if (confirm) {
-            swal("Poof! Your imaginary file has been deleted!", {
+            title: "Sure about this?",
+            text: "This can't be recovered afterwards",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            timer: 5000,
+            })
+    .then((willDelete) => {
+        if (willDelete) {
+            document.getElementById("deleteForm").submit();
+            swal("And just like that, it was gone", {
             icon: "success",
             });
         } else {
-            swal("Your imaginary file is safe!");
+            swal("Your tale is preserved still");
         }
         });
-        }
+            }
