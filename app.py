@@ -35,7 +35,7 @@ def home():
 
 @app.route('/fetch')
 def fetch():
-    # Fetch function allows GoogleMaps API to operate with data from MongoDB. 
+    # Fetch function allows GoogleMaps API to operate with data from MongoDB.
     # Fetch request, see:
     # https://pythonise.com/series/learning-flask/flask-and-fetch-api,
     # https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
@@ -370,7 +370,7 @@ def sagaSearch():
 
 @app.route('/liked/<saga_id>', methods=['GET'])
 def liked(saga_id):
-    # Allows registered user to vote on entries, recorded in MongoDB 
+    # Allows registered user to vote on entries, recorded in MongoDB.
     likes = sagas.find_one({"_id": ObjectId(saga_id)})
     likes = likes["totalLikes"] + 1
     sagas.update_one({'_id': ObjectId(saga_id)}, {

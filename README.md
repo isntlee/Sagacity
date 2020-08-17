@@ -19,8 +19,9 @@ This site was created to fill a niche as there is no carbon tracker centred on t
         - [**Back-End**](#back-end)
     - [**Testing**](#testing)
         - [**Validators**](#validators)
-        - [**Unit Testing**](#unit-testing)
+        - [**Automated Testing**](#automated-testing)
         - [**Compatibility**](#compatibility)
+        - [**User Testing**](#user-testing)
     - [**Deployment**](#deployment)
         - [**Local**](#local)
         - [**Remote**](#remote)
@@ -295,11 +296,10 @@ Manual tests were carried out and the testing process was as follows:
 Please note - in order to run this project locally on your own system, you will need the following installed:
 - [Python3](https://www.python.org/) to run the application.
 - [PIP](https://pip.pypa.io/en/stable/) to install app requirements.
-- [Gitpod](https://www.gitpod.io/).
+- [Gitpod](https://www.gitpod.io/) as IDE.
 - [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for version control.
 - [MongoDB](https://www.mongodb.com) to develop your own database.
 
-### Following steps were taken to deploy the website:
 1. Database created in an Atlas MongoDB account
 2. Project workspace was created in GitPod. In this workspace: Flask was installed - `pip3 install flask`.
 3. Setup app.py file and imported flask and os - `from flask import Flask. import os`
@@ -318,7 +318,7 @@ Please note - in order to run this project locally on your own system, you will 
 
 This site is currently deployed on [Heroku](https://sagacity.herokuapp.com/) using the **master** branch on GitHub. To implement this project on Heroku, the following steps were taken:
 
-1. Create a new Heroku App - unique name and EU Server
+1. Create a new Heroku App - unique name
 2. In GitPod login to Heroku through CLI to confirm existance of app. `CLI: heroku login. CLI: heroku apps`.
 3. Connect GitPod to Heroku. Use code found on Heroku. `CLI - $heroku git remote -a sagacity`
 4. Create requirements.txt file - `CLI: pip3 freeze --local > requirements.txt`
@@ -333,7 +333,7 @@ This site is currently deployed on [Heroku](https://sagacity.herokuapp.com/) usi
     - **Mongo_URI**: link to Mongo DB
 
 
-### Database setup/collections
+### Database setup/collections:
 
 **sagaEra**
 ```
@@ -376,11 +376,27 @@ readingTime: <int 32>
 totalLikes: <int32>
 ```
 
-### Sources: 
+## Credits: 
+
+### Coding
 
 - [Materialize](https://www.youtube.com/watch?v=gCZ3y6mQpW0&list=PL4cUxeGkcC9gGrbtvASEZSlFEYBnPkmff)
-- [GoogleMaps API]
-    - [GoogleMaps Garage ](https://www.youtube.com/watch?v=mfjqLmD6Li8)
-    - [GoogleMaps API Javascript example](https://www.youtube.com/watch?v=pFpBibg6nac)
-2. Flask: https://www.youtube.com/watch?v=bLA6eBGN-_0&feature=emb_title
-3. Flash messages in Flask: https://www.youtube.com/watch?v=lcVdZtVvnnk&t=7s
+- [GoogleMaps JSON objects](https://www.youtube.com/watch?v=mfjqLmD6Li8)
+- [GoogleMaps API](https://www.youtube.com/watch?v=pFpBibg6nac)
+- [Pagination Flask/MongoDB](https://www.youtube.com/watch?v=Lnt6JqtzM7I)
+- [Pagination Flask/MYSQL](https://www.youtube.com/watch?v=PSWf2TjTGNY)
+- [Unit-testing](https://www.youtube.com/watch?v=6tNS--WetLI)
+- [Text Indexing](https://www.youtube.com/watch?v=dTN8cBDEG_Q)
+- [Password Hashing](https://www.youtube.com/watch?v=jJ4awOToB6k)
+- [Flask](https://www.youtube.com/watch?v=bLA6eBGN-_0)
+- [Flash messages](https://www.youtube.com/watch?v=lcVdZtVvnnk)
+
+### Content 
+
+- [Google Images](https://images.google.com/) All images taken from Google Image searches. 
+- [Favicon.io](https://favicon.io/) Designed and produced flavicon 
+
+### Special Thanks
+
+- [Precious Ijege](https://github.com/precious-ijege) My Code Institute mentor
+- [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g) His tutorials have been essential research for many.
