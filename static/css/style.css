@@ -51,6 +51,13 @@ nav .input-field label {
 	color: #FF9F00;
 	font-size: 20px;
 }
+.sidenav li>form {
+    height: 10px;
+    line-height: 20px;
+    padding: 0px 0px 0px 0px;
+    color: #FF9F00;
+    font-size: 20px;
+    }
 
 .sidenav-overlay {
 	z-index: 1;
@@ -64,7 +71,7 @@ nav .input-field label {
 	padding: 0px 32px 0px 45px;
 	color: #FF9F00;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .sideNav_icons .input-field {

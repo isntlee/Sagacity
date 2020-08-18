@@ -13,13 +13,14 @@
       <div class="col s12 m6 xl4">
          <div class="card hoverable">
             <div class="card-image">
-               <img class="activator" src="{{saga.sagaImage}}" alt="' {{saga.sagaTagline}}'">
+               <img class="activator" src="{{saga.sagaImage}}" alt="' {{saga.sagaTagline}} '">
                <a class="card-title">
                   <h5>{{saga.sagaTitle}}</h5>
                </a>
             </div>
             <div class="card-content">
-               <a class="card-date">{{saga.dateCard}}</a>
+            <!-- SweetAlert javascript alerts, see: https://sweetalert.js.org/guides/#getting-started  -->
+               <a class="card-date">{{saga.dateShort}}</a>
                <div class="card-likes">
                   <a href="" onclick="sweetAlert_notHere(); return false"><i class="las la-arrow-circle-up" id="up-arrow" ></i></a> 
                   <a class="card-totalLikes">{{saga.totalLikes}}</a>
@@ -27,19 +28,19 @@
                </div>
             </div>
             <div class="card-reveal">
+            <!-- Materialize card reveal function, see: https://materializecss.com/cards.html  -->
                <span class="card-title"><i class="material-icons right">close</i></span>
                <div class="card-reveal-details">
+                  <br><br>
                   <div class="card-reveal-title">{{saga.sagaTitle}}</div>
                   <br>
-                  <div class="card-reveal-where">{{saga.siteName}}</div>
-                  <br>
-                  <div class="card-reveal-when">{{saga.eraName}}</div>
-                  <br>
-                  <div class="card-reveal-intro">{{saga.Intro}}</div>
-                  <br>
-                  <div class="card-reveal-read">
-                     <a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a>
-                  </div>
+                  <div class="card-reveal-intro"><i class="material-icons">info_outline</i>&nbsp;{{saga.intro}}...</div>
+                  <br><br>
+                  <div class="card-reveal-read"><a href="{{url_for('singleSaga', saga_id = saga._id)}}">Read More</a></div>
+                  <br><br><br>
+                  <div class="card-reveal-where"><i class="material-icons">place</i>{{saga.siteName}}</div>
+                  <div class="card-reveal-when"><i class="material-icons">today</i>&nbsp;{{saga.eraName}}</div>
+                  <div class="card-reveal-reading"><i class="material-icons">timer</i>&nbsp;{{saga.readingTime}} mins</div>
                </div>
             </div>
          </div>

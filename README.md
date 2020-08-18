@@ -104,7 +104,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 - This is the *Show Sagas* page or the *My Sagas* page, all entries are listed by date added, this criteria changed by selecting sort-by options.   
 
 **Search** 
-- Easily accessible search function, searches through the full collection based on title word choice. 
+- Easily accessible search function, searches through the full collection based on title word-choice. 
 
 **Add Entry** 
 - Create or add a new entry/saga. There are several required conditions to meet to add an entry such as title, tagline, image, etc, etc. 
