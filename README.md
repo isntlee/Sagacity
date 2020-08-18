@@ -2,7 +2,7 @@
 
 # **sagacity**
 
-This site was created to fill a niche as there is no carbon tracker centred on the Irish consumer available. A key ambition of the project was to make this site better than the broad choice of carbon trackers, which are frustratingly detailed, often requiring precise input (.e.g. rate of heating oil use). The site is designed as an intuitive, user-friendly and encouraging introduction to a more carbon-conscious lifestyle.
+This site was created to fill a niche; because for all of Dublin's local history collections none are particularly interactive or user-friendly. A key ambition of the project was to make this site as inclusive as possible, actively encouraging participation.  The point of the project is to build a public collection of local stories or sagas, and as the project was being submitted that process had definitely begun with several entries from several separate sources. 
 
 ---
 
@@ -154,14 +154,14 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 --
 
-## Technologies Used
+## Technologies
 
 - [Gitpod](https://www.gitpod.io/) - Used as my IDE for coding.
 - [GitHub](https://github.com/) - Used as remote storage of my code.
 - [GIMP](https://www.gimp.org/) - Used for editing images.
 - [TinyPNG](https://tinypng.com/) - Used to compress images for faster loading.
 
-### Front-End Technologies
+### Front-End
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
@@ -170,7 +170,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 - [GoogleMaps API](https://developers.google.com/maps) - Used as the interactive map.
 - [Materialize 1.0.0](https://materializecss.com/) - Used as the overall design framework.
 
-### Back-End Technologies
+### Back-End
 
 - **Flask**
     - [Flask 1.1.2](http://flask.pocoo.org/) - Used as the microframework.
@@ -190,7 +190,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 ### Validators
 
 **HTML**
-- [W3C HTML Validator](https://validator.w3.org) - The Jinja template solely throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. 
+- [W3C HTML Validator](https://validator.w3.org) - The Jinja template solely throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. However, in one file "base.html" errors are thrown over the use of <br>, these have been retained due to time constraints. 
 
 **CSS**
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - The code is completely valid, the only warnings concern imported CSS items: the social media buttons, and infowindow details. 
@@ -201,8 +201,8 @@ The core ambition of the site is to make the material/sagas as interesting as po
     - The three undefined variables:
         - '$' , 'M', 'swal' 
 - [JSLint](https://jslint.com/)
-    - For JS file, there are two warnings concerning unexpected use of terms with the search-bar code. This is a minor error, that I'll address at a later stage.    
-    - For jQuery, all the warning are particularly minor and centre around undeclared/unexpected terms, the major warning is about "$". This is not that helpful.   
+    - For JS file, there are two warnings concerning unexpected use of terms with the search-bar code. These unexpected terms are both "for" as in those used in a "for" loop, this is not a serious concern.  
+    - For jQuery, all the warning are particularly minor and centre around undeclared/unexpected terms, the major warnings are about "$" or "document". This is not that helpful.   
 
 **Python**
 - [PEP8 Online](http://pep8online.com/)
