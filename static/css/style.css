@@ -35,7 +35,6 @@ html {
 	background-color: #fafafa !important;
 }
 
-
 nav .input-field label {
 	top: -6.5px;
 }
@@ -61,7 +60,7 @@ nav .input-field label {
 .sideNav_icons .input-field>label {
 	height: 10px;
     z-index: -1;
-	line-height: 0px;
+	line-height: 20px;
 	padding: 0px 32px 0px 45px;
 	color: #FF9F00;
 	font-size: 20px;
@@ -385,7 +384,6 @@ span {
 	transform: rotate(180deg);
 }
 
-
 .input-field label {
 	color: #7a7a7a;
 }
@@ -421,7 +419,6 @@ button .singleSaga_button {
 	background: rgb(248, 189, 93);
 	color: #fafafa;
 }
-
 
 .card-image {
 	max-height: 40% !important;

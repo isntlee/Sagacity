@@ -2,7 +2,7 @@
 
 # **sagacity**
 
-This site was created to fill a niche; because for all of Dublin's local history collections none are particularly interactive or user-friendly. A key ambition of the project was to make this site as inclusive as possible, actively encouraging participation.  The point of the project is to build a public collection of local stories or sagas, and as the project was being submitted that process had definitely begun with several entries from several separate sources. 
+This site was created to fill a niche, because for all of Dublin's local history collections none are particularly interactive or user-friendly. The central ambition of the project was to make this site as inclusive as possible, that actively encourages participation as the project is a public collection of local stories. And as the project was being submitted that process had definitely begun with several entries from several separate local sources. 
 
 ---
 
@@ -199,7 +199,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 - [JShint](https://jshint.com/)
     - The code is valid, all undefined/unused variables are concerned with jQuery, Materialize and SweetAlert
     - The three undefined variables:
-        - '$' , 'M', 'swal' 
+        '$' , 'M', 'swal' 
 - [JSLint](https://jslint.com/)
     - For JS file, there are two warnings concerning unexpected use of terms with the search-bar code. These unexpected terms are both "for" as in those used in a "for" loop, this is not a serious concern.  
     - For jQuery, all the warning are particularly minor and centre around undeclared/unexpected terms, the major warnings are about "$" or "document". This is not that helpful.   
@@ -210,7 +210,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 ### Automated Testing
 
-- Tests were developed with the Unit testing framework, these tests were applied to the application's routes/forms. See [test.py](https://github.com/isntlee/sagacity/blob/master/test.py) for the full suite of tests. Unit-tests are run from CLI with command: "python3 test.py"
+- Tests were developed with the Unit testing framework, these tests were applied to the application's routes/forms. See [test.py](https://github.com/isntlee/sagacity/blob/master/test.py) for the full suite of tests. Unit-tests are run from CLI with the command: "python3 test.py"
 - There are two varieties of tests: route/form tests watching clear behaviour and tests verifying actions. 
     - Behavior: testing routes/forms, asserting that all cases behave correctly and returning a request succeed status 200. 
     - Verify actions: the tests created concern writing/deleting from the database; users, sagas, etc, etc. 
@@ -221,7 +221,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 - Chrome Developer Tools, Android(Samsung A5/Galaxy S8) and Apple(Iphone 8) mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
 
 **Desktop**
-- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly, testing done on my local computer. Testing of Safari has only been conducted on [BrowserStack](https://www.browserstack.com/), the site works correctly. 
+- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly, testing done on a local system. Testing of Safari has only been conducted on [BrowserStack](https://www.browserstack.com/), the site works correctly. 
 
 
 ### User Testing: 
