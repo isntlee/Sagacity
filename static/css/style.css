@@ -58,6 +58,8 @@ nav .input-field label {
 }
 
 .sideNav_icons .input-field>label {
+    height: 15px;
+	line-height: 15px;
     z-index: -1;
 	padding: 9px 32px 0px 45px;
 	color: #FF9F00;
@@ -66,7 +68,7 @@ nav .input-field label {
 }
 
 .sideNav_icons .input-field {
-	margin-top: 0px;
+	margin-top: 15px;
 }
 
 .sideNav_icons .input-field input[type="search"]:not([readonly]),
