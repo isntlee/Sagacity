@@ -61,7 +61,7 @@ This site was created to fill a niche as there is no carbon tracker centred on t
 - [Materialize 1.0.0](https://materializecss.com/)
     - Materialize is a framework, created and designed by Google, that emphasizes a modern and clean layout. 
 - [jQuery 3.5.0](https://jquery.com/y/)
-    - jQuery, the classic choice, I decided to make this the corner-stone of my scripts framework.
+    - jQuery, the classic choice, I decided to make this a crucial part of my scripts framework.
 - [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
     - Flask is a lightweight WSGI web application framework used to render the back-end with the front.
 
@@ -133,6 +133,9 @@ The core ambition of the site is to make the material/sagas as interesting as po
 **Sort-By**
 - Navigation method that organizes entries by set criteria whether the date added or the number of likes/dislikes added by various users. 
 
+**Error Pages**
+- There are two custom error pages for both 404 and 500 errors.
+
 
 
 ### Potential Improvements 
@@ -149,9 +152,6 @@ The core ambition of the site is to make the material/sagas as interesting as po
 **Like/dislike buttons**
 - The current format only restricts the user to voting once per refresh, with this vote altering the 'likes' DB record. With additional time, there would have been a framework in place to track whether a user had voted for an entry or not, limiting that user to only ever adding one upvote or one downvote. 
 
-**Error Pages**
-- There are two custom error pages for both 404 and 500 errors.
-
 --
 
 ## Technologies Used
@@ -165,8 +165,8 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
-- [jQuery 3.5.0](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
-- [Javascript](https://www.javascript.com/) - Used as the primary JavaScript functionality.
+- [Javascript](https://www.javascript.com/) - Used as primary JavaScript functionality.
+- [jQuery 3.5.0](https://code.jquery.com/jquery/) - Used as secondary JavaScript functionality.
 - [GoogleMaps API](https://developers.google.com/maps) - Used as the interactive map.
 - [Materialize 1.0.0](https://materializecss.com/) - Used as the overall design framework.
 
@@ -218,10 +218,10 @@ The core ambition of the site is to make the material/sagas as interesting as po
 ### Compatibility
 
 **Mobile**
-- Chrome Developer Tools, Android(Samsung A5/Galaxy S8) and Apple(Iphone 8) mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic ,e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
+- Chrome Developer Tools, Android(Samsung A5/Galaxy S8) and Apple(Iphone 8) mobile phones used to test appearance of site and its various features. There are very minor differences between android/ios but all are cosmetic e.g. fonts displaying slightly differently, pages scrolling more fluidly or the map being more immediately responsive on ios. 
 
 **Desktop**
-- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly. There is one minor concern with how Safari displays the landing page CSS animation, but that is being solved currently.
+- Google Chrome, Microsoft Edge, Mozilla Firefox all work and display correctly, testing done on my local computer. Testing of Safari has only been conducted on [BrowserStack](https://www.browserstack.com/), the site works correctly. 
 
 
 ### User Testing: 
@@ -288,8 +288,7 @@ Manual tests were carried out and the testing process was as follows:
 
 ## Deployment
 
-#### Deployment and source control was carried out via GitHub and Heroku. The repository location is as follows:[https://github.com/isntlee/sagacity]
-#### Heroku App Location is as follows [https://sagacity.herokuapp.com/]
+#### Source control and deployment was carried out primarilly via [GitHub](https://github.com/isntlee/sagacity) and [Heroku](https://sagacity.herokuapp.com/)
 
 ### Local Deployment
 
@@ -393,10 +392,14 @@ totalLikes: <int32>
 
 ### Content 
 
-- [Google Images](https://images.google.com/) All images taken from Google Image searches. 
-- [Favicon.io](https://favicon.io/) Designed and produced flavicon 
+- [Google Images](https://images.google.com/) 
+    - All images taken from Google Image searches. 
+- [Favicon.io](https://favicon.io/) 
+    - Designed and produced flavicon 
 
 ### Special Thanks
 
-- [Precious Ijege](https://github.com/precious-ijege) My Code Institute mentor
-- [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g) His tutorials have been essential research for many.
+- [Precious Ijege](https://github.com/precious-ijege) 
+    - My Code Institute mentor
+- [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g) 
+    - His tutorials have been essential research for many.

@@ -6,17 +6,17 @@
       <form action="{{ url_for('updateSaga', saga_id=saga._id) }}" method="POST" class="col s12">
          <div class="row">
             <div class="input-field col s12">
-               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" value="{{saga.sagaTitle}}" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}">
+               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" oninvalid="sweetAlert_textError()" value="{{saga.sagaTitle}}" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}">
                <label>Title</label>
             </div>
             <div class="input-field col s12">
-               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" value="{{saga.sagaTagline}}" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}">
+               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" oninvalid="sweetAlert_textError()" value="{{saga.sagaTagline}}" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}">
                <label>Tagline</label>
             </div>
          </div>
          <div class="row">
             <div class="input-field col s12">
-               <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" value="{{saga.sagaImage}}" pattern="https?://.+" autocomplete="off">
+               <input placeholder="yourImage.com" id="sagaImage" name="sagaImage" type="text" class="validate" oninvalid="sweetAlert_httpError()" value="{{saga.sagaImage}}" pattern="https?://.+" autocomplete="off">
                <label>Main Image - paste link</label>
             </div>
          </div>

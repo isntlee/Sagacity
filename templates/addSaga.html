@@ -6,17 +6,17 @@
       <form action="{{ url_for('insertSaga')}}" method="POST" class="col s12">
          <div class="row">
             <div class="input-field col s12">
-               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
+               <input id="sagaTitle" name="sagaTitle" type="text" class="validate" oninvalid="sweetAlert_textError()" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
                <label>Title</label>
             </div>
             <div class="input-field col s12">
-               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
+               <input id="sagaTagline" name="sagaTagline" type="text" class="validate" oninvalid="sweetAlert_textError()" autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
                <label>Tagline</label>
             </div>
          </div>
          <div class="row">
             <div class="input-field col s12 ">
-               <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" pattern="https?://.+" autocomplete="off"> 
+               <input placeholder="https://yourURL..." id="sagaImage" name="sagaImage" type="text" class="validate" oninvalid="sweetAlert_httpError()" pattern="https?://.+" autocomplete="off"> 
                <label>Main Image - paste link</label>
             </div>
          </div>
@@ -40,7 +40,7 @@
          </div>
          <div class="row">
             <div class="input-field col s12">
-               <textarea id="intro" name="intro" class="materialize-textarea validate" data-length="350" required></textarea>
+               <textarea id="intro" name="intro" class="materialize-textarea validate" data-length="350"></textarea>
                <label>Intro</label>
             </div>
          </div>
@@ -52,7 +52,7 @@
          </div>
          <div class="row">
             <div class="input-field col s12 ">
-               <textarea id="conclusion" name="conclusion" class="materialize-textarea validate" required></textarea>
+               <textarea id="conclusion" name="conclusion" class="materialize-textarea validate"></textarea>
                <label>Conclusion</label>
             </div>
          </div>

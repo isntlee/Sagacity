@@ -46,12 +46,25 @@
       swal({title: "",
             text: "You can only vote in the full story page",
             icon: "warning",
-            timer: 2000
+            timer: 2500
             });
         }
 
-        
+    function sweetAlert_textError () {
+      swal({title: "",
+            text: "Just add some words, and capitalize the first one.",
+            icon: "warning",
+            timer: 2500
+            });
+        }
 
+    function sweetAlert_httpError () {
+      swal({title: "",
+            text: "Add a proper url .e.g https://...",
+            icon: "warning",
+            timer: 2500
+            });
+        }
 
     function sweetAlert_delete() {
       swal({
