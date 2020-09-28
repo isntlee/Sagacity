@@ -315,7 +315,7 @@ Please note - in order to run this project locally on your own system, you will 
 
 ### Remote Deployment
 
-This site is currently deployed on [Heroku](https://sagacity.herokuapp.com/) using the **master** branch on GitHub. To implement this project on Heroku, the following steps were taken:
+This site is currently deployed here on [**Heroku**](https://sagacity.herokuapp.com/) using the **master** branch on GitHub. To implement this project on Heroku, the following steps were taken:
 
 1. Create a new Heroku App - unique name
 2. In GitPod login to Heroku through CLI to confirm existance of app. `CLI: heroku login. CLI: heroku apps`.
