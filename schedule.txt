@@ -1,1 +1,3 @@
-- Seems like series of problems with Heroku, testing now
+- The text bold weight is incorrect for the mobile site options
+
+- Seems like sagaSearch is inoperational 
