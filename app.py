@@ -350,6 +350,7 @@ def sagaSearch():
         collection = mongo.db.sagas
         collection.create_index([('sagaTitle', 'text')])
         # the index searched is solely the titles
+        print("HERES THE ERROR")
         answer = collection.find({'$text': {'$search': search}},
                                  {'$score': {'$meta': "textScore"}}
                                  )
