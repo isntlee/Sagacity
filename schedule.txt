@@ -1,3 +1,4 @@
+
 - The text bold weight is incorrect for the mobile site options
 
-- Seems like sagaSearch is inoperational 
+- Might want to consider using ScrollMagic on the home page, maybe
