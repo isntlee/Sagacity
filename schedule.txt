@@ -1,4 +1,4 @@
 
-- The text bold weight is incorrect for the mobile site options
+- The text bold weight is incorrect for the mobile site options, seems correct 
 
 - Might want to consider using ScrollMagic on the home page, maybe
