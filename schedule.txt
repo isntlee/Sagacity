@@ -1,4 +1,6 @@
 
-- The text bold weight is incorrect for the mobile site options, seems correct 
+- The text bold weight is incorrect for the mobile site options, seems correct
+
+- Search in mobile humburger is still in the wrong font weight
 
 - Might want to consider using ScrollMagic on the home page. Very little to consider, it's a definite now
