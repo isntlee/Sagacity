@@ -1,6 +1,6 @@
 
 - The text bold weight is incorrect for the mobile site options, seems correct
 
-- Search in mobile humburger is still in the wrong font weight
+- Check up with these gitpod.yml errors 
 
 - Might want to consider using ScrollMagic on the home page. Very little to consider, it's a definite now
