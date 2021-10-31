@@ -190,7 +190,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 ### Validators
 
 **HTML**
-- [W3C HTML Validator](https://validator.w3.org) - The Jinja template solely throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. However, in one file "base.html" errors are thrown over the use of <br>, these have been retained due to time constraints. 
+- [W3C HTML Validator](https://validator.w3.org) - The Jinja template solely throw errors `{{ variables }}`, `{% for %} {% endfor %}`, etc. Besides this fact, the code is valid. However, in one file "base.html" errors are thrown over the use of `<br>` , these have been retained due to time constraints. 
 
 **CSS**
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - The code is completely valid, the only warnings concern imported CSS items: the social media buttons, and infowindow details. 
@@ -284,7 +284,7 @@ Manual tests were carried out and the testing process was as follows:
  - Try going to [http://sagacity.herokuapp.com/404](http://sagacity.herokuapp.com/404) and see a custom 404 error.
  - Confirmed that there was a working link back to safety.
 
---
+
 
 ## Deployment
 
