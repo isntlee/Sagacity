@@ -88,7 +88,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 
 - The wireframes for this site were made with [draw.io](https://www.draw.io/), and accessible in the folder [wireframes](https://github.com/isntlee/sagacity/tree/master/wireframes)
 
--- 
+
 
 ## Features
 
@@ -152,7 +152,7 @@ The core ambition of the site is to make the material/sagas as interesting as po
 **Like/dislike buttons**
 - The current format only restricts the user to voting once per refresh, with this vote altering the 'likes' DB record. With additional time, there would have been a framework in place to track whether a user had voted for an entry or not, limiting that user to only ever adding one upvote or one downvote. 
 
---
+
 
 ## Technologies
 
