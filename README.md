@@ -393,7 +393,7 @@ totalLikes: <int32>
 ### Content 
 
 - [Google Images](https://images.google.com/) 
-    - All images taken from Google Image searches. 
+    - All images taken from Google Image searches
 - [Favicon.io](https://favicon.io/) 
     - Designed and produced flavicon 
 
@@ -402,4 +402,4 @@ totalLikes: <int32>
 - [Precious Ijege](https://github.com/precious-ijege) 
     - My Code Institute mentor
 - [Corey Schafer](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g) 
-    - His tutorials have been essential research for many.
+    - His tutorials have been essential research for many
